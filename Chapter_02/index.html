@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <title>Part Two - A Simple Recipe Catalog</title>
+    <link rel="stylesheet" href="part_two.css">
+</head>
+<body>
+
+  <div catalog-controller>
+    <h3>Choose a recipe to view</h3>
+    <ul>
+      <li class="pointer"
+          ng-repeat="recipe in ctrl.recipes"
+          ng-click="ctrl.selectRecipe(recipe)">{{recipe.name}}</li>
+    </ul>
+  
+    <h3>Recipe Information</h3>
+    <div><strong>Name: </strong>{{ctrl.selectedRecipe.name}}</div>
+    <div><strong>Category: </strong>{{ctrl.selectedRecipe.category}}</div>
+    <div><strong>Rating: </strong>{{ctrl.selectedRecipe.rating}}</div>
+    <div>
+      <ul>
+        <li ng-repeat="ingredient in ctrl.selectedRecipe.ingredients">
+          {{ingredient}}
+        </li>
+      </ul>
+    </div>
+    <div><strong>Directions: </strong>{{ctrl.selectedRecipe.directions}}</div>
+  </div>
+
+  <script type="application/dart" src="main.dart"></script>
+  <script src="packages/browser/dart.js"></script>
+</body>
+</html>
