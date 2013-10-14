@@ -15,40 +15,17 @@ import 'package:angular/angular.dart';
  * Similarly, the directive's public methods can be invoked from the view.
  */
 @NgDirective(
-    selector: '[catalog-controller]',
+    selector: '[recipe-book]',
     publishAs: 'ctrl')
-class CatalogController {
+class RecipeBookController {
 
-  List recipes = [
-      new Recipe('My Appetizer','Appetizers',
-          ["Ingredient 1", "Ingredient 2"],
-          "Some Directions", 1),
-      new Recipe('My Salad','Salads',
-          ["Ingredient 1", "Ingredient 2"],
-          "Some Directions", 3),
-      new Recipe('My Soup','Soups',
-          ["Ingredient 1", "Ingredient 2"],
-          "Some Directions", 4),
-      new Recipe('My Main Dish','Main Dishes',
-          ["Ingredient 1", "Ingredient 2"],
-          "Some Directions", 2),
-      new Recipe('My Side Dish','Side Dishes',
-          ["Ingredient 1", "Ingredient 2"],
-          "Some Directions", 3),
-      new Recipe('My Awesome Dessert','Desserts',
-          ["Ingredient 1", "Ingredient 2"],
-          "Some Directions", 5),
-      new Recipe('My So-So Dessert','Desserts',
-          ["Ingredient 1", "Ingredient 2"],
-          "Some Directions", 3),
-      ];
+  List recipes = _loadData();
 
   Recipe selectedRecipe;
 
   void selectRecipe(Recipe recipe) {
     selectedRecipe = recipe;
   }
-
 }
 
 class Recipe {
@@ -62,8 +39,34 @@ class Recipe {
       this.rating);
 }
 
+List<Recipe> _loadData() {
+  return [
+       new Recipe('My Appetizer','Appetizers',
+           ["Ingredient 1", "Ingredient 2"],
+           "Some Directions", 1),
+       new Recipe('My Salad','Salads',
+           ["Ingredient 1", "Ingredient 2"],
+           "Some Directions", 3),
+       new Recipe('My Soup','Soups',
+           ["Ingredient 1", "Ingredient 2"],
+           "Some Directions", 4),
+       new Recipe('My Main Dish','Main Dishes',
+           ["Ingredient 1", "Ingredient 2"],
+           "Some Directions", 2),
+       new Recipe('My Side Dish','Side Dishes',
+           ["Ingredient 1", "Ingredient 2"],
+           "Some Directions", 3),
+       new Recipe('My Awesome Dessert','Desserts',
+           ["Ingredient 1", "Ingredient 2"],
+           "Some Directions", 5),
+       new Recipe('My So-So Dessert','Desserts',
+           ["Ingredient 1", "Ingredient 2"],
+           "Some Directions", 3),
+       ];
+}
+
 main() {
   var module = new AngularModule()
-    ..type(CatalogController);
+    ..type(RecipeBookController);
   bootstrapAngular([module]);
 }
