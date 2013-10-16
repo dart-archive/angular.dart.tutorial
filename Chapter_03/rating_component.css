@@ -4,7 +4,7 @@
 .star-on {
   color: #FACC2E;
 }
-span {
+.stars {
   letter-spacing: -2px;
   cursor: pointer;
 }
