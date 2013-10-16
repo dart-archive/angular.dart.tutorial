@@ -19,8 +19,6 @@ class RecipeBookController {
     selectedRecipe = recipe;
   }
 
-  String foo = 'foo';
-
   List<Recipe> _loadData() {
     return [
       new Recipe('My Appetizer','Appetizers',

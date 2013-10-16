@@ -6,10 +6,31 @@ import 'package:angular/angular.dart';
  * The selector field defines the CSS selector that will trigger the
  * component. Typically, the CSS selector is an element name.
  *
+ * The templateUrl field tells the component which HTML template to use
+ * for its view.
+ *
+ * The cssUrl field tells the component which CSS file to use.
+ *
+ * The publishAs field specifies that the component instance should be
+ * assigned to the current scope under the name specified.
+ *
+ * The map field publishes the list of attributes that can be set on
+ * the component. Users of this component will specify these attributes
+ * in the html tag that is used to create the component. For example:
+ *
+ * <rating max-rating="5" rating="mycontrol.rating">
+ *
  * TODO: adopt new map naming conventions as soon as they're ready.
- *   'max': '@.max'
- *   will become
- *   'max-rating': '@maxRating'
+ *   OLD:
+ *     'max' : '@.max',
+ *     'rating' : '=.rating'
+ *   NEW:
+ *     'max-rating' : '@maxRating',
+ *     'rating' : '=rating'
+ *
+ * The compnoent's public fields are available for data binding from the
+ * component's view. Similarly, the component's public methods can be
+ * invoked from the component's view.
  */
 @NgComponent(
     selector: 'rating',
@@ -17,7 +38,7 @@ import 'package:angular/angular.dart';
     cssUrl: 'rating_component.css',
     publishAs: 'ctrl',
     map: const {
-      'max': '@.max',
+      'max' : '@.max',
       'rating' : '=.rating'
     }
 )
