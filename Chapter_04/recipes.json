@@ -1,0 +1,51 @@
+[
+  {
+    "name":"My Appetizer",
+    "category":"Appetizers",
+    "ingredients":["Ingredient 1","Ingredient 2"],
+    "directions":"Some Directions",
+    "rating": 1
+  },
+  {
+    "name":"My Salad",
+    "category":"Salads",
+    "ingredients":["Ingredient 1","Ingredient 2"],
+    "directions":"Some Directions",
+    "rating": 3
+  },
+  {
+    "name":"My Soup",
+    "category":"Soups",
+    "ingredients":["Ingredient 1","Ingredient 2"],
+    "directions":"Some Directions",
+    "rating": 4
+  },
+  {
+    "name":"My Main Dish",
+    "category":"Main Dishes",
+    "ingredients":["Ingredient 1","Ingredient 2"],
+    "directions":"Some Directions",
+    "rating": 2
+  },
+  {
+    "name":"My Side Dish",
+    "category":"Side Dishes",
+    "ingredients":["Ingredient 1","Ingredient 2"],
+    "directions":"Some Directions",
+    "rating": 3
+  },
+  {
+    "name":"My Awesome Dessert",
+    "category":"Desserts",
+    "ingredients":["Ingredient 1","Ingredient 2"],
+    "directions":"Some Directions",
+    "rating": 5
+  },
+  {
+    "name":"My So-So Dessert",
+    "category":"Desserts",
+    "ingredients":["Ingredient 1","Ingredient 2"],
+    "directions":"Some Directions",
+    "rating": 3
+  }
+]
