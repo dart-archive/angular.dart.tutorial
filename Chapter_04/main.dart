@@ -3,13 +3,17 @@ import 'package:di/di.dart';
 import 'rating_component.dart';
 import 'recipe.dart';
 
-@NgFilter(name: 'searchfilter')
-class SearchFilter {
-  call(value, filterString) {
-    if (value is List && filterString != null) {
-      return value.where((i) => i.name.contains(filterString)).toList();
+@NgFilter(name: 'categoryfilter')
+class CategoryFilter {
+  call(recipeList, filterMap) {
+    if (recipeList is List && filterMap != null && filterMap is Map) {
+      // If there is nothing checked, treat it as everything is checked.
+      bool nothingChecked = filterMap.values.every((isChecked) => !isChecked);
+      if (nothingChecked) {
+        return recipeList.toList();
+      }
+      return recipeList.where((i) => filterMap[i.category] == true).toList();
     }
-    return value.toList();
   }
 }
 
@@ -18,11 +22,21 @@ class SearchFilter {
     publishAs: 'ctrl')
 class RecipeBookController {
 
+  static const String LOADING_MESSAGE = "Loading recipe book...";
+  static const String ERROR_MESSAGE = """Sorry! The cook stepped out of the 
+kitchen and took the recipe book with him!""";
+
   Http _http;
 
-  List categories = ["Appetizers", "Salads", "Soups", "Main Dishes",
-                    "Side Dishes", "Desserts"];
+  String loadingMessage = "Loading recipe book...";
+
+  // Data objects that are loaded from the server side via json
+  List categories = [];
   List<Recipe> recipes = [];
+
+  // Filter box
+  Map<String, bool> categoryFilterMap = {};
+  String nameFilter = "";
 
   RecipeBookController(Http this._http) {
     _loadData();
@@ -34,13 +48,32 @@ class RecipeBookController {
     selectedRecipe = recipe;
   }
 
+  void clearFilters() {
+    categoryFilterMap.keys.forEach((f) => categoryFilterMap[f] = false);
+    nameFilter = "";
+  }
+
   void _loadData() {
     _http.get('/angular.dart.tutorial/Chapter_04/recipes.json')
       .then((HttpResponse response) {
         for (Map recipe in response.data) {
-          recipes.add(new Recipe.fromJson(recipe));
+          recipes.add(new Recipe.fromJsonMap(recipe));
         }
+      },
+      onError: (Object obj) {
+        loadingMessage = ERROR_MESSAGE;
       });
+
+    _http.get('/angular.dart.tutorial/Chapter_04/categories.json')
+        .then((HttpResponse response) {
+      for (String category in response.data) {
+        categories.add(category);
+        categoryFilterMap[category] = false;
+      }
+    },
+    onError: (Object obj) {
+      loadingMessage = ERROR_MESSAGE;
+    });
   }
 }
 
@@ -48,7 +81,7 @@ main() {
   var module = new AngularModule()
     ..type(RecipeBookController)
     ..type(RatingComponent)
-    ..type(SearchFilter);
+    ..type(CategoryFilter);
 
-  bootstrapAngular([module]);
+  ngBootstrap(module: module);
 }

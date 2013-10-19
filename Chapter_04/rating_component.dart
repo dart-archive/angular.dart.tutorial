@@ -26,7 +26,7 @@ import 'package:angular/angular.dart';
  *     'rating' : '=.rating'
  *   NEW:
  *     'max-rating' : '@maxRating',
- *     'rating' : '=rating'
+ *     'rating' : '<=>rating'
  *
  * The compnoent's public fields are available for data binding from the
  * component's view. Similarly, the component's public methods can be
@@ -38,8 +38,8 @@ import 'package:angular/angular.dart';
     cssUrl: 'rating_component.css',
     publishAs: 'ctrl',
     map: const {
-      'max' : '@.max',
-      'rating' : '=.rating'
+      'max-rating' : '@maxRating',
+      'rating' : '<=>rating'
     }
 )
 class RatingComponent {
@@ -52,7 +52,7 @@ class RatingComponent {
 
   int rating;
 
-  set max(String value) {
+  set maxRating(String value) {
     stars = [];
     var count = value == null ? 5 : int.parse(value);
     for(var i=1; i <= count; i++) {

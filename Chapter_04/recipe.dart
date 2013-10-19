@@ -12,7 +12,7 @@ class Recipe {
   Recipe(this.name, this.category, this.ingredients, this.directions,
       this.rating);
 
-  String toJson() {
+  String toJsonString() {
     Map data = {
                 "name" : name,
                 "category" : category,
@@ -23,7 +23,7 @@ class Recipe {
     return JSON.encode(data);
   }
 
-  factory Recipe.fromJson(Map json) {
+  factory Recipe.fromJsonMap(Map json) {
     return new Recipe(json['name'], json['category'], json['ingredients'],
         json['directions'], json['rating']);
   }
