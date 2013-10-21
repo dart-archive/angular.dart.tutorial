@@ -1,4 +1,5 @@
 import 'package:angular/angular.dart';
+import 'package:perf_api/perf_api.dart';
 import 'package:di/di.dart';
 import 'rating_component.dart';
 import 'recipe.dart';
@@ -7,7 +8,7 @@ import 'recipe.dart';
 class CategoryFilter {
   call(recipeList, filterMap) {
     if (recipeList is List && filterMap != null && filterMap is Map) {
-      // If there is nothing checked, treat it as everything is checked.
+      // If there is nothing checked, treat it as "everything is checked"
       bool nothingChecked = filterMap.values.every((isChecked) => !isChecked);
       if (nothingChecked) {
         return recipeList.toList();
@@ -22,6 +23,7 @@ class CategoryFilter {
     publishAs: 'ctrl')
 class RecipeBookController {
 
+  // TODO: do something with these messages...put up status while loading...
   static const String LOADING_MESSAGE = "Loading recipe book...";
   static const String ERROR_MESSAGE = """Sorry! The cook stepped out of the 
 kitchen and took the recipe book with him!""";
@@ -77,11 +79,13 @@ kitchen and took the recipe book with him!""";
   }
 }
 
+// TODO - Remove the Profiler type. It's only needed to get rid of Misko's spam
 main() {
   var module = new AngularModule()
     ..type(RecipeBookController)
     ..type(RatingComponent)
-    ..type(CategoryFilter);
+    ..type(CategoryFilter)
+    ..type(Profiler, implementedBy: Profiler);
 
   ngBootstrap(module: module);
 }
