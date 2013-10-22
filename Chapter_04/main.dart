@@ -4,6 +4,7 @@ import 'package:di/di.dart';
 import 'rating_component.dart';
 import 'recipe.dart';
 
+
 @NgFilter(name: 'categoryfilter')
 class CategoryFilter {
   call(recipeList, filterMap) {
@@ -23,14 +24,16 @@ class CategoryFilter {
     publishAs: 'ctrl')
 class RecipeBookController {
 
-  // TODO: do something with these messages...put up status while loading...
   static const String LOADING_MESSAGE = "Loading recipe book...";
   static const String ERROR_MESSAGE = """Sorry! The cook stepped out of the 
 kitchen and took the recipe book with him!""";
 
   Http _http;
 
-  String loadingMessage = "Loading recipe book...";
+  // Determine the initial load state of the app
+  String message = LOADING_MESSAGE;
+  bool recipesLoaded = false;
+  bool categoriesLoaded = false;
 
   // Data objects that are loaded from the server side via json
   List categories = [];
@@ -56,14 +59,19 @@ kitchen and took the recipe book with him!""";
   }
 
   void _loadData() {
+    recipesLoaded = false;
+    categoriesLoaded = false;
+
     _http.get('/angular.dart.tutorial/Chapter_04/recipes.json')
       .then((HttpResponse response) {
         for (Map recipe in response.data) {
           recipes.add(new Recipe.fromJsonMap(recipe));
         }
+        recipesLoaded = true;
       },
       onError: (Object obj) {
-        loadingMessage = ERROR_MESSAGE;
+        recipesLoaded = false;
+        message = ERROR_MESSAGE;
       });
 
     _http.get('/angular.dart.tutorial/Chapter_04/categories.json')
@@ -72,9 +80,11 @@ kitchen and took the recipe book with him!""";
         categories.add(category);
         categoryFilterMap[category] = false;
       }
+      categoriesLoaded = true;
     },
     onError: (Object obj) {
-      loadingMessage = ERROR_MESSAGE;
+      categoriesLoaded = false;
+      message = ERROR_MESSAGE;
     });
   }
 }
