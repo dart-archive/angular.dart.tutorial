@@ -12,7 +12,7 @@
     </div>
     <div ng-if="ctrl.recipesLoaded && ctrl.categoriesLoaded">
       <h3>Recipe List</h3>
-      
+
       <div id="filters">
         <div>
           <label for="name-filter">Filter recipes by name</label>
@@ -33,7 +33,7 @@
       <div id="recipe-list">
         <ul>
           <li class="pointer"
-              ng-repeat="recipe in ctrl.recipes | filter:{name:ctrl.nameFilter} | categoryfilter:ctrl.categoryFilterMap">
+              ng-repeat="recipe in ctrl.recipes | orderBy:'name' | filter:{name:ctrl.nameFilter} | categoryfilter:ctrl.categoryFilterMap">
               <rating max-rating="5" rating="recipe.rating"></rating>
               <span class="extra-space"
                     ng-click="ctrl.selectRecipe(recipe)">{{recipe.name}}</span>
