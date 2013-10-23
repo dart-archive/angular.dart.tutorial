@@ -1,0 +1,28 @@
+.pointer {
+  cursor: pointer;
+}
+
+.extra-space {
+  padding-left: 10px;
+}
+
+[ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+   display: none !important;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#header {
+  background-color:lightblue;
+}
+#controls {
+  background-color:lightgreen;
+}
+#results {
+  border: 1px solid red;
+}
+#details {
+  border: 1px solid black;
+}

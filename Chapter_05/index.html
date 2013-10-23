@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <title>Chapter Five - A Simple Recipe Book</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-cloak>
+  <div recipe-book>
+    <header id="header">
+      <h2>Angular is fun! Here's a recipe book to prove it!</h2>
+    </header>
+    <nav id="controls">
+      <recipe-search 
+          name-filter-string="ctrl.nameFilter"
+          category-filter-map="ctrl.categoryFilterMap">
+      </recipe-search>
+  
+      <a href="#/add">add recipe</a><br/>
+    </nav>
+    <nav id="results">
+      <h3>search results</h3>
+      <div id="recipe-list">
+        <ul>
+          <li class="pointer"
+              ng-repeat="recipe in ctrl.recipes | orderBy:'name' | filter:{name:ctrl.nameFilter} | categoryfilter:ctrl.categoryFilterMap">
+              <rating max-rating="5" rating="recipe.rating"></rating>
+              <span class="extra-space"
+                    ng-click="ctrl.selectRecipe(recipe)">{{recipe.name}}</span>
+          </li>
+        </ul>
+      </div>      
+    <a href="#/recipe/1/view">view some recipe</a>
+    </nav>
+    <section id="details">
+      <div ng-if="!ctrl.recipesLoaded && !ctrl.categoriesLoaded">
+        {{ctrl.message}}
+      </div>
+      
+      <ng-view></ng-view>
+    </section>
+  </div>
+  
+  
+  
+<!--
+    <div ng-if="ctrl.recipesLoaded && ctrl.categoriesLoaded">
+      <h3>Recipe List</h3>
+
+  
+    </div>
+
+-->
+
+  <script type="application/dart" src="main.dart"></script>
+  <script src="packages/browser/dart.js"></script>
+</body>
+</html>
