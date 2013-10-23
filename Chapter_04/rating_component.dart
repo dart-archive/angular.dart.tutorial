@@ -1,4 +1,4 @@
-import 'package:angular/angular.dart';
+part of recipe_book;
 
 /* Use the NgComponent annotation to indicate that this class is an
  * Angular Component.

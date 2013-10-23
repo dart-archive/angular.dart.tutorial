@@ -1,8 +1,12 @@
+library recipe_book;
+
 import 'package:angular/angular.dart';
+import 'dart:convert';
 import 'package:perf_api/perf_api.dart';
 import 'package:di/di.dart';
-import 'rating_component.dart';
-import 'recipe.dart';
+
+part 'rating_component.dart';
+part 'recipe.dart';
 
 
 @NgFilter(name: 'categoryfilter')

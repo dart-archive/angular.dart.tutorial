@@ -1,6 +1,4 @@
-library recipe;
-
-import 'dart:convert' show JSON;
+part of recipe_book;
 
 class Recipe {
   String name;
