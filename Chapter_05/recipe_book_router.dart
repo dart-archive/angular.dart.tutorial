@@ -19,6 +19,11 @@ class RecipeBookRouteInitializer implements RouteInitializer {
             ..addRoute(
                 name: 'edit',
                 path: '/edit',
-                enter: view('edit.html')));
+                enter: view('edit.html'))
+            ..addRoute(name: 'view_default', defaultRoute: true,
+                enter: (_) =>
+                    router.go('view', {'recipeId': ':recipeId'},
+                        startingFrom: route, replace:true)));
   }
 }
+// TODO add a default route and a redirect example
