@@ -2,6 +2,7 @@ library recipe_book;
 
 import 'package:angular/angular.dart';
 import 'package:angular/routing/module.dart';
+import 'dart:async';
 import 'dart:convert';
 import 'package:perf_api/perf_api.dart';
 import 'package:logging/logging.dart';
@@ -12,8 +13,8 @@ part 'query_service.dart';
 part 'rating_component.dart';
 part 'recipe.dart';
 part 'recipe_book_router.dart';
-part 'recipe_details_component.dart';
-part 'recipe_search_component.dart';
+part 'view_recipe_component.dart';
+part 'search_recipe_component.dart';
 
 @NgDirective(
     selector: '[recipe-book]',
@@ -31,16 +32,14 @@ kitchen and took the recipe book with him!""";
   // Determine the initial load state of the app
   String message = LOADING_MESSAGE;
   bool recipesLoaded = false;
-  bool categoriesLoaded = false;
+  bool categoriesLoaded =false;
 
   // Data objects that are loaded from the server side via json
-  List categories = [];
-  List<Recipe> recipes = [];
-
-  // get rid of this and replace with a recipe service
-  Map<String, Recipe> recipeMap = {};
-
-  List<Recipe> get foofoo => recipeMap.values.toList();
+  List _categories = [];
+  get categories => _categories;
+  Map<String, Recipe> _recipeMap = {};
+  get recipeMap => _recipeMap;
+  get allRecipes => _recipeMap.values.toList();
 
   // Filter box
   Map<String, bool> categoryFilterMap = {};
@@ -57,46 +56,28 @@ kitchen and took the recipe book with him!""";
   }
 
   void _loadData() {
-    recipesLoaded = false;
-    categoriesLoaded = false;
-
-//    _queryService.loadData();
-//    recipesLoaded = _queryService.recipesLoaded;
-//    categoriesLoaded = _queryService.categoriesLoaded;
-//
-//    if (!recipesLoaded || !categoriesLoaded) {
-//      message = ERROR_MESSAGE;
-//    }
-
-    _http.get('/angular.dart.tutorial/Chapter_05/recipes.json')
-      .then((HttpResponse response) {
-        for (Map recipe in response.data) {
-          Recipe r = new Recipe.fromJsonMap(recipe);
-          recipes.add(r);
-          recipeMap[r.id] = r;
-        }
+    _queryService.getAllRecipes()
+      .then((Map<String, Recipe> allRecipes) {
+        _recipeMap = allRecipes;
         recipesLoaded = true;
-        for (Recipe r in recipeMap.values) {
-          print(r.name);
-        }
       },
       onError: (Object obj) {
         recipesLoaded = false;
         message = ERROR_MESSAGE;
       });
 
-    _http.get('/angular.dart.tutorial/Chapter_05/categories.json')
-        .then((HttpResponse response) {
-      for (String category in response.data) {
-        categories.add(category);
-        categoryFilterMap[category] = false;
-      }
-      categoriesLoaded = true;
-    },
-    onError: (Object obj) {
-      categoriesLoaded = false;
-      message = ERROR_MESSAGE;
-    });
+    _queryService.getAllCategories()
+      .then((List<String> allCategories) {
+        _categories = allCategories;
+        for (String category in _categories) {
+          categoryFilterMap[category] = false;
+        }
+        categoriesLoaded = true;
+      },
+      onError: (Object obj) {
+        categoriesLoaded = false;
+        message = ERROR_MESSAGE;
+      });
   }
 }
 
@@ -108,8 +89,8 @@ main() {
   var module = new AngularModule()
     ..type(RecipeBookController)
     ..type(RatingComponent)
-    ..type(RecipeSearchComponent)
-    ..type(RecipeDetailsComponent)
+    ..type(SearchRecipeComponent)
+    ..type(ViewRecipeComponent)
     ..type(CategoryFilter)
     ..type(QueryService)
     ..type(RouteInitializer, implementedBy: RecipeBookRouteInitializer)

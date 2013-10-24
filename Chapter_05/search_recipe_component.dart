@@ -1,16 +1,16 @@
 part of recipe_book;
 
 @NgComponent(
-    selector: 'recipe-search',
-    templateUrl: 'recipe_search_component.html',
-    cssUrl: 'recipe_search_component.css',
+    selector: 'search-recipe',
+    templateUrl: 'search_recipe_component.html',
+    cssUrl: 'search_recipe_component.css',
     publishAs: 'ctrl',
     map: const {
       'name-filter-string': '<=>nameFilterString',
       'category-filter-map' : '<=>categoryFilterMap'
     }
 )
-class RecipeSearchComponent {
+class SearchRecipeComponent {
   String nameFilterString = "";
   Map categoryFilterMap;
 

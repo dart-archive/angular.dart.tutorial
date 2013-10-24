@@ -4,53 +4,68 @@ class QueryService {
   String _recipesUrl = '/angular.dart.tutorial/Chapter_05/recipes.json';
   String _categoriesUrl = '/angular.dart.tutorial/Chapter_05/categories.json';
 
-  Map<String, Recipe> _recipes = {};
-  List<String> _categories = [];
+  Future _loaded;
 
-  bool _recipesLoaded = false;
-  bool _categoriesLoaded = false;
+  Map<String, Recipe> _recipesCache;
+  List<String> _categoriesCache;
+
   Http _http;
 
-  QueryService(Http this._http);
+  QueryService(Http this._http) {
+    _loaded = Future.wait([_loadRecipes(), _loadCategories()]);
+  }
 
-  void loadData() {
-    _recipesLoaded = false;
-    _categoriesLoaded = false;
-
-    _http.get(_recipesUrl)
+  Future _loadRecipes() {
+    return _http.get(_recipesUrl)
       .then((HttpResponse response) {
+        _recipesCache = new Map();
         for (Map recipe in response.data) {
           Recipe r = new Recipe.fromJsonMap(recipe);
-          _recipes[r.id] = r;
+          _recipesCache[r.id] = r;
         }
-        _recipesLoaded = true;
+        return _recipesCache.length;
       },
       onError: (Object obj) {
-        _recipesLoaded = false;
       });
+  }
 
-    _http.get(_categoriesUrl)
+  Future _loadCategories() {
+    return _http.get(_categoriesUrl)
         .then((HttpResponse response) {
-      for (String category in response.data) {
-        _categories.add(category);
-      }
-      _categoriesLoaded = true;
+          _categoriesCache = new List();
+          for (String category in response.data) {
+            _categoriesCache.add(category);
+          }
+          return _categoriesCache.length;
     },
     onError: (Object obj) {
-      _categoriesLoaded = false;
     });
   }
 
-  Recipe getRecipeById(String id) {
-    return _recipes[id];
+  Future<Recipe> getRecipeById(String id) {
+    if (_recipesCache == null) {
+      return _loaded.then((_) {
+        return _recipesCache[id];
+      });
+    }
+    return new Future.value(_recipesCache[id]);
   }
 
-  List<Recipe> getAllRecipes() {
-    return _recipes.values.toList();
+  Future<Map<String, Recipe>> getAllRecipes() {
+    if (_recipesCache == null) {
+      return _loaded.then((_) {
+        return _recipesCache;
+      });
+    }
+    return new Future.value(_recipesCache);
   }
 
-  bool get recipesLoaded => _recipesLoaded;
-
-  bool get categoriesLoaded => _categoriesLoaded;
-
+  Future<List<String>> getAllCategories() {
+    if (_categoriesCache == null) {
+      return _loaded.then((_) {
+        return _categoriesCache;
+      });
+    }
+    return new Future.value(_categoriesCache);
+  }
 }

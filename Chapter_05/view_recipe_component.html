@@ -8,12 +8,16 @@
         <rating max-rating="5" rating="ctrl.recipe.rating"></rating>
     </div>
     <div>
+      <strong>Ingredients:</strong>
       <ul>
         <li ng-repeat="ingredient in ctrl.recipe.ingredients">
           {{ingredient}}
         </li>
       </ul>
     </div>
-    <div><strong>Directions: </strong>{{ctrl.recipe.directions}}</div>
+    <div>
+      <strong>Directions:</strong>
+      {{ctrl.recipe.directions}}
+    </div>
   </div>
 </div>

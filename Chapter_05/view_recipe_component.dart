@@ -1,15 +1,15 @@
 part of recipe_book;
 
 @NgComponent(
-    selector: 'recipe-details',
-    templateUrl: 'recipe_details_component.html',
-    cssUrl: 'recipe_details_component.css',
+    selector: 'view-recipe',
+    templateUrl: 'view_recipe_component.html',
+    cssUrl: 'view_recipe_component.css',
     publishAs: 'ctrl',
     map: const {
       'recipe-map':'<=>recipeMap'
     }
 )
-class RecipeDetailsComponent implements NgDetachAware {
+class ViewRecipeComponent implements NgDetachAware {
   RouteHandle _route;
   Map<String, Recipe> recipeMap;
   Recipe _recipe;
@@ -18,7 +18,7 @@ class RecipeDetailsComponent implements NgDetachAware {
     return recipeMap[_route.parameters['recipeId']];
   }
 
-  RecipeDetailsComponent(RouteProvider routeProvider) {
+  ViewRecipeComponent(RouteProvider routeProvider) {
     _route = routeProvider.route;
   }
 
