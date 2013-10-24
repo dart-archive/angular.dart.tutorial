@@ -10,20 +10,6 @@ a {
   text-decoration: none;
 }
 
-#header {
-}
-
-#controls {
-}
-
-#search-results {
-  border: 0px solid red;
-}
-
-#details {
-  border: 0px solid black;
-}
-
 .extra-space {
   padding-left: 10px;
 }

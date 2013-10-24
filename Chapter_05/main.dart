@@ -5,7 +5,6 @@ import 'package:angular/routing/module.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:perf_api/perf_api.dart';
-import 'package:logging/logging.dart';
 import 'package:di/di.dart';
 
 part 'category_filter.dart';
@@ -32,7 +31,7 @@ kitchen and took the recipe book with him!""";
   // Determine the initial load state of the app
   String message = LOADING_MESSAGE;
   bool recipesLoaded = false;
-  bool categoriesLoaded =false;
+  bool categoriesLoaded = false;
 
   // Data objects that are loaded from the server side via json
   List _categories = [];
@@ -83,9 +82,6 @@ kitchen and took the recipe book with him!""";
 
 // TODO - Remove the Profiler type. It's only needed to get rid of Misko's spam
 main() {
-//  Logger.root.level = Level.FINEST;
-//  Logger.root.onRecord.listen((LogRecord r) { print(r.message); });
-
   var module = new AngularModule()
     ..type(RecipeBookController)
     ..type(RatingComponent)
