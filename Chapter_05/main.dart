@@ -7,13 +7,13 @@ import 'dart:convert';
 import 'package:perf_api/perf_api.dart';
 import 'package:di/di.dart';
 
-part 'category_filter.dart';
-part 'query_service.dart';
-part 'rating_component.dart';
-part 'recipe.dart';
+part 'filter/category_filter.dart';
+part 'service/query_service.dart';
+part 'component/rating_component.dart';
+part 'service/recipe.dart';
 part 'recipe_book_router.dart';
-part 'view_recipe_component.dart';
-part 'search_recipe_component.dart';
+part 'view/view_recipe_component.dart';
+part 'view/search_recipe_component.dart';
 
 @NgDirective(
     selector: '[recipe-book]',

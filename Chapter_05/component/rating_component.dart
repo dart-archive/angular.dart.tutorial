@@ -26,8 +26,8 @@ part of recipe_book;
  */
 @NgComponent(
     selector: 'rating',
-    templateUrl: 'rating_component.html',
-    cssUrl: 'rating_component.css',
+    templateUrl: 'component/rating_component.html',
+    cssUrl: 'component/rating_component.css',
     publishAs: 'ctrl',
     map: const {
       'max-rating' : '@maxRating',

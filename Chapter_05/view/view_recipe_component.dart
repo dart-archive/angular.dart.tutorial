@@ -2,8 +2,8 @@ part of recipe_book;
 
 @NgComponent(
     selector: 'view-recipe',
-    templateUrl: 'view_recipe_component.html',
-    cssUrl: 'view_recipe_component.css',
+    templateUrl: 'view/view_recipe_component.html',
+    cssUrl: 'view/view_recipe_component.css',
     publishAs: 'ctrl',
     map: const {
       'recipe-map':'<=>recipeMap'
