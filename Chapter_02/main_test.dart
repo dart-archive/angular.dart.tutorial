@@ -9,27 +9,20 @@ import 'package:angular/mock/module.dart';
 import 'main.dart';
 
 main() {
+  setUp(setUpInjector);
+  tearDown(tearDownInjector);
+
   group('recipe-book', () {
-    TestBed _;
-    RecipeBookController recipesController;
+    setUp(module((Module m) => m.install(new MyAppModule())));
 
-    setUp(() {
-      var injector = new DynamicInjector(modules: [
-        new AngularModule()..type(RecipeBookController),
-        new AngularMockModule()
-      ]);
-      _ = injector.get(TestBed);
-      recipesController = _.injector.get(RecipeBookController);
-    });
-
-    test('should load recipes', () {
+    test('should load recipes', inject((RecipeBookController recipesController) {
       expect(recipesController.recipes, isNot(isEmpty));
-    });
+    }));
 
-    test('should select recipe', () {
+    test('should select recipe', inject((RecipeBookController recipesController) {
       var recipe = recipesController.recipes[0];
       recipesController.selectRecipe(recipe);
       expect(recipesController.selectedRecipe, same(recipe));
-    });
+    }));
   });
 }

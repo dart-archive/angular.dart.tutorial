@@ -2,3 +2,5 @@
 packages
 .project
 pubspec.lock
+.idea
+node_modules

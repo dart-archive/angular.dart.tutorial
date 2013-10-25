@@ -68,8 +68,12 @@ class Recipe {
       this.rating);
 }
 
+class MyAppModule extends Module {
+  MyAppModule() {
+    type(RecipeBookController);
+  }
+}
+
 main() {
-  var module = new AngularModule()
-    ..type(RecipeBookController);
-  bootstrapAngular([module]);
+  ngBootstrap(module: new MyAppModule());
 }

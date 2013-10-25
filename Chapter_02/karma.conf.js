@@ -14,7 +14,8 @@ module.exports = function(config) {
     autoWatch: true,
 
     plugins: [
-      'karma-dart'
-    ],
+      'karma-dart',
+      'karma-chrome-launcher'
+    ]
   });
 };
