@@ -7,8 +7,8 @@
   </div>
   <div>
     <label for="category-filter">Filter recipes by category</label>
-    <span ng-repeat="category in ctrl.categories">
-      <input type="checkbox" id="category-filter"
+    <span id="category-filter" ng-repeat="category in ctrl.categories">
+      <input type="checkbox"
          ng-model="ctrl.categoryFilterMap[category]">{{category}}
     </span>
   </div>
