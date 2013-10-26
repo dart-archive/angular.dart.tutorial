@@ -45,7 +45,7 @@ kitchen and took the recipe book with him!""";
 
   // Filter box
   Map<String, bool> categoryFilterMap = {};
-  String nameFilter = "";
+  String nameFilterString = "";
 
   RecipeBookController(Http this._http) {
     _loadData();
@@ -59,7 +59,7 @@ kitchen and took the recipe book with him!""";
 
   void clearFilters() {
     categoryFilterMap.keys.forEach((f) => categoryFilterMap[f] = false);
-    nameFilter = "";
+    nameFilterString = "";
   }
 
   void _loadData() {
