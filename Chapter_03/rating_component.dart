@@ -38,8 +38,8 @@ part of recipe_book;
     cssUrl: 'rating_component.css',
     publishAs: 'ctrl',
     map: const {
-      'max' : '@.max',
-      'rating' : '=.rating'
+      'max' : '@max',
+      'rating' : '<=>rating'
     }
 )
 class RatingComponent {
