@@ -65,21 +65,23 @@ kitchen and took the recipe book with him!""";
   void _loadData() {
     recipesLoaded = false;
     categoriesLoaded = false;
-
-    _http.get('/angular.dart.tutorial/Chapter_04/recipes.json')
+    _http.get('recipes.json')
       .then((HttpResponse response) {
+      print(response);
         for (Map recipe in response.data) {
           recipes.add(new Recipe.fromJsonMap(recipe));
         }
         recipesLoaded = true;
       },
       onError: (Object obj) {
+        print(obj);
         recipesLoaded = false;
         message = ERROR_MESSAGE;
       });
 
-    _http.get('/angular.dart.tutorial/Chapter_04/categories.json')
+    _http.get('categories.json')
         .then((HttpResponse response) {
+      print(response);
       for (String category in response.data) {
         categories.add(category);
         categoryFilterMap[category] = false;
@@ -87,19 +89,23 @@ kitchen and took the recipe book with him!""";
       categoriesLoaded = true;
     },
     onError: (Object obj) {
+      print(obj);
       categoriesLoaded = false;
       message = ERROR_MESSAGE;
     });
   }
 }
 
-// TODO - Remove the Profiler type. It's only needed to get rid of Misko's spam
-main() {
-  var module = new AngularModule()
-    ..type(RecipeBookController)
-    ..type(RatingComponent)
-    ..type(CategoryFilter)
-    ..type(Profiler, implementedBy: Profiler);
-
-  ngBootstrap(module: module);
+class MyAppModule extends Module {
+  MyAppModule() {
+    type(RecipeBookController);
+    type(RatingComponent);
+    type(CategoryFilter);
+    type(Profiler, implementedBy: Profiler); // comment out to enable profiling
+  }
 }
+
+main() {
+  ngBootstrap(module: new MyAppModule());
+}
+

@@ -11,7 +11,7 @@ module.exports = function(config) {
       {pattern: 'packages/browser/interop.js', watched: false, included: true, served: true},
     ],
 
-    autoWatch: true,
+    autoWatch: false,
 
     plugins: [
       'karma-dart',
