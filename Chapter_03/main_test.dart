@@ -29,12 +29,12 @@ main() {
 
   group('rating component', () {
     test('should show the right number of stars', inject((RatingComponent rating) {
-      rating.max = '5';
+      rating.maxRating = '5';
       expect(rating.stars, equals([1, 2, 3, 4, 5]));
     }));
 
     test('should handle click', inject((RatingComponent rating) {
-      rating.max = '5';
+      rating.maxRating = '5';
       rating.handleClick(3);
       expect(rating.rating, equals(3));
 

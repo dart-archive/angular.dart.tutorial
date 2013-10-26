@@ -20,14 +20,6 @@ part of recipe_book;
  *
  * <rating max-rating="5" rating="mycontrol.rating">
  *
- * TODO: adopt new map naming conventions as soon as they're ready.
- *   OLD:
- *     'max' : '@.max',
- *     'rating' : '=.rating'
- *   NEW:
- *     'max-rating' : '@maxRating',
- *     'rating' : '<=>rating'
- *
  * The compnoent's public fields are available for data binding from the
  * component's view. Similarly, the component's public methods can be
  * invoked from the component's view.

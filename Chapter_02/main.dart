@@ -1,4 +1,5 @@
 import 'package:angular/angular.dart';
+import 'package:perf_api/perf_api.dart';
 
 /* Use the NgDirective annotation to indicate that this class is an
  * Angular Directive. The compiler will instantiate the directive if
@@ -71,6 +72,7 @@ class Recipe {
 class MyAppModule extends Module {
   MyAppModule() {
     type(RecipeBookController);
+    type(Profiler, implementedBy: Profiler); // comment out to enable profiling
   }
 }
 

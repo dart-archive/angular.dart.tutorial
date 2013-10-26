@@ -11,7 +11,7 @@
     <ul>
       <li class="pointer"
           ng-repeat="recipe in ctrl.recipes">
-          <rating max="5" rating="recipe.rating"></rating>
+          <rating max-rating="5" rating="recipe.rating"></rating>
           <span class="extra-space"
                 ng-click="ctrl.selectRecipe(recipe)">{{recipe.name}}</span>
       </li>
@@ -22,7 +22,7 @@
       <div><strong>Name: </strong>{{ctrl.selectedRecipe.name}}</div>
       <div><strong>Category: </strong>{{ctrl.selectedRecipe.category}}</div>
       <div><strong>Rating: </strong>
-          <rating max="5" rating="ctrl.selectedRecipe.rating"></rating>
+          <rating max-rating="5" rating="ctrl.selectedRecipe.rating"></rating>
       </div>
       <div>
         <ul>
