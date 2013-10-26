@@ -1,8 +1,8 @@
 part of recipe_book;
 
 class QueryService {
-  String _recipesUrl = '/angular.dart.tutorial/Chapter_05/recipes.json';
-  String _categoriesUrl = '/angular.dart.tutorial/Chapter_05/categories.json';
+  String _recipesUrl = 'recipes.json';
+  String _categoriesUrl = 'categories.json';
 
   Future _loaded;
 

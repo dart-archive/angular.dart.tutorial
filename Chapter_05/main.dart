@@ -80,19 +80,21 @@ kitchen and took the recipe book with him!""";
   }
 }
 
-// TODO - Remove the Profiler type. It's only needed to get rid of Misko's spam
-main() {
-  var module = new AngularModule()
-    ..type(RecipeBookController)
-    ..type(RatingComponent)
-    ..type(SearchRecipeComponent)
-    ..type(ViewRecipeComponent)
-    ..type(CategoryFilter)
-    ..type(QueryService)
-    ..type(RouteInitializer, implementedBy: RecipeBookRouteInitializer)
-    ..factory(NgRoutingUsePushState,
-        (_) => new NgRoutingUsePushState.value(false))
-    ..type(Profiler, implementedBy: Profiler);
+class MyAppModule extends Module {
+  MyAppModule() {
+    type(RecipeBookController);
+    type(RatingComponent);
+    type(CategoryFilter);
+    type(Profiler, implementedBy: Profiler); // comment out to enable profiling
+    type(SearchRecipeComponent);
+    type(ViewRecipeComponent);
+    type(QueryService);
+    type(RouteInitializer, implementedBy: RecipeBookRouteInitializer);
+    factory(NgRoutingUsePushState,
+        (_) => new NgRoutingUsePushState.value(false));
+  }
+}
 
-  ngBootstrap(module: module);
+main() {
+  ngBootstrap(module: new MyAppModule());
 }
