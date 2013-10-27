@@ -24,8 +24,6 @@ class QueryService {
           _recipesCache[r.id] = r;
         }
         return _recipesCache.length;
-      },
-      onError: (Object obj) {
       });
   }
 
@@ -37,8 +35,6 @@ class QueryService {
             _categoriesCache.add(category);
           }
           return _categoriesCache.length;
-    },
-    onError: (Object obj) {
     });
   }
 
