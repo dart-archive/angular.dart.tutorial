@@ -22,13 +22,13 @@ main() {
       backend.expectGET('categories.json').respond('["c1"]');
 
       var recipesController = injector.get(RecipeBookController);
-      expect(recipesController.recipes, isEmpty);
+      expect(recipesController.allRecipes, isEmpty);
 
       microLeap();
       backend.flush();
       microLeap();
 
-      expect(recipesController.recipes, isNot(isEmpty));
+      expect(recipesController.allRecipes, isNot(isEmpty));
     })));
 
     test('should select recipe', async(inject((Injector injector,
@@ -37,13 +37,13 @@ main() {
       backend.expectGET('categories.json').respond('["c1"]');
 
       var recipesController = injector.get(RecipeBookController);
-      expect(recipesController.recipes, isEmpty);
+      expect(recipesController.allRecipes, isEmpty);
 
       microLeap();
       backend.flush();
       microLeap();
 
-      var recipe = recipesController.recipes[0];
+      var recipe = recipesController.allRecipes[0];
       recipesController.selectRecipe(recipe);
       expect(recipesController.selectedRecipe, same(recipe));
     })));
@@ -73,8 +73,8 @@ main() {
 
   group('categoryFilter', () {
     test('should return subset', inject((CategoryFilter filter) {
-      var r1 = new Recipe(null, 'C1', null, null, null);
-      var r2 = new Recipe(null, 'C2', null, null, null);
+      var r1 = new Recipe(null, null, 'C1', null, null, null);
+      var r2 = new Recipe(null, null, 'C2', null, null, null);
       var list = [r1, r2];
       var map = {"C1": false, "C2": true};
       expect(filter(list, map), equals([r2]));
