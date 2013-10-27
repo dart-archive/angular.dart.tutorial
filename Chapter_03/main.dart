@@ -6,7 +6,7 @@ import 'package:perf_api/perf_api.dart';
 
 part 'rating_component.dart';
 
-@NgDirective(
+@NgController(
     selector: '[recipe-book]',
     publishAs: 'ctrl')
 class RecipeBookController {
@@ -46,7 +46,7 @@ class RecipeBookController {
       new Recipe('My So-So Dessert','Desserts',
           ["Ingredient 1", "Ingredient 2"],
           "Some Directions", 3),
-      ];
+    ];
   }
 }
 

@@ -11,7 +11,9 @@
     <ul>
       <li class="pointer"
           ng-repeat="recipe in ctrl.recipes"
-          ng-click="ctrl.selectRecipe(recipe)">{{recipe.name}}</li>
+          ng-click="ctrl.selectRecipe(recipe)">
+        {{recipe.name}}
+      </li>
     </ul>
   
     <h3>Recipe Details</h3>

@@ -23,7 +23,7 @@ class CategoryFilter {
   }
 }
 
-@NgDirective(
+@NgController(
     selector: '[recipe-book]',
     publishAs: 'ctrl')
 class RecipeBookController {

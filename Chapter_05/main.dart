@@ -15,7 +15,7 @@ part 'recipe_book_router.dart';
 part 'view/view_recipe_component.dart';
 part 'view/search_recipe_component.dart';
 
-@NgDirective(
+@NgController(
     selector: '[recipe-book]',
     publishAs: 'ctrl')
 class RecipeBookController {
