@@ -23,7 +23,6 @@ class QueryService {
           Recipe r = new Recipe.fromJsonMap(recipe);
           _recipesCache[r.id] = r;
         }
-        return _recipesCache.length;
       });
   }
 
@@ -34,7 +33,6 @@ class QueryService {
           for (String category in response.data) {
             _categoriesCache.add(category);
           }
-          return _categoriesCache.length;
     });
   }
 

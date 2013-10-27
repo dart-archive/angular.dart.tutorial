@@ -7,7 +7,7 @@ class RecipeBookRouteInitializer implements RouteInitializer {
       ..addRoute(
           name: 'add',
           path: '/add',
-          enter: view('view/add.html'))
+          enter: view('view/addRecipe.html'))
       ..addRoute(
           name: 'recipe',
           path: '/recipe/:recipeId',
@@ -15,11 +15,11 @@ class RecipeBookRouteInitializer implements RouteInitializer {
               ..addRoute(
                   name: 'view',
                   path: '/view',
-                  enter: view('view/view.html'))
+                  enter: view('view/viewRecipe.html'))
               ..addRoute(
                   name: 'edit',
                   path: '/edit',
-                  enter: view('view/edit.html'))
+                  enter: view('view/editRecipe.html'))
               ..addRoute(
                   name: 'view_default',
                   defaultRoute: true,
