@@ -5,21 +5,21 @@ class RecipeBookRouteInitializer implements RouteInitializer {
   init(Router router, ViewFactory view) {
     router.root
       ..addRoute(
-          name: 'add', // recipe_add
-          path: '/add', // /recipe/add
-          enter: view('view/add.html')) // recipe_add.html
+          name: 'add',
+          path: '/add',
+          enter: view('view/add.html'))
       ..addRoute(
           name: 'recipe',
           path: '/recipe/:recipeId',
           mount: (Route route) => route
               ..addRoute(
-                  name: 'view', // recipe
-                  path: '/view', // delete this
-                  enter: view('view/view.html')) // recipe.html
+                  name: 'view',
+                  path: '/view',
+                  enter: view('view/view.html'))
               ..addRoute(
-                  name: 'edit', // recipe_edit
+                  name: 'edit',
                   path: '/edit',
-                  enter: view('view/edit.html')) // recipe_edit.html
+                  enter: view('view/edit.html'))
               ..addRoute(
                   name: 'view_default',
                   defaultRoute: true,
