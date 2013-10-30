@@ -15,12 +15,12 @@ import 'package:perf_api/perf_api.dart';
  * The directive's public fields are available for data binding from the view.
  * Similarly, the directive's public methods can be invoked from the view.
  */
-@NgDirective(
+@NgController(
     selector: '[recipe-book]',
     publishAs: 'ctrl')
 class RecipeBookController {
 
-  List recipes;
+  List<Recipe> recipes;
   RecipeBookController() {
     recipes = _loadData();
   }
@@ -54,7 +54,7 @@ class RecipeBookController {
       new Recipe('My So-So Dessert','Desserts',
           ["Ingredient 1", "Ingredient 2"],
           "Some Directions", 3),
-          ];
+    ];
   }
 }
 
