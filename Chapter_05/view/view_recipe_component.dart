@@ -19,7 +19,7 @@ class ViewRecipeComponent implements NgDetachAware {
   }
 
   ViewRecipeComponent(RouteProvider routeProvider) {
-    _route = routeProvider.route;
+    _route = routeProvider.route.newHandle();
   }
 
   void detach() {
