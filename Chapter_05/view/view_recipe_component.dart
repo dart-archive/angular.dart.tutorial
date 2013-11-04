@@ -9,8 +9,8 @@ part of recipe_book;
       'recipe-map':'<=>recipeMap'
     }
 )
-class ViewRecipeComponent implements NgDetachAware {
-  RouteHandle _route;
+class ViewRecipeComponent {
+  Route _route;
   Map<String, Recipe> recipeMap;
   Recipe _recipe;
 
@@ -20,9 +20,5 @@ class ViewRecipeComponent implements NgDetachAware {
 
   ViewRecipeComponent(RouteProvider routeProvider) {
     _route = routeProvider.route;
-  }
-
-  void detach() {
-    _route.discard();
   }
 }

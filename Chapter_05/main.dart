@@ -1,9 +1,10 @@
 library recipe_book;
 
-import 'package:angular/angular.dart';
-import 'package:angular/routing/module.dart';
 import 'dart:async';
 import 'dart:convert';
+import 'package:angular/angular.dart';
+import 'package:angular/routing/module.dart';
+import 'package:logging/logging.dart';
 import 'package:perf_api/perf_api.dart';
 import 'package:di/di.dart';
 
@@ -96,5 +97,7 @@ class MyAppModule extends Module {
 }
 
 main() {
+  Logger.root.level = Level.FINEST;
+  Logger.root.onRecord.listen((LogRecord r) { print(r.message); });
   ngBootstrap(module: new MyAppModule());
 }

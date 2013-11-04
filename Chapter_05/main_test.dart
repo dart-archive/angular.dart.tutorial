@@ -2,7 +2,6 @@ library main_test;
 
 import 'package:unittest/unittest.dart';
 import 'package:di/di.dart';
-import 'package:di/dynamic_injector.dart';
 import 'package:angular/angular.dart';
 import 'package:angular/mock/module.dart';
 
@@ -50,7 +49,8 @@ main() {
   });
 
   group('rating component', () {
-    test('should show the right number of stars', inject((RatingComponent rating) {
+    test('should show the right number of stars',
+        inject((RatingComponent rating) {
       rating.maxRating = '5';
       expect(rating.stars, equals([1, 2, 3, 4, 5]));
     }));
