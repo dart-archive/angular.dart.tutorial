@@ -6,7 +6,7 @@ import 'package:di/dynamic_injector.dart';
 import 'package:angular/angular.dart';
 import 'package:angular/mock/module.dart';
 
-import 'main.dart';
+import '../web/main.dart';
 
 main() {
   setUp(() {

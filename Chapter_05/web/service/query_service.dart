@@ -1,8 +1,8 @@
 part of recipe_book;
 
 class QueryService {
-  String _recipesUrl = 'recipes.json';
-  String _categoriesUrl = 'categories.json';
+  String _recipesUrl = 'service/recipes.json';
+  String _categoriesUrl = 'service/categories.json';
 
   Future _loaded;
 

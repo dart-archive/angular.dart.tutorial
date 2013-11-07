@@ -1,10 +1,23 @@
 library recipe_book;
 
+@MirrorsUsed(targets: const[
+  'angular',
+  'angular.core',
+  'angular.core.dom',
+  'angular.filter',
+  'angular.perf',
+  'angular.directive',
+  'angular.routing',
+  'angular.core.parser',
+  'NodeTreeSanitizer'
+  ],
+  override: '*')
+import 'dart:mirrors';
 import 'package:angular/angular.dart';
 import 'package:di/di.dart';
 import 'package:perf_api/perf_api.dart';
 
-part 'rating_component.dart';
+import 'package:angular_dart_demo/rating/rating_component.dart';
 
 @NgController(
     selector: '[recipe-book]',

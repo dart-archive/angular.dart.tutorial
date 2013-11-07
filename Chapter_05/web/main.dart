@@ -3,16 +3,17 @@ library recipe_book;
 import 'dart:async';
 import 'dart:convert';
 import 'package:angular/angular.dart';
+import 'package:di/di.dart';
 import 'package:angular/routing/module.dart';
 import 'package:logging/logging.dart';
 import 'package:perf_api/perf_api.dart';
-import 'package:di/di.dart';
+
+import 'package:angular_dart_demo/rating/rating_component.dart';
 
 part 'filter/category_filter.dart';
 part 'service/query_service.dart';
-part 'component/rating_component.dart';
 part 'service/recipe.dart';
-part 'recipe_book_router.dart';
+part 'routing/recipe_book_router.dart';
 part 'view/view_recipe_component.dart';
 part 'view/search_recipe_component.dart';
 

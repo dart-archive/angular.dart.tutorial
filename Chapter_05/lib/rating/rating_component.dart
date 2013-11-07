@@ -1,4 +1,6 @@
-part of recipe_book;
+library rating;
+
+import 'package:angular/angular.dart';
 
 /* Use the NgComponent annotation to indicate that this class is an
  * Angular Component.
@@ -26,8 +28,8 @@ part of recipe_book;
  */
 @NgComponent(
     selector: 'rating',
-    templateUrl: 'rating_component.html',
-    cssUrl: 'rating_component.css',
+    templateUrl: 'packages/angular_dart_demo/rating/rating_component.html',
+    cssUrl: 'packages/angular_dart_demo/rating/rating_component.css',
     publishAs: 'ctrl',
     map: const {
       'max-rating' : '@maxRating',
