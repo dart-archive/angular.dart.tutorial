@@ -16,37 +16,15 @@ main() {
   tearDown(tearDownInjector);
 
   group('recipe-book', () {
-    test('should load recipes', async(inject((Injector injector,
-                                              MockHttpBackend backend) {
-      backend.expectGET('recipes.json').respond('[{"name": "test1"}]');
-      backend.expectGET('categories.json').respond('["c1"]');
-
-      var recipesController = injector.get(RecipeBookController);
-      expect(recipesController.recipes, isEmpty);
-
-      microLeap();
-      backend.flush();
-      microLeap();
-
+    test('should load recipes', inject((RecipeBookController recipesController) {
       expect(recipesController.recipes, isNot(isEmpty));
-    })));
+    }));
 
-    test('should select recipe', async(inject((Injector injector,
-                                               MockHttpBackend backend) {
-      backend.expectGET('recipes.json').respond('[{"name": "test1"}]');
-      backend.expectGET('categories.json').respond('["c1"]');
-
-      var recipesController = injector.get(RecipeBookController);
-      expect(recipesController.recipes, isEmpty);
-
-      microLeap();
-      backend.flush();
-      microLeap();
-
+    test('should select recipe', inject((RecipeBookController recipesController) {
       var recipe = recipesController.recipes[0];
       recipesController.selectRecipe(recipe);
       expect(recipesController.selectedRecipe, same(recipe));
-    })));
+    }));
   });
 
   group('rating component', () {
@@ -68,16 +46,6 @@ main() {
 
       rating.handleClick(1);
       expect(rating.rating, equals(1));
-    }));
-  });
-
-  group('categoryFilter', () {
-    test('should return subset', inject((CategoryFilter filter) {
-      var r1 = new Recipe(null, 'C1', null, null, null);
-      var r2 = new Recipe(null, 'C2', null, null, null);
-      var list = [r1, r2];
-      var map = {"C1": false, "C2": true};
-      expect(filter(list, map), equals([r2]));
     }));
   });
 }

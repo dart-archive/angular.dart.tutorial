@@ -14,55 +14,21 @@ library recipe_book;
   override: '*')
 import 'dart:mirrors';
 import 'package:angular/angular.dart';
-import 'dart:convert';
-import 'package:perf_api/perf_api.dart';
 import 'package:di/di.dart';
+import 'package:perf_api/perf_api.dart';
 
 import 'package:angular_dart_demo/rating/rating_component.dart';
-
-part 'recipe.dart';
-
-
-@NgFilter(name: 'categoryfilter')
-class CategoryFilter {
-  call(recipeList, filterMap) {
-    if (recipeList is List && filterMap != null && filterMap is Map) {
-      // If there is nothing checked, treat it as "everything is checked"
-      bool nothingChecked = filterMap.values.every((isChecked) => !isChecked);
-      if (nothingChecked) {
-        return recipeList.toList();
-      }
-      return recipeList.where((i) => filterMap[i.category] == true).toList();
-    }
-  }
-}
+import 'package:angular_dart_demo/tooltip/tooltip_directive.dart';
 
 @NgController(
     selector: '[recipe-book]',
     publishAs: 'ctrl')
 class RecipeBookController {
 
-  static const String LOADING_MESSAGE = "Loading recipe book...";
-  static const String ERROR_MESSAGE = """Sorry! The cook stepped out of the 
-kitchen and took the recipe book with him!""";
+  List recipes;
 
-  Http _http;
-
-  // Determine the initial load state of the app
-  String message = LOADING_MESSAGE;
-  bool recipesLoaded = false;
-  bool categoriesLoaded = false;
-
-  // Data objects that are loaded from the server side via json
-  List categories = [];
-  List<Recipe> recipes = [];
-
-  // Filter box
-  Map<String, bool> categoryFilterMap = {};
-  String nameFilterString = "";
-
-  RecipeBookController(Http this._http) {
-    _loadData();
+  RecipeBookController() {
+    recipes = _loadData();
   }
 
   Recipe selectedRecipe;
@@ -71,50 +37,62 @@ kitchen and took the recipe book with him!""";
     selectedRecipe = recipe;
   }
 
-  void clearFilters() {
-    categoryFilterMap.keys.forEach((f) => categoryFilterMap[f] = false);
-    nameFilterString = "";
+  // Tooltip
+  static final tooltip = new Expando<TooltipModel>();
+  TooltipModel tooltipForRecipe(Recipe recipe) {
+    if (tooltip[recipe] == null) {
+      tooltip[recipe] = new TooltipModel(recipe.imgUrl,
+          "I don't have a picture of these recipes, "
+          "so here's one of my cat instead!",
+          80);
+    }
+    return tooltip[recipe]; // recipe.tooltip
   }
 
-  void _loadData() {
-    recipesLoaded = false;
-    categoriesLoaded = false;
-    _http.get('recipes.json')
-      .then((HttpResponse response) {
-      print(response);
-        for (Map recipe in response.data) {
-          recipes.add(new Recipe.fromJsonMap(recipe));
-        }
-        recipesLoaded = true;
-      },
-      onError: (Object obj) {
-        print(obj);
-        recipesLoaded = false;
-        message = ERROR_MESSAGE;
-      });
-
-    _http.get('categories.json')
-        .then((HttpResponse response) {
-      print(response);
-      for (String category in response.data) {
-        categories.add(category);
-        categoryFilterMap[category] = false;
-      }
-      categoriesLoaded = true;
-    },
-    onError: (Object obj) {
-      print(obj);
-      categoriesLoaded = false;
-      message = ERROR_MESSAGE;
-    });
+  List<Recipe> _loadData() {
+    return [
+      new Recipe('My Appetizer','Appetizers',
+          ["Ingredient 1", "Ingredient 2"],
+          "Some Directions", 1, 'fonzie1.jpg'),
+      new Recipe('My Salad','Salads',
+          ["Ingredient 1", "Ingredient 2"],
+          "Some Directions", 3, 'fonzie2.jpg'),
+      new Recipe('My Soup','Soups',
+          ["Ingredient 1", "Ingredient 2"],
+          "Some Directions", 4, 'fonzie1.jpg'),
+      new Recipe('My Main Dish','Main Dishes',
+          ["Ingredient 1", "Ingredient 2"],
+          "Some Directions", 2, 'fonzie2.jpg'),
+      new Recipe('My Side Dish','Side Dishes',
+          ["Ingredient 1", "Ingredient 2"],
+          "Some Directions", 3, 'fonzie1.jpg'),
+      new Recipe('My Awesome Dessert','Desserts',
+          ["Ingredient 1", "Ingredient 2"],
+          "Some Directions", 5, 'fonzie2.jpg'),
+      new Recipe('My So-So Dessert','Desserts',
+          ["Ingredient 1", "Ingredient 2"],
+          "Some Directions", 3, 'fonzie1.jpg'),
+    ];
   }
+}
+
+class Recipe {
+  String name;
+  String category;
+  List<String> ingredients;
+  String directions;
+  int rating;
+  String imgUrl;
+
+  Recipe(this.name, this.category, this.ingredients, this.directions,
+      this.rating, this.imgUrl);
 }
 
 class MyAppModule extends Module {
   MyAppModule() {
     type(RecipeBookController);
     type(RatingComponent);
-    type(CategoryFilter);
+    type(Tooltip);
     type(Profiler, implementedBy: Profiler); // comment out to enable profiling
   }
 }
@@ -122,4 +100,3 @@ class MyAppModule extends Module {
 main() {
   ngBootstrap(module: new MyAppModule());
 }
-

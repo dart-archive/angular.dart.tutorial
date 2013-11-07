@@ -1,42 +1,22 @@
 library recipe_book;
 
-@MirrorsUsed(targets: const[
-  'angular',
-  'angular.core',
-  'angular.core.dom',
-  'angular.filter',
-  'angular.perf',
-  'angular.directive',
-  'angular.routing',
-  'angular.core.parser',
-  'NodeTreeSanitizer'
-  ],
-  override: '*')
-import 'dart:mirrors';
-import 'package:angular/angular.dart';
+import 'dart:async';
 import 'dart:convert';
-import 'package:perf_api/perf_api.dart';
+import 'package:angular/angular.dart';
 import 'package:di/di.dart';
+import 'package:angular/routing/module.dart';
+import 'package:logging/logging.dart';
+import 'package:perf_api/perf_api.dart';
 
 import 'package:angular_dart_demo/rating/rating_component.dart';
 import 'package:angular_dart_demo/tooltip/tooltip_directive.dart';
 
-part 'recipe.dart';
-
-
-@NgFilter(name: 'categoryfilter')
-class CategoryFilter {
-  call(recipeList, filterMap) {
-    if (recipeList is List && filterMap != null && filterMap is Map) {
-      // If there is nothing checked, treat it as "everything is checked"
-      bool nothingChecked = filterMap.values.every((isChecked) => !isChecked);
-      if (nothingChecked) {
-        return recipeList.toList();
-      }
-      return recipeList.where((i) => filterMap[i.category] == true).toList();
-    }
-  }
-}
+part 'filter/category_filter.dart';
+part 'service/query_service.dart';
+part 'service/recipe.dart';
+part 'routing/recipe_book_router.dart';
+part 'view/view_recipe_component.dart';
+part 'view/search_recipe_component.dart';
 
 @NgController(
     selector: '[recipe-book]',
@@ -48,6 +28,8 @@ class RecipeBookController {
 kitchen and took the recipe book with him!""";
 
   Http _http;
+  QueryService _queryService;
+  QueryService get queryService => _queryService;
 
   // Determine the initial load state of the app
   String message = LOADING_MESSAGE;
@@ -55,14 +37,17 @@ kitchen and took the recipe book with him!""";
   bool categoriesLoaded = false;
 
   // Data objects that are loaded from the server side via json
-  List categories = [];
-  List<Recipe> recipes = [];
+  List _categories = [];
+  get categories => _categories;
+  Map<String, Recipe> _recipeMap = {};
+  get recipeMap => _recipeMap;
+  get allRecipes => _recipeMap.values.toList();
 
   // Filter box
   Map<String, bool> categoryFilterMap = {};
-  String nameFilterString = "";
+  String nameFilter = "";
 
-  RecipeBookController(Http this._http) {
+  RecipeBookController(Http this._http, QueryService this._queryService) {
     _loadData();
   }
 
@@ -84,42 +69,29 @@ kitchen and took the recipe book with him!""";
     return tooltip[recipe]; // recipe.tooltip
   }
 
-  void clearFilters() {
-    categoryFilterMap.keys.forEach((f) => categoryFilterMap[f] = false);
-    nameFilterString = "";
-  }
-
   void _loadData() {
-    recipesLoaded = false;
-    categoriesLoaded = false;
-    _http.get('recipes.json')
-      .then((HttpResponse response) {
-      print(response);
-        for (Map recipe in response.data) {
-          recipes.add(new Recipe.fromJsonMap(recipe));
-        }
+    _queryService.getAllRecipes()
+      .then((Map<String, Recipe> allRecipes) {
+        _recipeMap = allRecipes;
         recipesLoaded = true;
       },
       onError: (Object obj) {
-        print(obj);
         recipesLoaded = false;
         message = ERROR_MESSAGE;
       });
 
-    _http.get('categories.json')
-        .then((HttpResponse response) {
-      print(response);
-      for (String category in response.data) {
-        categories.add(category);
-        categoryFilterMap[category] = false;
-      }
-      categoriesLoaded = true;
-    },
-    onError: (Object obj) {
-      print(obj);
-      categoriesLoaded = false;
-      message = ERROR_MESSAGE;
-    });
+    _queryService.getAllCategories()
+      .then((List<String> allCategories) {
+        _categories = allCategories;
+        for (String category in _categories) {
+          categoryFilterMap[category] = false;
+        }
+        categoriesLoaded = true;
+      },
+      onError: (Object obj) {
+        categoriesLoaded = false;
+        message = ERROR_MESSAGE;
+      });
   }
 }
 
@@ -130,10 +102,17 @@ class MyAppModule extends Module {
     type(Tooltip);
     type(CategoryFilter);
     type(Profiler, implementedBy: Profiler); // comment out to enable profiling
+    type(SearchRecipeComponent);
+    type(ViewRecipeComponent);
+    type(QueryService);
+    type(RouteInitializer, implementedBy: RecipeBookRouteInitializer);
+    factory(NgRoutingUsePushState,
+        (_) => new NgRoutingUsePushState.value(false));
   }
 }
 
 main() {
+  Logger.root.level = Level.FINEST;
+  Logger.root.onRecord.listen((LogRecord r) { print(r.message); });
   ngBootstrap(module: new MyAppModule());
 }
-

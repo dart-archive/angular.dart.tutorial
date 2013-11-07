@@ -5,46 +5,65 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body ng-cloak>
-
+ 
   <div recipe-book>
-  
-    <header id="header">
-      <h2>Angular is fun! Here's a recipe book to prove it!</h2>
-    </header>
-    
     <div ng-if="!ctrl.recipesLoaded || !ctrl.categoriesLoaded">
       {{ctrl.message}}
     </div>
-    
     <div ng-if="ctrl.recipesLoaded && ctrl.categoriesLoaded">
-      <nav id="controls">
-        <search-recipe 
-            name-filter-string="ctrl.nameFilter"
-            category-filter-map="ctrl.categoryFilterMap">
-        </search-recipe>
+      <h3>Recipe List</h3>
 
-        <a href="#/add"><input type="button" value="Add Recipe"></a><br/>
-      </nav>
-      
-      <nav id="search-results">
-        <div id="recipe-list">
-          <ul>
-            <li
-                ng-repeat="recipe in ctrl.allRecipes | orderBy:'name' | filter:{name:ctrl.nameFilter} | categoryfilter:ctrl.categoryFilterMap">
-                <rating max-rating="5" rating="recipe.rating"></rating>
-                <a class="extra-space" href="#/recipe/{{recipe.id}}/view">{{recipe.name}}</a>
-            </li>
-          </ul>
-        </div>      
-      </nav>
+      <div id="filters">
+        <div>
+          <label for="name-filter">Filter recipes by name</label>
+          <input id="name-filter" type="text" 
+                 ng-model="ctrl.nameFilterString"
+                 value=" "></input>
+        </div>
+        <div>
+          <label for="category-filter">Filter recipes by category</label>
+          <span  id="category-filter" ng-repeat="category in ctrl.categories">
+            <input type="checkbox"
+               ng-model="ctrl.categoryFilterMap[category]">{{category}}
+          </span>
+        </div>
+        <input type="button" value="Clear Filters" ng-click="ctrl.clearFilters()">
+      </div>
   
-      <section id="details">
-        <ng-view></ng-view>
-      </section>
-      
+      <div id="recipe-list">
+        <ul>
+          <li class="pointer"
+              ng-repeat="recipe in ctrl.recipes | orderBy:'name' | filter:{name:ctrl.nameFilterString} | categoryfilter:ctrl.categoryFilterMap">
+            <span tooltip="ctrl.tooltipForRecipe(recipe)">
+              <rating max-rating="5" rating="recipe.rating"></rating>
+              <span class="extra-space"
+                    ng-click="ctrl.selectRecipe(recipe)">{{recipe.name}}</span>
+            </span>
+          </li>
+        </ul>
+      </div>      
+  
+      <div id="recipe-details">
+        <h3>Recipe Details</h3>
+        <div ng-if="ctrl.selectedRecipe != null">
+          <div><strong>Name: </strong>{{ctrl.selectedRecipe.name}}</div>
+          <div><strong>Category: </strong>{{ctrl.selectedRecipe.category}}</div>
+          <div><strong>Rating: </strong>
+              <rating max-rating="5" rating="ctrl.selectedRecipe.rating"></rating>
+          </div>
+          <div>
+            <ul>
+              <li ng-repeat="ingredient in ctrl.selectedRecipe.ingredients">
+                {{ingredient}}
+              </li>
+            </ul>
+          </div>
+          <div><strong>Directions: </strong>{{ctrl.selectedRecipe.directions}}</div>
+        </div>
+      </div>
     </div>
 
-  </div>
+ </div>
 
   <script type="application/dart" src="main.dart"></script>
   <script src="packages/browser/dart.js"></script>

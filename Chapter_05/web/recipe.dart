@@ -7,9 +7,10 @@ class Recipe {
   List<String> ingredients;
   String directions;
   int rating;
+  String imgUrl;
 
   Recipe(this.id, this.name, this.category, this.ingredients, this.directions,
-      this.rating);
+      this.rating, this.imgUrl);
 
   String toJsonString() {
     Map data = {
@@ -18,13 +19,15 @@ class Recipe {
                 "category" : category,
                 "ingredients" : ingredients,
                 "directions" : directions,
-                "rating" : rating
+                "rating" : rating,
+                "imgUrl" : imgUrl
     };
     return JSON.encode(data);
   }
 
   factory Recipe.fromJsonMap(Map json) {
     return new Recipe(json['id'], json['name'], json['category'],
-        json['ingredients'], json['directions'], json['rating']);
+        json['ingredients'], json['directions'], json['rating'],
+        json['imgUrl']);
   }
 }
