@@ -10,15 +10,14 @@ part of recipe_book;
     }
 )
 class ViewRecipeComponent {
-  Route _route;
   Map<String, Recipe> recipeMap;
-  Recipe _recipe;
+  String _recipeId;
 
   get recipe {
-    return recipeMap[_route.parameters['recipeId']];
+    return recipeMap[_recipeId];
   }
 
   ViewRecipeComponent(RouteProvider routeProvider) {
-    _route = routeProvider.route;
+    _recipeId = routeProvider.parameters['recipeId'];
   }
 }
