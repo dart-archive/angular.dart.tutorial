@@ -12,7 +12,8 @@ library recipe_book;
         'angular.core.dom',
         'angular.core.parser',
         'angular.routing',
-        NodeTreeSanitizer],
+        NodeTreeSanitizer
+    ],
     metaTargets: const [
         NgInjectableService,
         NgComponent,
@@ -60,6 +61,5 @@ main() {
     window.console.log(r.message);
   });
 
-  ngBootstrap(module: new MyAppModule(),
-      injectorFactory: (modules) => init.createInjector(modules));
+  ngBootstrap(module: new MyAppModule(), injectorFactory: init.createInjector);
 }
