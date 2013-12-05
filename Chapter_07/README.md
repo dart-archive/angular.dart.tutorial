@@ -24,6 +24,16 @@ more info) like so:
 dart -c bin/generator.dart
 ```
 
+You can then build the app using pub:
+
+```
+pub build
+```
+
+You can now launch the app `build/index.html` using the browser of your choi
+
+
+
 # Overview
 
 When deploying your app in production you need to make sure that:
