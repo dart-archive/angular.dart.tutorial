@@ -129,8 +129,8 @@ The generator has to rely on some guidance from the user to mark classes that
 injector has to instantiate. There are two ways of doing this: @Injectables
 or custom class annotation.
 
-`@Injectables` is an annotation provided by the di package which can be 
-applied on a library definition with a list of types that the generator 
+`@Injectables` is an annotation provided by the di package which can be
+applied on a library definition with a list of types that the generator
 should process.
 
 ```
@@ -146,12 +146,11 @@ class MyService {
 }
 ```
 
-@Injectables annotation should be mainly used with classes that are out of 
-your control (ex. you can't modify the source code -- third party library). 
+`@Injectables` annotation should be mainly used with classes that are out of
+your control (ex. you can't modify the source code -- third party library).
 In all other cases it's preferable to use custom class annotation(s).
 
-You can also define your own custom class annotations and apply them on 
-classes that you need to be instantiated by the injector.
+You can define your own custom class annotations
 
 ```
 library injectable;
@@ -165,6 +164,8 @@ class InjectableService {
 }
 ```
 
+and apply them on classes that you need to be instantiated by the injector.
+
 ```
 @InjectableService()
 class QueryService {
@@ -172,11 +173,11 @@ class QueryService {
 }
 ```
 
-You can then then configure generator with those annotations.
+You can then then configure generator to look for those annotations.
 
-When configuring the generator with the custom annotation you need to pass 
-a fully qualified class name (including the library prefix). In case of the 
-above example the fully qualified name of Service annotation would be 
+When configuring the generator with the custom annotation you need to pass
+a fully qualified class name (including the library prefix). In case of the
+above example the fully qualified name of Service annotation would be
 `injectable.InjectableService`.
 
 ## AngularDart Parser Generator
@@ -185,6 +186,67 @@ AngularDart Parser Generator extracts all expressions from your application
 and then compiles them into Dart, so at runtime it doesn't have to parse those
 expressions and while invoking the expressions it uses pre-generated code to
 access fields and methods, so it doesn't have to use mirrors.
+
+There are many places in the application where expressions can be used:
+
+1. HTML template attributes
+1. mustaches {{ }} (technically a directive)
+1. custom syntax directives like ng-repeat
+1. component/directive attribute mappings
+1. programmatic calls to Scope.$eval, Scope.$watch/$watchCollection,
+   Parser.call, etc.
+
+It's not always trivial to tell if element attribute in HTML template contains
+an expression or just a string value.
+
+Expression extractor has to:
+
+1. find all component/directive definitions in the source code and extract
+   their metadata (NgAnnotations, field attribute mapping annotations)
+1. statically "compile" all the templates to identify all directives and
+   extract all attributes and mustaches that contain expressions
+
+Sometimes directives with attributes mapped with @ spec can subsequently call
+`Scope.$eval` on the string value of the attribute. In those cases directive
+can tell expression extractor that attribute value is used in this way via
+`exportExpressionAttrs` property on `NgDirective`/`NgComponent` annotation. Ex:
+
+```
+@NgComponent(
+  selector: 'foo',
+  map: const {
+    'bar': '@bar'
+  },
+  exportExpressionAttrs: 'bar'
+)
+class FooComponent implement NgAttachAware {
+  String bar;
+  Scope scope;
+
+  FooComponent(Scope this.scope);
+
+  attach() {
+   scope.$watch(bar, _barChanged);
+  }
+
+  _barChanged(val) {}
+}
+```
+
+Similarly, if directive programmatically evaluates an expression it can tell
+expression extractor which expressions it evaluates:
+
+```
+@NgDirective(
+  selector: 'foo'
+  exportExpressions: '1 + 3'
+)
+class FooDirective {
+  FooComponent(Scope scope) {
+    _showResult(scope.$eval('1 + 2'));
+  }
+}
+```
 
 You can find an example of how to use the parser generator in
 `bin/generator.dart` file.
