@@ -118,6 +118,67 @@ generates static code for creating new instances and resolving dependencies.
 You can find an example of how to use the di generator in
 ```bin/generator.dart``` file.
 
+### Discovering Instantiable Types
+
+Ideally, types that are instantiated by the injector should be extracted from
+the module definitions, however currently di modules are dynamically defined
+and are mutable, making them very hard (impossible in some cases) to analyze
+statically.
+
+The generator has to rely on some guidance from the user to mark classes that
+injector has to instantiate. There are two ways of doing this: @Injectables
+or custom class annotation.
+
+`@Injectables` is an annotation provided by the di package which can be 
+applied on a library definition with a list of types that the generator 
+should process.
+
+```
+@Injectables(const [
+    MyService
+])
+library my_service_librarry;
+
+import 'package:di/annotations.dart';
+
+class MyService {
+  // ...
+}
+```
+
+@Injectables annotation should be mainly used with classes that are out of 
+your control (ex. you can't modify the source code -- third party library). 
+In all other cases it's preferable to use custom class annotation(s).
+
+You can also define your own custom class annotations and apply them on 
+classes that you need to be instantiated by the injector.
+
+```
+library injectable;
+
+/**
+ * An annotation specifying that the annotated class will be instantiated by
+ * di Injector and type factory code generator should include it in its output.
+ */
+class InjectableService {
+  const InjectableService();
+}
+```
+
+```
+@InjectableService()
+class QueryService {
+  // ...
+}
+```
+
+You can then then configure generator with those annotations.
+
+When configuring the generator with the custom annotation you need to pass 
+a fully qualified class name (including the library prefix). In case of the 
+above example the fully qualified name of Service annotation would be 
+`injectable.InjectableService`.
+
 ## AngularDart Parser Generator
 
 AngularDart Parser Generator extracts all expressions from your application
@@ -126,7 +187,7 @@ expressions and while invoking the expressions it uses pre-generated code to
 access fields and methods, so it doesn't have to use mirrors.
 
 You can find an example of how to use the parser generator in
-```bin/generator.dart``` file.
+`bin/generator.dart` file.
 
 ## Code Generators and Development Mode
 
