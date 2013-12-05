@@ -1,4 +1,6 @@
-part of recipe_book;
+library category_filter;
+
+import 'package:angular/angular.dart';
 
 @NgFilter(name: 'categoryfilter')
 class CategoryFilter {
@@ -13,4 +15,3 @@ class CategoryFilter {
     }
   }
 }
-

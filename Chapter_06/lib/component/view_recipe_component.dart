@@ -1,9 +1,12 @@
-part of recipe_book;
+library view_recipe_component;
+
+import '../service/recipe.dart';
+import 'package:angular/angular.dart';
 
 @NgComponent(
     selector: 'view-recipe',
-    templateUrl: 'view/view_recipe_component.html',
-    cssUrl: 'view/view_recipe_component.css',
+    templateUrl: 'packages/angular_dart_demo/component/view_recipe_component.html',
+    cssUrl: 'packages/angular_dart_demo/component/view_recipe_component.css',
     publishAs: 'ctrl',
     map: const {
       'recipe-map':'<=>recipeMap'

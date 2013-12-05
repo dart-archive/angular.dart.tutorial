@@ -1,4 +1,6 @@
-part of recipe_book;
+library recipe;
+
+import 'dart:convert';
 
 class Recipe {
   String id;
