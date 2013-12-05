@@ -1,8 +1,13 @@
-part of recipe_book;
+library query_service;
+
+import 'dart:async';
+
+import 'recipe.dart';
+import 'package:angular/angular.dart';
 
 class QueryService {
-  String _recipesUrl = 'service/recipes.json';
-  String _categoriesUrl = 'service/categories.json';
+  String _recipesUrl = 'recipes.json';
+  String _categoriesUrl = 'categories.json';
 
   Future _loaded;
 

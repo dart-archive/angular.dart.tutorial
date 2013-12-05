@@ -42,7 +42,11 @@ _runDiGenerator(dartSdkPath, entryPointDartFile, injectablesAnnotations,
   ]);
 }
 
-_runNgGenerator(entryPointDartFile, htmlRoot, parserHeaderFile, parserFooterFile, parserOutputFile, packageRoots) {
+_runNgGenerator(entryPointDartFile, htmlRoot, parserHeaderFile,
+                parserFooterFile, parserOutputFile, packageRoots) {
+  // create empty output file to start with
+  new File(parserOutputFile).createSync();
+
   ng_generator.main([
       entryPointDartFile,
       htmlRoot,

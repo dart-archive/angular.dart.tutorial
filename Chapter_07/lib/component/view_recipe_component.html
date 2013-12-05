@@ -1,0 +1,25 @@
+<div id="recipe-details">
+  <h3>Recipe Details</h3>
+  <a class="extra-space" href="#/recipe/{{ctrl.recipe.id}}/edit">
+    <input type="button" value="Edit Recipe"></a>
+
+  <div ng-if="ctrl.recipe != null">
+    <div><strong>Name: </strong>{{ctrl.recipe.name}}</div>
+    <div><strong>Category: </strong>{{ctrl.recipe.category}}</div>
+    <div><strong>Rating: </strong>
+        <rating max-rating="5" rating="ctrl.recipe.rating"></rating>
+    </div>
+    <div>
+      <strong>Ingredients:</strong>
+      <ul>
+        <li ng-repeat="ingredient in ctrl.recipe.ingredients">
+          {{ingredient}}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <strong>Directions:</strong>
+      {{ctrl.recipe.directions}}
+    </div>
+  </div>
+</div>

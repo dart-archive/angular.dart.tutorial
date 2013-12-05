@@ -1,5 +1,9 @@
-part of recipe_book;
+library recipe_book_routing;
 
+import 'package:angular/angular.dart';
+import '../injectable.dart';
+
+@InjectableService()
 class RecipeBookRouteInitializer implements RouteInitializer {
 
   init(Router router, ViewFactory view) {
