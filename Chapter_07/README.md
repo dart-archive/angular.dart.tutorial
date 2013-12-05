@@ -13,7 +13,7 @@ Chapter 7: Production Deployment
 	- [AngularDart Parser Generator](#angulardart-parser-generator)
 	- [Code Generators and Development Mode](#code-generators-and-development-mode)
 - [Cross-browser Support](#cross-browser-support)
-- 
+
 
 # Running the Sample App
 
