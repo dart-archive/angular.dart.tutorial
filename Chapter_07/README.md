@@ -30,8 +30,7 @@ You can then build the app using pub:
 pub build
 ```
 
-You can now launch the app `build/index.html` using the browser of your choi
-
+You can now launch the app `build/index.html` using the browser of your choice.
 
 
 # Overview
