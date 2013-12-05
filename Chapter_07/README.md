@@ -1,6 +1,20 @@
 Chapter 7: Production Deployment
 ==========================
 
+- [Running the Sample App](#running-the-sample-app)
+- [Overview](#overview)
+- [Managing Compiled Code Size](#managing-compiled-code-size)
+	- [Minification](#minification)
+	- [@MirrorsUsed](#mirrorsused)
+		- [Debugging](#debugging)
+- [Optimizing Runtime Performance](#optimizing-runtime-performance)
+	- [di Code Generator](#di-code-generator)
+		- [Discovering Instantiable Types](#discovering-instantiable-types)
+	- [AngularDart Parser Generator](#angulardart-parser-generator)
+	- [Code Generators and Development Mode](#code-generators-and-development-mode)
+- [Cross-browser Support](#cross-browser-support)
+- 
+
 # Running the Sample App
 
 Before running the app, make sure you run the code generators (see below for
@@ -98,11 +112,15 @@ libraries, as well as on ```NodeTreeSanitizer``` class, and annotations
 
 ### Debugging
 
-If it happens that you have misconfigured ```@MirrorsUsed```, you will likely
+If it happens that you have misconfigured `@MirrorsUsed`, you will likely
 be seeing errors like "Cannot find class for: Foo" or your
 directives/components/controllers will be ignored when running in JavaScript.
 Usually, the easiest fix is to just add that class (or the whole library)
 to ```@MirrorsUsed.targets```.
+
+It's much easier to debug `@MirrorsUsed` while working with unminified 
+dart2js output, as you'll be able to see unminified class/field names and
+be able to much easier identify what is missing.
 
 
 # Optimizing Runtime Performance
