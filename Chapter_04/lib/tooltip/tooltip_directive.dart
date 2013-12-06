@@ -63,8 +63,6 @@ class Tooltip {
 
     // position the tooltip.
     // Figure out where the containing element sits in the window.
-    int tooltipLeft = left + width + 10;
-    int tooltipTop = top - height;
     tooltipElem.style
       ..position = "absolute"
       ..top = "${top - height}px"
