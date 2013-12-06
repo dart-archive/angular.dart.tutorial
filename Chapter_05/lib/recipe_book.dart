@@ -52,7 +52,7 @@ kitchen and took the recipe book with him!""";
   }
 
   void clearFilters() {
-    categoryFilterMap.keys.forEach((f) => categoryFilterMap[f] = false);
+    categoryFilterMap.clear();
     nameFilterString = "";
   }
 
