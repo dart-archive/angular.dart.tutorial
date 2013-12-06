@@ -7,13 +7,10 @@ import 'package:angular/angular.dart';
 @NgDirective(
     selector: '[tooltip]',
     map: const {
-        'tooltip': '=>displayModel'
+      'tooltip': '=>displayModel'
     }
 )
 class Tooltip {
-// not sure which one I will need.
-// ng-click uses node.
-// ng-show-hide uses element.
   dom.Element element;
   dom.Node node;
   Scope scope;
@@ -54,23 +51,23 @@ class Tooltip {
       ..borderRadius = "5px"
       ..width = "${displayModel.imgWidth.toString()}px";
 
-// find the coordinates of the parent DOM element
+    // find the coordinates of the parent DOM element
     Rectangle bounds = element.getBoundingClientRect();
     int left = (bounds.left + dom.window.pageXOffset).toInt();
     int top = (bounds.top + dom.window.pageYOffset).toInt();
     int width = bounds.width.toInt();
     int height = bounds.height.toInt();
 
-// position the tooltip.
-// Figure out where the containing element sits in the window.
+    // position the tooltip.
+    // Figure out where the containing element sits in the window.
     tooltipElem.style
       ..position = "absolute"
       ..top = "${top - height}px"
       ..left = "${left + width + 10}px";
 
-// Add the tooltip to the document body. We add it here because
-// we need to position it absolutely, without reference to its
-// parent element.
+    // Add the tooltip to the document body. We add it here because
+    // we need to position it absolutely, without reference to its
+    // parent element.
     dom.document.body.append(tooltipElem);
   }
 
