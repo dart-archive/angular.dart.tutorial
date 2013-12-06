@@ -21,8 +21,7 @@ class Tooltip {
 
   dom.Element tooltipElem;
 
-  Tooltip(dom.Element this.element, dom.Node this.node,
-      Scope this.scope) {
+  TooltipTooltip(this.element, this.node, this.scope) {
 
     element.onMouseEnter.listen((event) {
       _createTemplate();
