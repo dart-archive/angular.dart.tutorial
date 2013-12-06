@@ -61,31 +61,31 @@ kitchen and took the recipe book with him!""";
     categoriesLoaded = false;
     _http.get('recipes.json')
       .then((HttpResponse response) {
-      print(response);
+        print(response);
         for (Map recipe in response.data) {
           recipes.add(new Recipe.fromJsonMap(recipe));
         }
         recipesLoaded = true;
-      },
-      onError: (Object obj) {
-        print(obj);
+      })
+      .catchError((e) {
+        print(e);
         recipesLoaded = false;
         message = ERROR_MESSAGE;
       });
 
     _http.get('categories.json')
-        .then((HttpResponse response) {
-      print(response);
-      for (String category in response.data) {
-        categories.add(category);
-        categoryFilterMap[category] = false;
-      }
-      categoriesLoaded = true;
-    },
-    onError: (Object obj) {
-      print(obj);
-      categoriesLoaded = false;
-      message = ERROR_MESSAGE;
-    });
+      .then((HttpResponse response) {
+        print(response);
+        for (String category in response.data) {
+          categories.add(category);
+          categoryFilterMap[category] = false;
+        }
+        categoriesLoaded = true;
+      })
+      .catchError((e) {
+        print(e);
+        categoriesLoaded = false;
+        message = ERROR_MESSAGE;
+      });
   }
 }
