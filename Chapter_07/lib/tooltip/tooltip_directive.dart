@@ -11,17 +11,13 @@ import 'package:angular/angular.dart';
     }
 )
 class Tooltip {
-  // not sure which one I will need.
-  // ng-click uses node.
-  // ng-show-hide uses element.
   dom.Element element;
-  dom.Node node;
   Scope scope;
   TooltipModel displayModel;
 
   dom.Element tooltipElem;
 
-  Tooltip(this.element, this.node, this.scope) {
+  Tooltip(this.element, this.scope) {
     element
       ..onMouseEnter.listen((_) => _createTemplate())
       ..onMouseLeave.listen((_) => _destroyTemplate());

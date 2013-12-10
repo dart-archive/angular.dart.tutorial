@@ -12,13 +12,12 @@ import 'package:angular/angular.dart';
 )
 class Tooltip {
   dom.Element element;
-  dom.Node node;
   Scope scope;
   TooltipModel displayModel;
 
   dom.Element tooltipElem;
 
-  Tooltip(this.element, this.node, this.scope) {
+  Tooltip(this.element, this.scope) {
     element
       ..onMouseEnter.listen((_) => _createTemplate())
       ..onMouseLeave.listen((_) => _destroyTemplate());
