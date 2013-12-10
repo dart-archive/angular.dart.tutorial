@@ -2,18 +2,18 @@ import 'package:angular/angular.dart';
 import 'package:perf_api/perf_api.dart';
 
 /* Use the NgController annotation to indicate that this class is an
- * Angular Directive. The compiler will instantiate the directive if
+ * Angular Controller. The compiler will instantiate the controller if
  * it finds it in the DOM.
  *
  * The selector field defines the CSS selector that will trigger the
- * directive. It can be any valid CSS selector which does not cross
+ * controller. It can be any valid CSS selector which does not cross
  * element boundaries.
  *
- * The publishAs field specifies that the directive instance should be
+ * The publishAs field specifies that the controller instance should be
  * assigned to the current scope under the name specified.
  *
- * The directive's public fields are available for data binding from the view.
- * Similarly, the directive's public methods can be invoked from the view.
+ * The controller's public fields are available for data binding from the view.
+ * Similarly, the controller's public methods can be invoked from the view.
  */
 @NgController(
     selector: '[recipe-book]',
