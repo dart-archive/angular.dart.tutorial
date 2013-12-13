@@ -28,8 +28,8 @@ import 'package:angular/angular.dart';
  */
 @NgComponent(
     selector: 'rating',
-    templateUrl: 'packages/angular_dart_demo/rating/rating_component.html',
-    cssUrl: 'packages/angular_dart_demo/rating/rating_component.css',
+    templateUrl: '../lib/rating/rating_component.html',
+    cssUrl: '../lib/rating/rating_component.css',
     publishAs: 'ctrl',
     map: const {
       'max-rating' : '@maxRating',
