@@ -307,10 +307,10 @@ dependencies:
   shadow_dom: any
 ```
 
-And include the script tag:
+And include the script tag at the top of the head section:
 
 ```
-<script src="packages/shadow_dom/shadow_dom.debug.js"></script>
+<script src="packages/shadow_dom/shadow_dom.min.js"></script>
 ```
 
 or the debug version:
