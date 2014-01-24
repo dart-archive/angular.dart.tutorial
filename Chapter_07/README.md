@@ -94,7 +94,7 @@ annotation could look something like this:
         'angular.core.dom',
         'angular.core.parser',
         'angular.routing',
-        NodeTreeSanitizer
+        'NodeTreeSanitizer'
     ],
     metaTargets: const [
         NgInjectableService,
@@ -285,7 +285,7 @@ and can significanly degrade productivity. Instead, during development it's
 better to use dynamic versions of di Injector and Parser and use generators
 only for testing and production.
 
-In ```lib/main.dart``` you can see ```initializer-prod.dart``` file being
+In ```web/main.dart``` you can see ```initializer-prod.dart``` file being
 imported, which has ```initializer-dev.dart``` counterpart. Switching between
 those two file will allow you to switch between prod and dev modes. You will
 need to run the generator script before using the prod mode.
