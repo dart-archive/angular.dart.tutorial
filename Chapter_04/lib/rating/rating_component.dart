@@ -30,11 +30,7 @@ import 'package:angular/angular.dart';
     selector: 'rating',
     templateUrl: 'packages/angular_dart_demo/rating/rating_component.html',
     cssUrl: 'packages/angular_dart_demo/rating/rating_component.css',
-    publishAs: 'ctrl',
-    map: const {
-      'max-rating' : '@maxRating',
-      'rating' : '<=>rating'
-    }
+    publishAs: 'cmp'
 )
 class RatingComponent {
   String _starOnChar = "\u2605";
@@ -44,8 +40,10 @@ class RatingComponent {
 
   List<int> stars = [];
 
+  @NgTwoWay('rating')
   int rating;
 
+  @NgAttr('max-rating')
   set maxRating(String value) {
     stars = [];
     var count = value == null ? 5 : int.parse(value);

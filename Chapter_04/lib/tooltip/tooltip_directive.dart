@@ -5,19 +5,17 @@ import 'dart:math';
 import 'package:angular/angular.dart';
 
 @NgDirective(
-    selector: '[tooltip]',
-    map: const {
-      'tooltip': '=>displayModel'
-    }
+    selector: '[tooltip]'
 )
 class Tooltip {
   dom.Element element;
-  Scope scope;
+  
+  @NgOneWay('tooltip')
   TooltipModel displayModel;
 
   dom.Element tooltipElem;
 
-  Tooltip(this.element, this.scope) {
+  Tooltip(this.element) {
     element
       ..onMouseEnter.listen((_) => _createTemplate())
       ..onMouseLeave.listen((_) => _destroyTemplate());
