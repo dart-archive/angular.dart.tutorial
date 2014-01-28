@@ -12,7 +12,7 @@ library recipe_book;
         'angular.core.dom',
         'angular.core.parser',
         'angular.routing',
-        NodeTreeSanitizer
+        'NodeTreeSanitizer'
     ],
     metaTargets: const [
         NgInjectableService,
