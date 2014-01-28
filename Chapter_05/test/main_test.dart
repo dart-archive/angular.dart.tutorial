@@ -2,9 +2,12 @@ library main_test;
 
 import 'package:unittest/unittest.dart';
 import 'package:di/di.dart';
-import 'package:di/dynamic_injector.dart';
 import 'package:angular/angular.dart';
 import 'package:angular/mock/module.dart';
+import 'package:angular_dart_demo/recipe_book.dart';
+import 'package:angular_dart_demo/recipe.dart';
+import 'package:angular_dart_demo/filter/category_filter.dart';
+import 'package:angular_dart_demo/rating/rating_component.dart';
 
 import '../web/main.dart';
 
@@ -73,8 +76,8 @@ main() {
 
   group('categoryFilter', () {
     test('should return subset', inject((CategoryFilter filter) {
-      var r1 = new Recipe(null, 'C1', null, null, null);
-      var r2 = new Recipe(null, 'C2', null, null, null);
+      var r1 = new Recipe(null, 'C1', null, null, null, null, null);
+      var r2 = new Recipe(null, 'C2', null, null, null, null, null);
       var list = [r1, r2];
       var map = {"C1": false, "C2": true};
       expect(filter(list, map), equals([r2]));

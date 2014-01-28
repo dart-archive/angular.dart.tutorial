@@ -2,7 +2,6 @@ library main_test;
 
 import 'package:unittest/unittest.dart';
 import 'package:di/di.dart';
-import 'package:di/dynamic_injector.dart';
 import 'package:angular/angular.dart';
 import 'package:angular/mock/module.dart';
 
