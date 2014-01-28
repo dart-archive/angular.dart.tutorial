@@ -1,6 +1,5 @@
 library search_recipe_component;
 
-import '../service/recipe.dart';
 import 'package:angular/angular.dart';
 
 @NgComponent(
