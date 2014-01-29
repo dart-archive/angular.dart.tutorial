@@ -46,15 +46,15 @@ kitchen and took the recipe book with him!""";
   }
 
   // Tooltip
-  static final tooltip = new Expando<TooltipModel>();
+  static final _tooltip = new Expando<TooltipModel>();
   TooltipModel tooltipForRecipe(Recipe recipe) {
-    if (tooltip[recipe] == null) {
-      tooltip[recipe] = new TooltipModel(recipe.imgUrl,
+    if (_tooltip[recipe] == null) {
+      _tooltip[recipe] = new TooltipModel(recipe.imgUrl,
           "I don't have a picture of these recipes, "
           "so here's one of my cat instead!",
           80);
     }
-    return tooltip[recipe]; // recipe.tooltip
+    return _tooltip[recipe]; // recipe.tooltip
   }
 
   void _loadData() {
@@ -62,8 +62,9 @@ kitchen and took the recipe book with him!""";
       .then((Map<String, Recipe> allRecipes) {
         _recipeMap = allRecipes;
         recipesLoaded = true;
-      },
-      onError: (Object obj) {
+      })
+      .catchError((e) {
+        print(e);
         recipesLoaded = false;
         message = ERROR_MESSAGE;
       });
@@ -75,8 +76,9 @@ kitchen and took the recipe book with him!""";
           categoryFilterMap[category] = false;
         }
         categoriesLoaded = true;
-      },
-      onError: (Object obj) {
+      })
+      .catchError((e) {
+        print(e);
         categoriesLoaded = false;
         message = ERROR_MESSAGE;
       });

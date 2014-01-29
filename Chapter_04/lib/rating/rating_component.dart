@@ -22,7 +22,7 @@ import 'package:angular/angular.dart';
  *
  * <rating max-rating="5" rating="mycontrol.rating">
  *
- * The compnoent's public fields are available for data binding from the
+ * The component's public fields are available for data binding from the
  * component's view. Similarly, the component's public methods can be
  * invoked from the component's view.
  */
@@ -33,10 +33,10 @@ import 'package:angular/angular.dart';
     publishAs: 'cmp'
 )
 class RatingComponent {
-  String _starOnChar = "\u2605";
-  String _starOffChar = "\u2606";
-  String _starOnClass = "star-on";
-  String _starOffClass = "star-off";
+  static const String _starOnChar = "\u2605";
+  static const String _starOffChar = "\u2606";
+  static const String _starOnClass = "star-on";
+  static const String _starOffClass = "star-off";
 
   List<int> stars = [];
 

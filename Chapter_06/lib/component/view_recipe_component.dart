@@ -7,13 +7,12 @@ import 'package:angular/angular.dart';
     selector: 'view-recipe',
     templateUrl: 'packages/angular_dart_demo/component/view_recipe_component.html',
     cssUrl: 'packages/angular_dart_demo/component/view_recipe_component.css',
-    publishAs: 'ctrl',
-    map: const {
-      'recipe-map':'<=>recipeMap'
-    }
+    publishAs: 'ctrl'
 )
 class ViewRecipeComponent {
+  @NgTwoWay('recipe-map')
   Map<String, Recipe> recipeMap;
+  
   String _recipeId;
 
   get recipe {
