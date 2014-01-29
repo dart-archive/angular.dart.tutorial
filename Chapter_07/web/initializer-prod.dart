@@ -15,7 +15,8 @@ createInjector(List<Module> modules) {
 }
 
 createParser(Module module) {
-  module.type(Parser, implementedBy: StaticParser);
-  module.factory(StaticParserFunctions,
-      (i) => ng_parser_gen.functions(i.get(FilterMap)));
+  module.factory(Parser, (i) {
+    StaticParserFunctions fns = ng_parser_gen.functions(i.get(FilterMap));
+    return new StaticParser(fns, null);
+  });
 }
