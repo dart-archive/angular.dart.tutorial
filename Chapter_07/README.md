@@ -224,13 +224,11 @@ can tell expression extractor that attribute value is used in this way via
 
 ```
 @NgComponent(
-  selector: 'foo',
-  map: const {
-    'bar': '@bar'
-  },
+  selector: 'foo'
   exportExpressionAttrs: 'bar'
 )
 class FooComponent implement NgAttachAware {
+  @NgAttr('bar')
   String bar;
   Scope scope;
 
@@ -284,14 +282,7 @@ Angular components use [Shadow DOM][shadowdom101], but unfortunately it's not
 natively supported in all modern browsers, so you would need to use a
 [polyfill][shadow-dom-polyfill].
 
-Make sure you include ```shadow_dom``` package in dependencies in pubspec.yaml.
-
-```
-dependencies:
-  shadow_dom: any
-```
-
-And include the script tag before any other script tags:
+Include the script tag before any other script tags:
 
 ```
 <script src="packages/shadow_dom/shadow_dom.min.js"></script>
