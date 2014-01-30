@@ -1,0 +1,15 @@
+a {
+  text-decoration: none;
+}
+
+.extra-space {
+  padding-left: 10px;
+}
+
+[ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+   display: none !important;
+}
+
+ul {
+  list-style-type: none;
+}

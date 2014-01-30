@@ -1,0 +1,7 @@
+<span class="stars"
+      ng-if="cmp.rating != null"
+      ng-repeat="star in cmp.stars"
+      ng-click="cmp.handleClick(star)"
+      ng-class="cmp.starClass(star)">
+  {{cmp.starChar(star)}}
+</span>

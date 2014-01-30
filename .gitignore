@@ -4,3 +4,4 @@ packages
 pubspec.lock
 .idea
 node_modules
+build

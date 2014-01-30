@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <title>Chapter Four - A Simple Recipe Book</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <div recipe-book>
+    <h3>Recipe List</h3>
+    <ul>
+      <li class="pointer"
+          ng-repeat="recipe in ctrl.recipes">
+          <span tooltip="ctrl.tooltipForRecipe(recipe)">
+            <rating max-rating="5" rating="recipe.rating"></rating>
+            <span class="extra-space"
+                  ng-click="ctrl.selectRecipe(recipe)">{{recipe.name}}</span>
+          </span>
+      </li>
+    </ul>
+    
+    <h3>Recipe Details</h3>
+    <div ng-if="ctrl.selectedRecipe != null">
+      <div><strong>Name: </strong>{{ctrl.selectedRecipe.name}}</div>
+      <div><strong>Category: </strong>{{ctrl.selectedRecipe.category}}</div>
+      <div><strong>Rating: </strong>
+          <rating max-rating="5" rating="ctrl.selectedRecipe.rating"></rating>
+      </div>
+      <div>
+        <ul>
+          <li ng-repeat="ingredient in ctrl.selectedRecipe.ingredients">
+            {{ingredient}}
+          </li>
+        </ul>
+      </div>
+      <div><strong>Directions: </strong>{{ctrl.selectedRecipe.directions}}</div>
+    </div>
+  </div>
+    
+  <script type="application/dart" src="main.dart"></script>
+  <script type="text/javascript" src="packages/browser/dart.js"></script>
+</body>
+</html>

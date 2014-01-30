@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <title>Chapter Five - A Simple Recipe Book</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-cloak>
+ 
+  <div recipe-book>
+    <div ng-if="!ctrl.recipesLoaded || !ctrl.categoriesLoaded">
+      {{ctrl.message}}
+    </div>
+    <div ng-if="ctrl.recipesLoaded && ctrl.categoriesLoaded">
+      <h3>Recipe List</h3>
+
+      <div id="filters">
+        <div>
+          <label for="name-filter">Filter recipes by name</label>
+          <input id="name-filter" type="text" 
+                 ng-model="ctrl.nameFilterString">
+        </div>
+        <div>
+          <label>Filter recipes by category
+            <span ng-repeat="category in ctrl.categories">
+              <input type="checkbox"
+                 ng-model="ctrl.categoryFilterMap[category]">{{category}}
+            </span>
+          </label>
+        </div>
+        <input type="button" value="Clear Filters" ng-click="ctrl.clearFilters()">
+      </div>
+  
+      <div id="recipe-list">
+        <ul>
+          <li class="pointer"
+              ng-repeat="recipe in ctrl.recipes | orderBy:'name' | filter:{name:ctrl.nameFilterString} | categoryfilter:ctrl.categoryFilterMap">
+            <span tooltip="ctrl.tooltipForRecipe(recipe)">
+              <rating max-rating="5" rating="recipe.rating"></rating>
+              <span class="extra-space"
+                    ng-click="ctrl.selectRecipe(recipe)">{{recipe.name}}</span>
+            </span>
+          </li>
+        </ul>
+      </div>      
+  
+      <div id="recipe-details">
+        <h3>Recipe Details</h3>
+        <div ng-if="ctrl.selectedRecipe != null">
+          <div><strong>Name: </strong>{{ctrl.selectedRecipe.name}}</div>
+          <div><strong>Category: </strong>{{ctrl.selectedRecipe.category}}</div>
+          <div><strong>Rating: </strong>
+              <rating max-rating="5" rating="ctrl.selectedRecipe.rating"></rating>
+          </div>
+          <div>
+            <ul>
+              <li ng-repeat="ingredient in ctrl.selectedRecipe.ingredients">
+                {{ingredient}}
+              </li>
+            </ul>
+          </div>
+          <div><strong>Directions: </strong>{{ctrl.selectedRecipe.directions}}</div>
+        </div>
+      </div>
+    </div>
+
+ </div>
+
+  <script type="application/dart" src="main.dart"></script>
+  <script type="text/javascript" src="packages/browser/dart.js"></script>
+</body>
+</html>
