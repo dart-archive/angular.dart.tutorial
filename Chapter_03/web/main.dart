@@ -7,6 +7,10 @@ import 'package:perf_api/perf_api.dart';
 import 'package:angular_dart_demo/rating/rating_component.dart';
 import 'package:angular_dart_demo/recipe_book.dart';
 
+// Temporary, please follow https://github.com/angular/angular.dart/issues/476
+@MirrorsUsed(override: '*')
+import 'dart:mirrors';
+
 class MyAppModule extends Module {
   MyAppModule() {
     type(RecipeBookController);

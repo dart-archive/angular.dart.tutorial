@@ -1,6 +1,10 @@
 import 'package:angular/angular.dart';
 import 'package:perf_api/perf_api.dart';
 
+// Temporary, please follow https://github.com/angular/angular.dart/issues/476
+@MirrorsUsed(override: '*')
+import 'dart:mirrors';
+
 /* Use the NgController annotation to indicate that this class is an
  * Angular Controller. The compiler will instantiate the controller if
  * it finds it in the DOM.

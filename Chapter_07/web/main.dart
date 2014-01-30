@@ -4,14 +4,8 @@
 ])
 library recipe_book;
 
-// Used by dart2js to indicate which targets are being reflected on, to allow
-// tree-shaking.
-@MirrorsUsed(
-    metaTargets: const [
-        NgFilter
-    ],
-    override: '*'
-)
+// Temporary, please follow https://github.com/angular/angular.dart/issues/476
+@MirrorsUsed(override: '*')
 import 'dart:mirrors';
 
 import 'dart:async';
