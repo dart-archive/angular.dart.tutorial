@@ -1,8 +1,8 @@
-Welcome to the Angular.dart tutorial!
+Welcome to the AngularDart tutorial!
 =====================
 
 Follow the [tutorial][tut] to learn how to install and use
-Angular.dart.
+AngularDart.
 
 The code for the tutorial is found in this repository.
 
