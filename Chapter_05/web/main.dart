@@ -9,6 +9,10 @@ import 'package:angular_dart_demo/filter/category_filter.dart';
 import 'package:angular_dart_demo/rating/rating_component.dart';
 import 'package:angular_dart_demo/tooltip/tooltip_directive.dart';
 
+// Temporary, please follow https://github.com/angular/angular.dart/issues/476
+@MirrorsUsed(override: '*')
+import 'dart:mirrors';
+
 class MyAppModule extends Module {
   MyAppModule() {
     type(RecipeBookController);

@@ -67,16 +67,18 @@ dart2js allows you to minify the resulting JavaScript, which:
 
 Minification can reduce your resulting JavaScript by 2-3x.
 
-All you need to do, is to include ```--minify``` flag in dart2js command line.
+All you need to do is run `pub build`, which has minification turned on
+by default.
 
 ```
-dart2js web/main.dart --minify -o web/main.dart.js
+cd your_app
+pub build
 ```
 
 ## ```@MirrorsUsed```
 
-To help manage the code size of applications that use mirrors, Dart provides
-[```@MirrorsUsed```][mirrors-used] annotation using which you can tell dart2js
+To help manage the code size of applications that use mirrors, Dart provides a
+[```@MirrorsUsed```][mirrors-used] annotation. This annotation tells the dart2js
 compiler which targets (classes, libraries, annotations, etc.) are being
 reflected on. This way dart2js can skip all the unused stuff thus radically
 reducing the output size.
@@ -84,20 +86,19 @@ reducing the output size.
 ```@MirrorsUsed``` is often hard to get right as it really depends on how/if
 you use code generation (discussed later in "Optimizing Runtime Performance"
 chapter). Assuming you do use code generation (as we do in this chapter) and
-are using angular 0.9.5, your annotation could look like this:
+are using angular >=0.9.5, your annotation could look like this:
 
 ```
 @MirrorsUsed(
-    metaTargets: const [
-        NgFilter
-    ],
     override: '*'
 )
 import 'dart:mirrors';
 ```
 
-Here you are essentually telling dart2js that your application reflects on
-classes annotated with @NgFilter.
+If you classes are not annotated by `@Ng...` and are used in expressions,
+you will need to add the classes (or their libraries) to your application's
+`@MirrorsUsed` annotation.
+
 (The @MirrorsUsed code for this app used to be much longer, but as of 0.9.5,
 Angular has default definitions that
 include the APIs you're likely to need.)

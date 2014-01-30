@@ -16,6 +16,10 @@ import 'package:angular_dart_demo/routing/recipe_book_router.dart';
 import 'package:angular_dart_demo/component/view_recipe_component.dart';
 import 'package:angular_dart_demo/component/search_recipe_component.dart';
 
+// Temporary, please follow https://github.com/angular/angular.dart/issues/476
+@MirrorsUsed(override: '*')
+import 'dart:mirrors';
+
 class MyAppModule extends Module {
   MyAppModule() {
     type(RecipeBookController);
