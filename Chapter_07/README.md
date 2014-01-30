@@ -24,13 +24,12 @@ more info) like so:
 dart -c bin/generator.dart
 ```
 
-You can then build the app using pub:
+You can then run the app in Dart Editor:
+Right-click **Chapter_07/web/index.html**, and choose **Run as JavaScript**.
 
-```
-pub build
-```
-
-You can now launch the app `build/index.html` using the browser of your choice.
+After the app is compiled to JavaScript,
+the app should appear in your default browser.
+You can copy the app's URL into any other browser you'd like to test.
 
 
 # Overview
@@ -84,29 +83,13 @@ reducing the output size.
 
 ```@MirrorsUsed``` is often hard to get right as it really depends on how/if
 you use code generation (discussed later in "Optimizing Runtime Performance"
-chapter). Assuming you do use code generation (as we do in this chapter) your
-annotation could look something like this:
+chapter). Assuming you do use code generation (as we do in this chapter) and
+are using angular 0.9.5, your annotation could look like this:
 
 ```
 @MirrorsUsed(
-    targets: const [
-        'angular.core',
-        'angular.core.dom',
-        'angular.core.parser',
-        'angular.routing',
-        'NodeTreeSanitizer'
-    ],
     metaTargets: const [
-        NgInjectableService,
-        NgComponent,
-        NgDirective,
-        NgController,
-        NgFilter,
-        NgAttr,
-        NgOneWay,
-        NgOneWayOneTime,
-        NgTwoWay,
-        NgCallback
+        NgFilter
     ],
     override: '*'
 )
@@ -114,10 +97,10 @@ import 'dart:mirrors';
 ```
 
 Here you are essentually telling dart2js that your application reflects on
-```angular.core```, ```angular.core.dom```, ```angular.core.parser```, etc.
-libraries, as well as on ```NodeTreeSanitizer``` class, and annotations
-(metaTargets) like ```NgInjectableService```, ```NgComponent```,
-```NgDirective```, etc.
+classes annotated with @NgFilter.
+(The @MirrorsUsed code for this app used to be much longer, but as of 0.9.5,
+Angular has default definitions that
+include the APIs you're likely to need.)
 
 ### Debugging
 
@@ -319,7 +302,7 @@ or the debug version:
 <script src="packages/shadow_dom/shadow_dom.debug.js"></script>
 ```
 
-**NOTE:** using the polyfill has [some limitations][shadowdom-limitations],
+**NOTE:** Using the polyfill has [some limitations][shadowdom-limitations],
 so make sure you are aware of those limitations before you start using it.
 
 [dart-mirrors-api]: https://api.dartlang.org/docs/channels/stable/latest/dart_mirrors.html
