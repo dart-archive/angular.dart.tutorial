@@ -2,6 +2,6 @@ name: angular_dart_demo
 version: 0.0.1
 dependencies:
   angular: any
-  
+
 dev_dependencies:
   unittest: any
