@@ -1,8 +1,10 @@
+library recipe_book;
+
 import 'package:angular/angular.dart';
 import 'package:perf_api/perf_api.dart';
 
 // Temporary, please follow https://github.com/angular/angular.dart/issues/476
-@MirrorsUsed(override: '*')
+@MirrorsUsed(targets: const['recipe_book'], override: '*')
 import 'dart:mirrors';
 
 /* Use the NgController annotation to indicate that this class is an

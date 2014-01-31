@@ -20,12 +20,13 @@
                  ng-model="ctrl.nameFilterString">
         </div>
         <div>
-          <label>Filter recipes by category
-            <span ng-repeat="category in ctrl.categories">
+          Filter recipes by category:
+          <span ng-repeat="category in ctrl.categories">
+            <label>
               <input type="checkbox"
-                 ng-model="ctrl.categoryFilterMap[category]">{{category}}
-            </span>
-          </label>
+               ng-model="ctrl.categoryFilterMap[category]">{{category}}
+            </label>
+          </span>
         </div>
         <input type="button" value="Clear Filters" ng-click="ctrl.clearFilters()">
       </div>

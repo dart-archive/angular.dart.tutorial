@@ -5,7 +5,9 @@
 library recipe_book;
 
 // Temporary, please follow https://github.com/angular/angular.dart/issues/476
-@MirrorsUsed(override: '*')
+@MirrorsUsed(
+  targets: const ['recipe', 'query_service', 'recipe_book_routing'],
+  override: '*')
 import 'dart:mirrors';
 
 import 'dart:async';
