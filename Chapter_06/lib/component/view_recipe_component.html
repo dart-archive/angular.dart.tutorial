@@ -1,9 +1,10 @@
-<div id="recipe-details">
+<div>
   <h3>Recipe Details</h3>
-  <a class="extra-space" href="#/recipe/{{ctrl.recipe.id}}/edit">
-    <input type="button" value="Edit Recipe"></a>
-
   <div ng-if="ctrl.recipe != null">
+    <a class="extra-space" href="#/recipe/{{ctrl.recipe.id}}/edit">
+      <input type="button" value="Edit Recipe">
+    </a>
+
     <div><strong>Name: </strong>{{ctrl.recipe.name}}</div>
     <div><strong>Category: </strong>{{ctrl.recipe.category}}</div>
     <div><strong>Rating: </strong>
@@ -21,5 +22,8 @@
       <strong>Directions:</strong>
       {{ctrl.recipe.directions}}
     </div>
+  </div>
+  <div ng-if="ctrl.recipe == null">
+    <p>Sorry, we could not find the details of the recipe you requested.</p>
   </div>
 </div>
