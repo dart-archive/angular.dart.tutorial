@@ -19,7 +19,7 @@ class MyAppModule extends Module {
     type(RecipeBookController);
     type(RatingComponent);
     type(Tooltip);
-    type(Profiler, implementedBy: Profiler); // comment out to enable profiling
+    type(Profiler, implementedBy: Profiler); // uncomment enable profiling
   }
 }
 

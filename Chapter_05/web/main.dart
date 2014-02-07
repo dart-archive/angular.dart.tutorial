@@ -21,7 +21,7 @@ class MyAppModule extends Module {
     type(RatingComponent);
     type(Tooltip);
     type(CategoryFilter);
-    type(Profiler, implementedBy: Profiler); // comment out to enable profiling
+    type(Profiler, implementedBy: Profiler); // uncomment to enable profiling
   }
 }
 

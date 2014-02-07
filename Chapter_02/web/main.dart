@@ -78,7 +78,7 @@ class Recipe {
 class MyAppModule extends Module {
   MyAppModule() {
     type(RecipeBookController);
-    type(Profiler, implementedBy: Profiler); // comment out to enable profiling
+    type(Profiler, implementedBy: Profiler); // uncomment to enable profiling
   }
 }
 
