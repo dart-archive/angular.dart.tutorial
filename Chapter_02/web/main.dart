@@ -7,9 +7,9 @@ import 'package:perf_api/perf_api.dart';
 @MirrorsUsed(targets: const['recipe_book'], override: '*')
 import 'dart:mirrors';
 
-/* Use the NgController annotation to indicate that this class is an
- * Angular Controller. The compiler will instantiate the controller if
- * it finds it in the DOM.
+/* Use the @NgController annotation to indicate that this class is an
+ * Angular Controller. Angular will instantiate the controller if
+ * it finds an element matching it's selector in the DOM.
  *
  * The selector field defines the CSS selector that will trigger the
  * controller. It can be any valid CSS selector which does not cross
@@ -82,6 +82,6 @@ class MyAppModule extends Module {
   }
 }
 
-main() {
+void main() {
   ngBootstrap(module: new MyAppModule());
 }
