@@ -62,10 +62,6 @@ class RatingComponent {
   }
 
   void handleClick(int star) {
-    if (star == 1 && rating == 1) {
-      rating = 0;
-    } else {
-      rating = star;
-    }
+    rating = (star == 1 && rating == 1) ? 0 : star;
   }
 }
