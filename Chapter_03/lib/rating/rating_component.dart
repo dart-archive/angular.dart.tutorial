@@ -45,7 +45,6 @@ class RatingComponent {
 
   @NgAttr('max-rating')
   set maxRating(String value) {
-    var count = value == null ? 5 : int.parse(value);
     stars = new List.generate(count, (i) => i+1);
   }
 
