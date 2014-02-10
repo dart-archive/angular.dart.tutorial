@@ -3,7 +3,7 @@ library rating;
 import 'package:angular/angular.dart';
 
 /* Use the @NgComponent annotation to indicate that this class is an
- * Angular Component.
+ * Angular component.
  *
  * The selector field defines the CSS selector that will trigger the
  * component. Typically, the CSS selector is an element name.
@@ -31,7 +31,7 @@ import 'package:angular/angular.dart';
     selector: 'rating',
     templateUrl: 'packages/angular_dart_demo/rating/rating_component.html',
     cssUrl: 'packages/angular_dart_demo/rating/rating_component.css',
-    publishAs: 'cmp'
+    publishAs: 'ctrl'
 )
 class RatingComponent {
   static const String _starOnChar = "\u2605";

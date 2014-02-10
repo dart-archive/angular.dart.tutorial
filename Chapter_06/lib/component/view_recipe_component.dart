@@ -15,7 +15,7 @@ class ViewRecipeComponent {
   
   String _recipeId;
 
-  get recipe {
+  Recipe get recipe {
     return recipeMap[_recipeId];
   }
 

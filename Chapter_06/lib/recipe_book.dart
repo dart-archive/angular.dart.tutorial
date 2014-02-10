@@ -25,11 +25,11 @@ kitchen and took the recipe book with him!""";
   bool categoriesLoaded = false;
 
   // Data objects that are loaded from the server side via json
-  List _categories = [];
-  get categories => _categories;
+  List<String> _categories = [];
+  List<String> get categories => _categories;
   Map<String, Recipe> _recipeMap = {};
-  get recipeMap => _recipeMap;
-  get allRecipes => _recipeMap.values.toList();
+  Map<String, Recipe> get recipeMap => _recipeMap;
+  List<Recipe> get allRecipes => _recipeMap.values.toList();
 
   // Filter box
   Map<String, bool> categoryFilterMap = {};

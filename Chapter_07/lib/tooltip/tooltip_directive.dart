@@ -5,14 +5,13 @@ import 'dart:math';
 import 'package:angular/angular.dart';
 
 @NgDirective(
-    selector: '[tooltip]',
-    map: const {
-      'tooltip': '=>displayModel'
-    }
+    selector: '[tooltip]'
 )
 class Tooltip {
   dom.Element element;
   Scope scope;
+
+  @NgOneWay('tooltip')
   TooltipModel displayModel;
 
   dom.Element tooltipElem;
