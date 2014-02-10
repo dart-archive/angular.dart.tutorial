@@ -3,7 +3,7 @@ library rating;
 import 'package:angular/angular.dart';
 
 /* Use the @NgComponent annotation to indicate that this class is an
- * Angular Component.
+ * Angular component.
  *
  * The selector field defines the CSS selector that will trigger the
  * component. Typically, the CSS selector is an element name.
