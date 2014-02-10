@@ -12,9 +12,9 @@ class SearchRecipeComponent {
   String nameFilterString = "";
   
   @NgTwoWay('category-filter-map')
-  Map categoryFilterMap;
+  Map<String, bool> categoryFilterMap;
 
-  get categories {
+  List<String> get categories {
     return categoryFilterMap.keys.toList();
   }
 

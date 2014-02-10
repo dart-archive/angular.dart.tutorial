@@ -5,14 +5,13 @@ import 'package:angular/angular.dart';
 @NgComponent(
     selector: 'search-recipe',
     templateUrl: 'packages/angular_dart_demo/component/search_recipe_component.html',
-    publishAs: 'ctrl',
-    map: const {
-      'name-filter-string': '<=>nameFilterString',
-      'category-filter-map' : '<=>categoryFilterMap'
-    }
+    publishAs: 'ctrl'
 )
 class SearchRecipeComponent {
+  @NgTwoWay('name-filter-string')
   String nameFilterString = "";
+
+  @NgTwoWay('category-filter-map')
   Map categoryFilterMap;
 
   get categories {

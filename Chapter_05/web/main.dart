@@ -28,4 +28,3 @@ class MyAppModule extends Module {
 main() {
   ngBootstrap(module: new MyAppModule());
 }
-
