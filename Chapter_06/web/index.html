@@ -7,16 +7,12 @@
 <body ng-cloak>
 
   <div recipe-book>
-  
-    <header id="header">
-      <h2>Angular is fun! Here's a recipe book to prove it!</h2>
-    </header>
-    
     <div ng-if="!ctrl.recipesLoaded || !ctrl.categoriesLoaded">
       {{ctrl.message}}
     </div>
-    
     <div ng-if="ctrl.recipesLoaded && ctrl.categoriesLoaded">
+      <h3>Recipe List</h3>
+
       <nav id="controls">
         <search-recipe 
             name-filter-string="ctrl.nameFilter"
