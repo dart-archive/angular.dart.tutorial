@@ -8,8 +8,8 @@ import 'package:perf_api/perf_api.dart';
 import 'dart:mirrors';
 
 /* Use the @NgController annotation to indicate that this class is an
- * Angular Controller. Angular will instantiate the controller if
- * it finds an element matching it's selector in the DOM.
+ * Angular controller. Angular will instantiate the controller if
+ * it finds an element matching its selector in the DOM.
  *
  * The selector field defines the CSS selector that will trigger the
  * controller. It can be any valid CSS selector which does not cross
