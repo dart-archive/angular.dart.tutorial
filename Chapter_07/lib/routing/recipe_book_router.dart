@@ -1,12 +1,9 @@
 library recipe_book_routing;
 
 import 'package:angular/angular.dart';
-import '../injectable.dart';
 
-@InjectableService()
-class RecipeBookRouteInitializer implements RouteInitializer {
-
-  init(Router router, ViewFactory view) {
+RouteInitializerFn recipeBookRouteInitializer =
+  (Router router, ViewFactory view) {
     router.root
       ..addRoute(
           name: 'add',
@@ -30,5 +27,4 @@ class RecipeBookRouteInitializer implements RouteInitializer {
                   enter: (_) =>
                       router.go('view', {'recipeId': ':recipeId'},
                           startingFrom: route, replace:true)));
-  }
-}
+  };
