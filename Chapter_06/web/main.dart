@@ -38,7 +38,7 @@ class MyAppModule extends Module {
   }
 }
 
-main() {
+void main() {
   Logger.root.level = Level.FINEST;
   Logger.root.onRecord.listen((LogRecord r) { print(r.message); });
   ngBootstrap(module: new MyAppModule());
