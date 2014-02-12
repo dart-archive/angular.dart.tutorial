@@ -1,6 +1,5 @@
 library recipe_book;
 
-import 'dart:async';
 import 'package:angular/angular.dart';
 import 'package:angular/routing/module.dart';
 import 'package:di/di.dart';
@@ -30,7 +29,7 @@ class MyAppModule extends Module {
     type(SearchRecipeComponent);
     type(ViewRecipeComponent);
     type(QueryService);
-    type(RouteInitializer, implementedBy: RecipeBookRouteInitializer);
+    value(RouteInitializerFn, recipeBookRouteInitializer);
     factory(NgRoutingUsePushState,
         (_) => new NgRoutingUsePushState.value(false));
   }
