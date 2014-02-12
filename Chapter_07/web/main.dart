@@ -1,3 +1,4 @@
+@Injectables(const[Profiler])
 library recipe_book;
 
 // Temporary, please follow https://github.com/angular/angular.dart/issues/476
@@ -6,10 +7,10 @@ library recipe_book;
   override: '*')
 import 'dart:mirrors';
 
-import 'dart:async';
 import 'package:angular/angular.dart';
 import 'package:angular/routing/module.dart';
 import 'package:di/di.dart';
+import 'package:perf_api/perf_api.dart';
 import 'package:di/annotations.dart';
 import 'package:logging/logging.dart';
 
@@ -38,7 +39,7 @@ class MyAppModule extends Module {
     type(SearchRecipeComponent);
     type(ViewRecipeComponent);
     type(QueryService);
-    type(RouteInitializer, implementedBy: RecipeBookRouteInitializer);
+    value(RouteInitializerFn, recipeBookRouteInitializer);
     factory(NgRoutingUsePushState,
         (_) => new NgRoutingUsePushState.value(false));
 

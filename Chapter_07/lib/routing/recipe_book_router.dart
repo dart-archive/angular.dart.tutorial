@@ -1,34 +1,26 @@
 library recipe_book_routing;
 
 import 'package:angular/angular.dart';
-import '../injectable.dart';
 
-@InjectableService()
-class RecipeBookRouteInitializer implements RouteInitializer {
-
-  init(Router router, ViewFactory view) {
-    router.root
-      ..addRoute(
-          name: 'add',
+recipeBookRouteInitializer(Router router, ViewFactory views) =>
+    views.configure({
+      'add': ngRoute(
           path: '/add',
-          enter: view('view/addRecipe.html'))
-      ..addRoute(
-          name: 'recipe',
+          view: 'view/addRecipe.html'),
+      'recipe': ngRoute(
           path: '/recipe/:recipeId',
-          mount: (Route route) => route
-              ..addRoute(
-                  name: 'view',
-                  path: '/view',
-                  enter: view('view/viewRecipe.html'))
-              ..addRoute(
-                  name: 'edit',
-                  path: '/edit',
-                  enter: view('view/editRecipe.html'))
-              ..addRoute(
-                  name: 'view_default',
-                  defaultRoute: true,
-                  enter: (_) =>
-                      router.go('view', {'recipeId': ':recipeId'},
-                          startingFrom: route, replace:true)));
-  }
-}
+          mount: {
+            'view': ngRoute(
+                path: '/view',
+                view: 'view/viewRecipe.html'),
+            'edit': ngRoute(
+                path: '/edit',
+                view: 'view/editRecipe.html'),
+            'view_default': ngRoute(
+                defaultRoute: true,
+                enter: (RouteEnterEvent e) =>
+                    router.go('view', {},
+                        startingFrom: router.root.getRoute('recipe'),
+                        replace: true))
+          })
+    });
