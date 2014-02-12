@@ -38,7 +38,7 @@ class MyAppModule extends Module {
     type(SearchRecipeComponent);
     type(ViewRecipeComponent);
     type(QueryService);
-    type(RouteInitializer, implementedBy: RecipeBookRouteInitializer);
+    value(RouteInitializerFn, recipeBookRouteInitializer);
     factory(NgRoutingUsePushState,
         (_) => new NgRoutingUsePushState.value(false));
 
