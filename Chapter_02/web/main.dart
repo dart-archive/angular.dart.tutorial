@@ -1,7 +1,6 @@
 library recipe_book;
 
 import 'package:angular/angular.dart';
-import 'package:perf_api/perf_api.dart';
 
 // Temporary, please follow https://github.com/angular/angular.dart/issues/476
 @MirrorsUsed(targets: const['recipe_book'], override: '*')
@@ -78,7 +77,6 @@ class Recipe {
 class MyAppModule extends Module {
   MyAppModule() {
     type(RecipeBookController);
-    type(Profiler, implementedBy: Profiler); // comment out to enable profiling
   }
 }
 
