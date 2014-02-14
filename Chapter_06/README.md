@@ -1,4 +1,5 @@
 Recipe Book AngularDart application
 Illustrates the use of routing to create views
 
-See [Runnable](http://runnable.com/UvL9HZPUCvpCAAAX/angular-dart-tutorial-chapter-06) for a demonstration.
+For a runnable version of this app, see this community-contributed demo:
+http://runnable.com/UvL9HZPUCvpCAAAX/angular-dart-tutorial-chapter-06
