@@ -4,13 +4,12 @@
     <title>Chapter Five - A Simple Recipe Book</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body ng-cloak>
-
-  <div recipe-book>
-    <div ng-if="!ctrl.recipesLoaded || !ctrl.categoriesLoaded">
+<body recipe-book ng-cloak>
+  <div ng-switch="ctrl.recipesLoaded && ctrl.categoriesLoaded">
+    <div ng-switch-when="false">
       {{ctrl.message}}
     </div>
-    <div ng-if="ctrl.recipesLoaded && ctrl.categoriesLoaded">
+    <div ng-switch-when="true">
       <h3>Recipe List</h3>
 
       <div id="filters">
@@ -44,9 +43,8 @@
         </ul>
       </div>      
   
-      <div id="recipe-details">
+      <div id="recipe-details" ng-if="ctrl.selectedRecipe != null">
         <h3>Recipe Details</h3>
-        <div ng-if="ctrl.selectedRecipe != null">
           <div><strong>Name: </strong>{{ctrl.selectedRecipe.name}}</div>
           <div><strong>Category: </strong>{{ctrl.selectedRecipe.category}}</div>
           <div><strong>Rating: </strong>
@@ -60,11 +58,10 @@
             </ul>
           </div>
           <div><strong>Directions: </strong>{{ctrl.selectedRecipe.directions}}</div>
-        </div>
       </div>
     </div>
 
- </div>
+  </div>
 
   <script src="packages/shadow_dom/shadow_dom.min.js"></script>
   <script type="application/dart" src="main.dart"></script>
