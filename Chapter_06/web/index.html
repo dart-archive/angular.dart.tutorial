@@ -4,13 +4,12 @@
     <title>Chapter Six - A Simple Recipe Book</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body ng-cloak>
-
-  <div recipe-book>
-    <div ng-if="!ctrl.recipesLoaded || !ctrl.categoriesLoaded">
+<body recipe-book ng-cloak>
+  <div ng-switch="ctrl.recipesLoaded && ctrl.categoriesLoaded">
+    <div ng-switch-when="false">
       {{ctrl.message}}
     </div>
-    <div ng-if="ctrl.recipesLoaded && ctrl.categoriesLoaded">
+    <div ng-switch-when="true">
       <h3>Recipe List</h3>
 
       <nav id="controls">
