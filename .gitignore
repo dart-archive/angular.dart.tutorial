@@ -1,7 +1,6 @@
 .DS_Store
 packages
 .project
-pubspec.lock
 .idea
 node_modules
 build
