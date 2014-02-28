@@ -42,29 +42,20 @@ class QueryService {
   }
 
   Future<Recipe> getRecipeById(String id) {
-    if (_recipesCache == null) {
-      return _loaded.then((_) {
-        return _recipesCache[id];
-      });
-    }
-    return new Future.value(_recipesCache[id]);
+    return _recipesCache == null
+        ? _loaded.then((_) => _recipesCache[id])
+        : new Future.value(_recipesCache[id]);
   }
 
   Future<Map<String, Recipe>> getAllRecipes() {
-    if (_recipesCache == null) {
-      return _loaded.then((_) {
-        return _recipesCache;
-      });
-    }
-    return new Future.value(_recipesCache);
+    return _recipesCache == null
+        ? _loaded.then((_) => _recipesCache)
+        : new Future.value(_recipesCache);
   }
 
   Future<List<String>> getAllCategories() {
-    if (_categoriesCache == null) {
-      return _loaded.then((_) {
-        return _categoriesCache;
-      });
-    }
-    return new Future.value(_categoriesCache);
+    return _categoriesCache == null
+        ? _loaded.then((_) => _categoriesCache)
+        : new Future.value(_categoriesCache);
   }
 }
