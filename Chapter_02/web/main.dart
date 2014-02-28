@@ -24,13 +24,12 @@ import 'dart:mirrors';
     selector: '[recipe-book]',
     publishAs: 'ctrl')
 class RecipeBookController {
-
+  Recipe selectedRecipe;
   List<Recipe> recipes;
+
   RecipeBookController() {
     recipes = _loadData();
   }
-
-  Recipe selectedRecipe;
 
   void selectRecipe(Recipe recipe) {
     selectedRecipe = recipe;
