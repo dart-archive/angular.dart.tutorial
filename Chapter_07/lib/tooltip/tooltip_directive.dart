@@ -5,49 +5,47 @@ import 'dart:math';
 import 'package:angular/angular.dart';
 
 @NgDirective(
-    selector: '[tooltip]'
-)
+    selector: '[tooltip]')
 class Tooltip {
   dom.Element element;
-  Scope scope;
 
   @NgOneWay('tooltip')
   TooltipModel displayModel;
 
   dom.Element tooltipElem;
 
-  Tooltip(this.element, this.scope) {
+  Tooltip(this.element) {
     element
-      ..onMouseEnter.listen((_) => _createTemplate())
-      ..onMouseLeave.listen((_) => _destroyTemplate());
+        ..onMouseEnter.listen((_) => _createTemplate())
+        ..onMouseLeave.listen((_) => _destroyTemplate());
   }
 
-  _createTemplate() {
+  void _createTemplate() {
     assert(displayModel != null);
 
     tooltipElem = new dom.DivElement();
 
     dom.ImageElement imgElem = new dom.ImageElement()
-      ..width = displayModel.imgWidth
-      ..src = displayModel.imgUrl;
+        ..width = displayModel.imgWidth
+        ..src = displayModel.imgUrl;
     tooltipElem.append(imgElem);
 
     if (displayModel.text != null) {
       dom.DivElement textSpan = new dom.DivElement()
-        ..appendText(displayModel.text)
-        ..style.color = "white"
-        ..style.fontSize = "smaller"
-        ..style.paddingBottom = "5px";
+          ..appendText(displayModel.text)
+          ..style.color = "white"
+          ..style.fontSize = "smaller"
+          ..style.paddingBottom = "5px";
 
       tooltipElem.append(textSpan);
     }
 
     tooltipElem.style
-      ..padding = "5px"
-      ..paddingBottom = "0px"
-      ..backgroundColor = "black"
-      ..borderRadius = "5px"
-      ..width = "${displayModel.imgWidth.toString()}px";
+        ..padding = "5px"
+        ..paddingBottom = "0px"
+        ..backgroundColor = "black"
+        ..borderRadius = "5px"
+        ..width = "${displayModel.imgWidth.toString()}px";
 
     // find the coordinates of the parent DOM element
     Rectangle bounds = element.getBoundingClientRect();
@@ -59,9 +57,9 @@ class Tooltip {
     // position the tooltip.
     // Figure out where the containing element sits in the window.
     tooltipElem.style
-      ..position = "absolute"
-      ..top = "${top - height}px"
-      ..left = "${left + width + 10}px";
+        ..position = "absolute"
+        ..top = "${top - height}px"
+        ..left = "${left + width + 10}px";
 
     // Add the tooltip to the document body. We add it here because
     // we need to position it absolutely, without reference to its
@@ -69,7 +67,7 @@ class Tooltip {
     dom.document.body.append(tooltipElem);
   }
 
-  _destroyTemplate() {
+  void _destroyTemplate() {
     tooltipElem.remove();
   }
 }

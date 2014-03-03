@@ -8,14 +8,12 @@ import 'tooltip/tooltip_directive.dart';
     selector: '[recipe-book]',
     publishAs: 'ctrl')
 class RecipeBookController {
-
+  Recipe selectedRecipe;
   List recipes;
 
   RecipeBookController() {
     recipes = _loadData();
   }
-
-  Recipe selectedRecipe;
 
   void selectRecipe(Recipe recipe) {
     selectedRecipe = recipe;
