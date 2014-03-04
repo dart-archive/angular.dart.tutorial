@@ -29,7 +29,7 @@ kitchen and took the recipe book with him!""";
   Map<String, bool> categoryFilterMap = {};
   String nameFilterString = "";
 
-  RecipeBookController(Http this._http) {
+  RecipeBookController(this._http) {
     _loadData();
   }
 
