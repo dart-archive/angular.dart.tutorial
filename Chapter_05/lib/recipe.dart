@@ -9,7 +9,8 @@ class Recipe {
   int rating;
   String imgUrl;
 
-  Recipe(this.id, this.name, this.category, this.ingredients, this.directions, this.rating, this.imgUrl);
+  Recipe(this.id, this.name, this.category, this.ingredients, this.directions,
+      this.rating, this.imgUrl);
 
   Map<String, dynamic> toJson() => <String, dynamic>{
     "id": id,
