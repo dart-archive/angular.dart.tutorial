@@ -11,7 +11,7 @@ import 'tooltip/tooltip_directive.dart';
 class RecipeBookController {
 
   static const String LOADING_MESSAGE = "Loading recipe book...";
-  static const String ERROR_MESSAGE = """Sorry! The cook stepped out of the 
+  static const String ERROR_MESSAGE = """Sorry! The cook stepped out of the
 kitchen and took the recipe book with him!""";
 
   Http _http;
@@ -62,9 +62,7 @@ kitchen and took the recipe book with him!""";
     _http.get('recipes.json')
       .then((HttpResponse response) {
         print(response);
-        for (Map recipe in response.data) {
-          recipes.add(new Recipe.fromJson(recipe));
-        }
+        recipes = response.data.map((d) => new Recipe.fromJsonMap(d)).toList();
         recipesLoaded = true;
       })
       .catchError((e) {

@@ -14,7 +14,7 @@ class QueryService {
   Map<String, Recipe> _recipesCache;
   List<String> _categoriesCache;
 
-  Http _http;
+  final Http _http;
 
   QueryService(Http this._http) {
     _loaded = Future.wait([_loadRecipes(), _loadCategories()]);
@@ -34,10 +34,7 @@ class QueryService {
   Future _loadCategories() {
     return _http.get(_categoriesUrl)
         .then((HttpResponse response) {
-          _categoriesCache = new List<String>();
-          for (String category in response.data) {
-            _categoriesCache.add(category);
-          }
+          _categoriesCache = response.data;
     });
   }
 

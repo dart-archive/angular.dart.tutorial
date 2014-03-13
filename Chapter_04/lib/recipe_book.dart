@@ -21,6 +21,7 @@ class RecipeBookController {
 
   // Tooltip
   static final tooltip = new Expando<TooltipModel>();
+
   TooltipModel tooltipForRecipe(Recipe recipe) {
     if (tooltip[recipe] == null) {
       tooltip[recipe] = new TooltipModel(recipe.imgUrl,
