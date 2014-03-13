@@ -7,7 +7,7 @@ import 'package:angular/angular.dart';
 @NgDirective(
     selector: '[tooltip]')
 class Tooltip {
-  dom.Element element;
+  final dom.Element element;
 
   @NgOneWay('tooltip')
   TooltipModel displayModel;
@@ -15,9 +15,8 @@ class Tooltip {
   dom.Element tooltipElem;
 
   Tooltip(this.element) {
-    element
-        ..onMouseEnter.listen((_) => _createTemplate())
-        ..onMouseLeave.listen((_) => _destroyTemplate());
+    element..onMouseEnter.listen((_) => _createTemplate())
+           ..onMouseLeave.listen((_) => _destroyTemplate());
   }
 
   void _createTemplate() {
@@ -47,19 +46,13 @@ class Tooltip {
         ..borderRadius = "5px"
         ..width = "${displayModel.imgWidth.toString()}px";
 
-    // find the coordinates of the parent DOM element
-    Rectangle bounds = element.getBoundingClientRect();
-    int left = (bounds.left + dom.window.pageXOffset).toInt();
-    int top = (bounds.top + dom.window.pageYOffset).toInt();
-    int width = bounds.width.toInt();
-    int height = bounds.height.toInt();
-
     // position the tooltip.
-    // Figure out where the containing element sits in the window.
+    var elTopRight = element.offset.topRight;
+
     tooltipElem.style
         ..position = "absolute"
-        ..top = "${top - height}px"
-        ..left = "${left + width + 10}px";
+        ..top = "${elTopRight.y}px"
+        ..left = "${elTopRight.x + 10}px";
 
     // Add the tooltip to the document body. We add it here because
     // we need to position it absolutely, without reference to its
