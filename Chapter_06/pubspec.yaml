@@ -3,8 +3,8 @@ version: 0.0.1
 dependencies:
   angular: any
   browser: any
+  http_server: any
   js: any
   shadow_dom: any
-
 dev_dependencies:
   unittest: any
