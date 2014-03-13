@@ -63,7 +63,7 @@ kitchen and took the recipe book with him!""";
       .then((HttpResponse response) {
         print(response);
         for (Map recipe in response.data) {
-          recipes.add(new Recipe.fromJsonMap(recipe));
+          recipes.add(new Recipe.fromJson(recipe));
         }
         recipesLoaded = true;
       })

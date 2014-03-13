@@ -23,9 +23,9 @@ class QueryService {
   Future _loadRecipes() {
     return _http.get(_recipesUrl)
       .then((HttpResponse response) {
-        _recipesCache = new Map();
+        _recipesCache = new Map<String, Recipe>();
         for (Map recipe in response.data) {
-          Recipe r = new Recipe.fromJsonMap(recipe);
+          Recipe r = new Recipe.fromJson(recipe);
           _recipesCache[r.id] = r;
         }
       });
@@ -34,7 +34,7 @@ class QueryService {
   Future _loadCategories() {
     return _http.get(_categoriesUrl)
         .then((HttpResponse response) {
-          _categoriesCache = new List();
+          _categoriesCache = new List<String>();
           for (String category in response.data) {
             _categoriesCache.add(category);
           }
