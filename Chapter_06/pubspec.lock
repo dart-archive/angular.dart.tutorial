@@ -29,6 +29,10 @@ packages:
     description: html5lib
     source: hosted
     version: "0.9.1"
+  http_server:
+    description: http_server
+    source: hosted
+    version: "0.9.1"
   intl:
     description: intl
     source: hosted
@@ -41,6 +45,10 @@ packages:
     description: logging
     source: hosted
     version: "0.9.1+1"
+  mime:
+    description: mime
+    source: hosted
+    version: "0.9.0"
   path:
     description: path
     source: hosted
