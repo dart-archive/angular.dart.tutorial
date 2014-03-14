@@ -22,7 +22,7 @@ class Recipe {
     "imgUrl": imgUrl
   };
 
-  factory Recipe.fromJson(Map<String, dynamic> json) => new Recipe(json['id'],
+  Recipe.fromJson(Map<String, dynamic> json) : this(json['id'],
       json['name'], json['category'], json['ingredients'], json['directions'],
       json['rating'], json['imgUrl']);
 }
