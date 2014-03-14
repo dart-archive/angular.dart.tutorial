@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:http_server/http_server.dart' show VirtualDirectory;
 
-final String PATH_TO_WEB_CONTENT = "web";
+final String PATH_TO_WEB_CONTENT = "../web";
 
 void main() {
   HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 3031).then((HttpServer server) {
