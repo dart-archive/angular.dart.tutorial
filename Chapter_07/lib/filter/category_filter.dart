@@ -12,5 +12,6 @@ class CategoryFilter {
           ? recipeList.toList()
           : recipeList.where((i) => filterMap[i.category] == true).toList();
     }
+    return const [];
   }
 }
