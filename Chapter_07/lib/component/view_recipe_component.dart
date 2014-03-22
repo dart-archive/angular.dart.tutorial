@@ -9,12 +9,12 @@ import 'package:angular/angular.dart';
     cssUrl: 'packages/angular_dart_demo/component/view_recipe_component.css',
     publishAs: 'cmp')
 class ViewRecipeComponent {
-  @NgTwoWay('recipe-map')
+  @NgOneWay('recipe-map')
   Map<String, Recipe> recipeMap;
 
   String _recipeId;
 
-  Recipe get recipe => recipeMap[_recipeId];
+  Recipe get recipe => recipeMap == null ? null : recipeMap[_recipeId];
 
   ViewRecipeComponent(RouteProvider routeProvider) {
     _recipeId = routeProvider.parameters['recipeId'];

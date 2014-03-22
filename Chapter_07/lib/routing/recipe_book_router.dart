@@ -2,7 +2,7 @@ library recipe_book_routing;
 
 import 'package:angular/angular.dart';
 
-void recipeBookRouteInitializer(Router router, ViewFactory views) {
+void recipeBookRouteInitializer(Router router, RouteViewFactory views) {
   views.configure({
     'add': ngRoute(
         path: '/add',
@@ -20,7 +20,7 @@ void recipeBookRouteInitializer(Router router, ViewFactory views) {
               defaultRoute: true,
               enter: (RouteEnterEvent e) =>
                   router.go('view', {},
-                      startingFrom: router.root.getRoute('recipe'),
+                      startingFrom: router.root.findRoute('recipe'),
                       replace: true))
         })
   });
