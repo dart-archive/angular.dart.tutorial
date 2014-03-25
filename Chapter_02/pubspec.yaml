@@ -1,7 +1,7 @@
 name: angular_dart_demo
 version: 0.0.1
 dependencies:
-  angular: any
+  angular: '>=0.9.10'
   browser: any
   js: any
   shadow_dom: any
