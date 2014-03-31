@@ -12,8 +12,8 @@ import 'service/query_service.dart';
 class RecipeBookController {
 
   static const String LOADING_MESSAGE = "Loading recipe book...";
-  static const String ERROR_MESSAGE = """Sorry! The cook stepped out of the 
-kitchen and took the recipe book with him!""";
+  static const String ERROR_MESSAGE = "Sorry! The cook stepped out of the"
+      "kitchen and took the recipe book with him!";
 
   final Http _http;
   final QueryService queryService;
@@ -29,14 +29,15 @@ kitchen and took the recipe book with him!""";
 
   Map<String, Recipe> _recipeMap = {};
   Map<String, Recipe> get recipeMap => _recipeMap;
+  List<Recipe> _allRecipes = [];
 
-  List<Recipe> get allRecipes => _recipeMap.values.toList();
+  List<Recipe> get allRecipes => _allRecipes;
 
   // Filter box
   Map<String, bool> categoryFilterMap = {};
   String nameFilter = "";
 
-  RecipeBookController(Http this._http, QueryService this.queryService) {
+  RecipeBookController(this._http, this.queryService) {
     _loadData();
   }
 
@@ -62,6 +63,7 @@ kitchen and took the recipe book with him!""";
     queryService.getAllRecipes()
       .then((Map<String, Recipe> allRecipes) {
         _recipeMap = allRecipes;
+        _allRecipes = _recipeMap.values.toList();
         recipesLoaded = true;
       })
       .catchError((e) {

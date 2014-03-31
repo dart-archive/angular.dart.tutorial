@@ -62,7 +62,7 @@ class RecipeBookController {
     _http.get('recipes.json')
       .then((HttpResponse response) {
         print(response);
-        recipes = response.data.map((d) => new Recipe.fromJsonMap(d)).toList();
+        recipes = response.data.map((d) => new Recipe.fromJson(d)).toList();
         recipesLoaded = true;
       })
       .catchError((e) {

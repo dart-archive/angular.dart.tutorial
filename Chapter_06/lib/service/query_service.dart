@@ -32,9 +32,8 @@ class QueryService {
   }
 
   Future _loadCategories() {
-    return _http.get(_categoriesUrl)
-        .then((HttpResponse response) {
-          _categoriesCache = response.data;
+    return _http.get(_categoriesUrl).then((HttpResponse response) {
+      _categoriesCache = response.data;
     });
   }
 
