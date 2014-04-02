@@ -34,7 +34,7 @@ class RecipeBookController {
   List<Recipe> get allRecipes => _allRecipes;
 
   // Filter box
-  Map<String, bool> categoryFilterMap = {};
+  final categoryFilterMap = <String, bool>{};
   String nameFilter = "";
 
   RecipeBookController(this._http, this.queryService) {

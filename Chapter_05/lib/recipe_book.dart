@@ -26,7 +26,7 @@ class RecipeBookController {
   List<Recipe> recipes = [];
 
   // Filter box
-  Map<String, bool> categoryFilterMap = {};
+  final categoryFilterMap = <String, bool>{};
   String nameFilterString = "";
 
   RecipeBookController(this._http) {
