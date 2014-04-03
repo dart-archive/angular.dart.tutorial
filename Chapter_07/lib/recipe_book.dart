@@ -12,12 +12,11 @@ import 'service/query_service.dart';
 class RecipeBookController {
 
   static const String LOADING_MESSAGE = "Loading recipe book...";
-  static const String ERROR_MESSAGE = """Sorry! The cook stepped out of the 
-kitchen and took the recipe book with him!""";
+  static const String ERROR_MESSAGE = "Sorry! The cook stepped out of the"
+      "kitchen and took the recipe book with him!";
 
-  Http _http;
-  QueryService _queryService;
-  QueryService get queryService => _queryService;
+  final Http _http;
+  final QueryService queryService;
 
   // Determine the initial load state of the app
   String message = LOADING_MESSAGE;
@@ -27,15 +26,18 @@ kitchen and took the recipe book with him!""";
   // Data objects that are loaded from the server side via json
   List<String> _categories = [];
   List<String> get categories => _categories;
+
   Map<String, Recipe> _recipeMap = {};
   Map<String, Recipe> get recipeMap => _recipeMap;
-  List<Recipe> get allRecipes => _recipeMap.values.toList();
+  List<Recipe> _allRecipes = [];
+
+  List<Recipe> get allRecipes => _allRecipes;
 
   // Filter box
-  Map<String, bool> categoryFilterMap = {};
+  final categoryFilterMap = <String, bool>{};
   String nameFilter = "";
 
-  RecipeBookController(Http this._http, QueryService this._queryService) {
+  RecipeBookController(this._http, this.queryService) {
     _loadData();
   }
 
@@ -58,9 +60,10 @@ kitchen and took the recipe book with him!""";
   }
 
   void _loadData() {
-    _queryService.getAllRecipes()
+    queryService.getAllRecipes()
       .then((Map<String, Recipe> allRecipes) {
         _recipeMap = allRecipes;
+        _allRecipes = _recipeMap.values.toList();
         recipesLoaded = true;
       })
       .catchError((e) {
@@ -69,7 +72,7 @@ kitchen and took the recipe book with him!""";
         message = ERROR_MESSAGE;
       });
 
-    _queryService.getAllCategories()
+    queryService.getAllCategories()
       .then((List<String> allCategories) {
         _categories = allCategories;
         for (String category in _categories) {
