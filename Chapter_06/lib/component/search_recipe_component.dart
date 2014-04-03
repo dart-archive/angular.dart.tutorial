@@ -13,7 +13,7 @@ class SearchRecipeComponent {
   @NgTwoWay('name-filter-string')
   String nameFilterString = "";
 
-  @NgTwoWay('category-filter-map')
+  @NgOneWay('category-filter-map')
   Map<String, bool> get categoryFilterMap => _categoryFilterMap;
   void set categoryFilterMap(values) {
     _categoryFilterMap = values;
