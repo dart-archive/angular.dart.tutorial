@@ -5,6 +5,5 @@ dependencies:
   browser: any
   js: any
   shadow_dom: any
-
 dev_dependencies:
   unittest: any
