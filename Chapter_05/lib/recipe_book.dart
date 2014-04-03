@@ -11,10 +11,10 @@ import 'tooltip/tooltip_directive.dart';
 class RecipeBookController {
 
   static const String LOADING_MESSAGE = "Loading recipe book...";
-  static const String ERROR_MESSAGE = """Sorry! The cook stepped out of the 
-kitchen and took the recipe book with him!""";
+  static const String ERROR_MESSAGE = "Sorry! The cook stepped out of the "
+      "kitchen and took the recipe book with him!";
 
-  Http _http;
+  final Http _http;
 
   // Determine the initial load state of the app
   String message = LOADING_MESSAGE;
@@ -26,10 +26,10 @@ kitchen and took the recipe book with him!""";
   List<Recipe> recipes = [];
 
   // Filter box
-  Map<String, bool> categoryFilterMap = {};
+  final categoryFilterMap = <String, bool>{};
   String nameFilterString = "";
 
-  RecipeBookController(Http this._http) {
+  RecipeBookController(this._http) {
     _loadData();
   }
 
@@ -62,9 +62,7 @@ kitchen and took the recipe book with him!""";
     _http.get('recipes.json')
       .then((HttpResponse response) {
         print(response);
-        for (Map recipe in response.data) {
-          recipes.add(new Recipe.fromJson(recipe));
-        }
+        recipes = response.data.map((d) => new Recipe.fromJson(d)).toList();
         recipesLoaded = true;
       })
       .catchError((e) {

@@ -15,7 +15,7 @@
       <div id="filters">
         <div>
           <label for="name-filter">Filter recipes by name</label>
-          <input id="name-filter" type="text" 
+          <input id="name-filter" type="text"
                  ng-model="ctrl.nameFilterString">
         </div>
         <div>
@@ -29,7 +29,7 @@
         </div>
         <input type="button" value="Clear Filters" ng-click="ctrl.clearFilters()">
       </div>
-  
+
       <div id="recipe-list">
         <ul>
           <li class="pointer"
@@ -41,8 +41,8 @@
             </span>
           </li>
         </ul>
-      </div>      
-  
+      </div>
+
       <div id="recipe-details" ng-if="ctrl.selectedRecipe != null">
         <h3>Recipe Details</h3>
           <div><strong>Name: </strong>{{ctrl.selectedRecipe.name}}</div>

@@ -1,7 +1,6 @@
 library recipe_book;
 
 import 'package:angular/angular.dart';
-import 'package:di/di.dart';
 
 import 'package:angular_dart_demo/recipe_book.dart';
 import 'package:angular_dart_demo/filter/category_filter.dart';

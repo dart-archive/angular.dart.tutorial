@@ -9,8 +9,9 @@ class CategoryFilter {
       // If there is nothing checked, treat it as "everything is checked"
       bool nothingChecked = filterMap.values.every((isChecked) => !isChecked);
       return nothingChecked
-          ? recipeList.toList()
+          ? recipeList
           : recipeList.where((i) => filterMap[i.category] == true).toList();
     }
+    return const [];
   }
 }
