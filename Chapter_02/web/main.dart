@@ -1,10 +1,7 @@
 library recipe_book;
 
 import 'package:angular/angular.dart';
-
-// Temporary, please follow https://github.com/angular/angular.dart/issues/476
-@MirrorsUsed(targets: const['recipe_book'], override: '*')
-import 'dart:mirrors';
+import 'package:angular/angular_dynamic.dart';
 
 /* Use the @NgController annotation to indicate that this class is an
  * Angular controller. Angular will instantiate the controller if
@@ -80,5 +77,7 @@ class MyAppModule extends Module {
 }
 
 void main() {
-  ngBootstrap(module: new MyAppModule());
+  dynamicApplication()
+      .addModule(new MyAppModule())
+      .run();
 }

@@ -1,10 +1,13 @@
 name: angular_dart_demo
 version: 0.0.1
 dependencies:
-  angular: '>=0.9.10'
+  angular:
+    git: git://github.com/angular/angular.dart.git #version: 0.9.11
   browser: any
-  http_server: any
   js: any
   shadow_dom: any
+  http_server: any
 dev_dependencies:
   unittest: any
+transformers:
+- angular

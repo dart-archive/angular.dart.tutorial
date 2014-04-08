@@ -4,10 +4,13 @@ packages:
   analyzer:
     description: analyzer
     source: hosted
-    version: "0.12.2"
+    version: "0.13.4"
   angular:
-    description: angular
-    source: hosted
+    description:
+      ref: null
+      resolved-ref: "3eb6d41cfbf2110a8d0e0ffed68c70c3765227af"
+      url: "git://github.com/angular/angular.dart.git"
+    source: git
     version: "0.9.10"
   args:
     description: args
@@ -20,18 +23,21 @@ packages:
   browser:
     description: browser
     source: hosted
-    version: "0.9.1"
+    version: "0.10.0+1"
   code_transformers:
     description: code_transformers
     source: hosted
-    version: "0.0.1-dev.2"
+    version: "0.1.1+1"
   collection:
     description: collection
     source: hosted
     version: "0.9.1"
   di:
-    description: di
-    source: hosted
+    description:
+      ref: null
+      resolved-ref: "254225418477641d707add2a02adea4ec012d7bc"
+      url: "git://github.com/angular/di.dart.git"
+    source: git
     version: "0.0.34"
   html5lib:
     description: html5lib
