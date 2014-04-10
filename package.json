@@ -6,5 +6,8 @@
     "karma-chrome-launcher": "*",
     "karma-firefox-launcher": "*",
     "karma-junit-reporter": "*"
+  },
+  "devDependencies": {
+    "karma-chrome-launcher": "^0.1.3"
   }
 }
