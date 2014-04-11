@@ -7,6 +7,7 @@ dependencies:
   js: any
   shadow_dom: any
   http_server: any
+  route_hierarchical: '>=0.4.18 <0.5.0'
 dev_dependencies:
   unittest: any
 transformers:
