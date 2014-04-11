@@ -11,8 +11,4 @@ dependencies:
 dev_dependencies:
   unittest: any
 transformers:
-- angular:
-    html_files:
-    - lib/rating/rating_component.html
-    template_uri_rewrites:
-      packages/: /packages/
+- angular

@@ -8,7 +8,7 @@ packages:
   angular:
     description:
       ref: null
-      resolved-ref: "6ecf1d54a2c294035427fd3f274e1fb8e098f45e"
+      resolved-ref: e46cc2339f815e63087356d8f2854a0bbf4a2e87
       url: "git://github.com/angular/angular.dart.git"
     source: git
     version: "0.9.10"

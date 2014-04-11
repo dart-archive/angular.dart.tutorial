@@ -4,11 +4,11 @@ packages:
   analyzer:
     description: analyzer
     source: hosted
-    version: "0.13.4"
+    version: "0.13.5"
   angular:
     description:
       ref: null
-      resolved-ref: "3eb6d41cfbf2110a8d0e0ffed68c70c3765227af"
+      resolved-ref: e46cc2339f815e63087356d8f2854a0bbf4a2e87
       url: "git://github.com/angular/angular.dart.git"
     source: git
     version: "0.9.10"
@@ -35,10 +35,10 @@ packages:
   di:
     description:
       ref: null
-      resolved-ref: "254225418477641d707add2a02adea4ec012d7bc"
+      resolved-ref: c7b039662ac8c9251c4b808d784cbfd2f96c3167
       url: "git://github.com/angular/di.dart.git"
     source: git
-    version: "0.0.34"
+    version: "0.0.35"
   html5lib:
     description: html5lib
     source: hosted
@@ -46,7 +46,7 @@ packages:
   intl:
     description: intl
     source: hosted
-    version: "0.8.10+4"
+    version: "0.9.8"
   js:
     description: js
     source: hosted
@@ -59,14 +59,10 @@ packages:
     description: matcher
     source: hosted
     version: "0.10.0"
-  meta:
-    description: meta
-    source: hosted
-    version: "0.8.8"
   mock:
     description: mock
     source: hosted
-    version: "0.10.0"
+    version: "0.10.0+1"
   path:
     description: path
     source: hosted
@@ -78,7 +74,7 @@ packages:
   route_hierarchical:
     description: route_hierarchical
     source: hosted
-    version: "0.4.15"
+    version: "0.4.18"
   shadow_dom:
     description: shadow_dom
     source: hosted
@@ -90,11 +86,11 @@ packages:
   stack_trace:
     description: stack_trace
     source: hosted
-    version: "0.9.3"
+    version: "0.9.3+1"
   unittest:
     description: unittest
     source: hosted
-    version: "0.10.1+1"
+    version: "0.10.1+2"
   utf:
     description: utf
     source: hosted
