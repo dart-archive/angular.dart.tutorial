@@ -2,7 +2,7 @@ library search_recipe_component;
 
 import 'package:angular/angular.dart';
 
-@NgComponent(
+@Component(
     selector: 'search-recipe',
     templateUrl: 'packages/angular_dart_demo/component/search_recipe_component.html',
     publishAs: 'cmp')

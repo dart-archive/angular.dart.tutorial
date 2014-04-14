@@ -8,7 +8,6 @@ module.exports = function(config) {
       'test/main_test.dart',
       {pattern: '**/*.dart', watched: false, included: false, served: true},
       {pattern: 'packages/browser/dart.js', watched: false, included: true, served: true},
-      {pattern: 'packages/browser/interop.js', watched: false, included: true, served: true},
     ],
 
     autoWatch: false,

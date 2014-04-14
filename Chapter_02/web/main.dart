@@ -1,12 +1,9 @@
 library recipe_book;
 
 import 'package:angular/angular.dart';
+import 'package:angular/application_factory.dart';
 
-// Temporary, please follow https://github.com/angular/angular.dart/issues/476
-@MirrorsUsed(targets: const['recipe_book'], override: '*')
-import 'dart:mirrors';
-
-/* Use the @NgController annotation to indicate that this class is an
+/* Use the @Controller annotation to indicate that this class is an
  * Angular controller. Angular will instantiate the controller if
  * it finds an element matching its selector in the DOM.
  *
@@ -20,7 +17,7 @@ import 'dart:mirrors';
  * The controller's public fields are available for data binding from the view.
  * Similarly, the controller's public methods can be invoked from the view.
  */
-@NgController(
+@Controller(
     selector: '[recipe-book]',
     publishAs: 'ctrl')
 class RecipeBookController {
@@ -80,5 +77,7 @@ class MyAppModule extends Module {
 }
 
 void main() {
-  ngBootstrap(module: new MyAppModule());
+  applicationFactory()
+      .addModule(new MyAppModule())
+      .run();
 }

@@ -1,6 +1,7 @@
 library recipe_book;
 
 import 'package:angular/angular.dart';
+import 'package:angular/application_factory.dart';
 import 'package:logging/logging.dart';
 
 import 'package:angular_dart_demo/recipe_book.dart';
@@ -11,12 +12,6 @@ import 'package:angular_dart_demo/service/query_service.dart';
 import 'package:angular_dart_demo/routing/recipe_book_router.dart';
 import 'package:angular_dart_demo/component/view_recipe_component.dart';
 import 'package:angular_dart_demo/component/search_recipe_component.dart';
-
-// Temporary, please follow https://github.com/angular/angular.dart/issues/476
-@MirrorsUsed(
-  targets: const ['recipe', 'query_service', 'recipe_book_routing'],
-  override: '*')
-import 'dart:mirrors';
 
 class MyAppModule extends Module {
   MyAppModule() {
@@ -36,5 +31,7 @@ class MyAppModule extends Module {
 void main() {
   Logger.root..level = Level.FINEST
              ..onRecord.listen((LogRecord r) { print(r.message); });
-  ngBootstrap(module: new MyAppModule());
+  applicationFactory()
+      .addModule(new MyAppModule())
+      .run();
 }

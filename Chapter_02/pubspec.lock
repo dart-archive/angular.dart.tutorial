@@ -4,10 +4,13 @@ packages:
   analyzer:
     description: analyzer
     source: hosted
-    version: "0.12.2"
+    version: "0.13.5"
   angular:
-    description: angular
-    source: hosted
+    description:
+      ref: ngdynamic
+      resolved-ref: "85f6f44f6cf5fe40e48fa68cf16a08638104ed40"
+      url: "git://github.com/naomiblack/angular.dart.git"
+    source: git
     version: "0.9.10"
   args:
     description: args
@@ -16,23 +19,26 @@ packages:
   barback:
     description: barback
     source: hosted
-    version: "0.11.1"
+    version: "0.12.0"
   browser:
     description: browser
     source: hosted
-    version: "0.9.1"
+    version: "0.10.0+2"
   code_transformers:
     description: code_transformers
     source: hosted
-    version: "0.0.1-dev.2"
+    version: "0.1.3"
   collection:
     description: collection
     source: hosted
     version: "0.9.1"
   di:
-    description: di
-    source: hosted
-    version: "0.0.34"
+    description:
+      ref: null
+      resolved-ref: "6763552adccdc41ef1043930ea50e0425509e6c5"
+      url: "git://github.com/angular/di.dart.git"
+    source: git
+    version: "0.0.35"
   html5lib:
     description: html5lib
     source: hosted
@@ -40,7 +46,7 @@ packages:
   intl:
     description: intl
     source: hosted
-    version: "0.8.10+4"
+    version: "0.9.8"
   js:
     description: js
     source: hosted
@@ -53,14 +59,10 @@ packages:
     description: matcher
     source: hosted
     version: "0.10.0"
-  meta:
-    description: meta
-    source: hosted
-    version: "0.8.8"
   mock:
     description: mock
     source: hosted
-    version: "0.10.0"
+    version: "0.10.0+1"
   path:
     description: path
     source: hosted
@@ -72,7 +74,7 @@ packages:
   route_hierarchical:
     description: route_hierarchical
     source: hosted
-    version: "0.4.15"
+    version: "0.4.18"
   shadow_dom:
     description: shadow_dom
     source: hosted
@@ -84,7 +86,7 @@ packages:
   stack_trace:
     description: stack_trace
     source: hosted
-    version: "0.9.3"
+    version: "0.9.3+1"
   unittest:
     description: unittest
     source: hosted
