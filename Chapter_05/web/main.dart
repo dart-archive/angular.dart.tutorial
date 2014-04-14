@@ -1,7 +1,7 @@
 library recipe_book;
 
 import 'package:angular/angular.dart';
-import 'package:angular/angular_dynamic.dart';
+import 'package:angular/application_factory.dart';
 
 import 'package:angular_dart_demo/recipe_book.dart';
 import 'package:angular_dart_demo/filter/category_filter.dart';
@@ -18,7 +18,7 @@ class MyAppModule extends Module {
 }
 
 void main() {
-  dynamicApplication()
+  applicationFactory()
       .addModule(new MyAppModule())
       .run();
 }

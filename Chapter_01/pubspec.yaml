@@ -1,8 +1,10 @@
 name: angular_dart_demo
 version: 0.0.1
 dependencies:
-  angular:
-    git: git://github.com/angular/angular.dart.git #version: 0.9.11
+  angular: #0.9.11
+    git:
+      ref: ngdynamic
+      url: git://github.com/naomiblack/angular.dart.git
   shadow_dom: any
 dev_dependencies:
   unittest: any

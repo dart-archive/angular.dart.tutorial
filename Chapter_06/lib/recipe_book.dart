@@ -6,7 +6,7 @@ import 'tooltip/tooltip_directive.dart';
 import 'service/recipe.dart';
 import 'service/query_service.dart';
 
-@NgController(
+@Controller(
     selector: '[recipe-book]',
     publishAs: 'ctrl')
 class RecipeBookController {

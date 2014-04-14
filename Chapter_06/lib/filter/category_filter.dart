@@ -2,7 +2,7 @@ library category_filter;
 
 import 'package:angular/angular.dart';
 
-@NgFilter(name: 'categoryfilter')
+@Formatter(name: 'categoryfilter')
 class CategoryFilter {
   List call(recipeList, filterMap) {
     if (recipeList is Iterable && filterMap is Map) {
