@@ -7,9 +7,9 @@ packages:
     version: "0.13.5"
   angular:
     description:
-      ref: ngdynamic
-      resolved-ref: "85f6f44f6cf5fe40e48fa68cf16a08638104ed40"
-      url: "git://github.com/naomiblack/angular.dart.git"
+      ref: rename
+      resolved-ref: b295731240703ea2626f4f0b7ec2e88a362f113b
+      url: "git://github.com/angular/angular.dart.git"
     source: git
     version: "0.9.10"
   args:
@@ -35,10 +35,10 @@ packages:
   di:
     description:
       ref: null
-      resolved-ref: "6763552adccdc41ef1043930ea50e0425509e6c5"
+      resolved-ref: c38aefd8d0e024bfc738b9371f493729fef1fefa
       url: "git://github.com/angular/di.dart.git"
     source: git
-    version: "0.0.35"
+    version: "0.0.37"
   html5lib:
     description: html5lib
     source: hosted
