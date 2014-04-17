@@ -3,7 +3,7 @@ library recipe_book_controller;
 import 'package:angular/angular.dart';
 
 import 'recipe.dart';
-import 'tooltip/tooltip_directive.dart';
+import 'tooltip/tooltip.dart';
 
 @Controller(
     selector: '[recipe-book]',

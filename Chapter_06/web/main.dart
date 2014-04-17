@@ -5,9 +5,9 @@ import 'package:angular/application_factory.dart';
 import 'package:logging/logging.dart';
 
 import 'package:angular_dart_demo/recipe_book.dart';
-import 'package:angular_dart_demo/filter/category_filter.dart';
+import 'package:angular_dart_demo/formatter/category_filter.dart';
 import 'package:angular_dart_demo/rating/rating_component.dart';
-import 'package:angular_dart_demo/tooltip/tooltip_directive.dart';
+import 'package:angular_dart_demo/tooltip/tooltip.dart';
 import 'package:angular_dart_demo/service/query_service.dart';
 import 'package:angular_dart_demo/routing/recipe_book_router.dart';
 import 'package:angular_dart_demo/component/view_recipe_component.dart';

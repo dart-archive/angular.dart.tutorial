@@ -5,7 +5,7 @@ import 'package:angular/application_factory.dart';
 
 import 'package:angular_dart_demo/recipe_book.dart';
 import 'package:angular_dart_demo/rating/rating_component.dart';
-import 'package:angular_dart_demo/tooltip/tooltip_directive.dart';
+import 'package:angular_dart_demo/tooltip/tooltip.dart';
 
 class MyAppModule extends Module {
   MyAppModule() {
