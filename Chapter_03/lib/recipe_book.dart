@@ -2,7 +2,7 @@ library recipe_book_controller;
 
 import 'package:angular/angular.dart';
 
-@NgController(
+@Controller(
     selector: '[recipe-book]',
     publishAs: 'ctrl')
 class RecipeBookController {

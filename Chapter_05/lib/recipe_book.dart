@@ -3,9 +3,9 @@ library recipe_book_controller;
 import 'package:angular/angular.dart';
 
 import 'recipe.dart';
-import 'tooltip/tooltip_directive.dart';
+import 'tooltip/tooltip.dart';
 
-@NgController(
+@Controller(
     selector: '[recipe-book]',
     publishAs: 'ctrl')
 class RecipeBookController {

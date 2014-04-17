@@ -2,7 +2,7 @@ library rating;
 
 import 'package:angular/angular.dart';
 
-/* Use the @NgComponent annotation to indicate that this class is an
+/* Use the @Component annotation to indicate that this class is an
  * Angular component.
  *
  * The selector field defines the CSS selector that will trigger the
@@ -27,7 +27,7 @@ import 'package:angular/angular.dart';
  * component's view. Similarly, the component's public methods can be
  * invoked from the component's view.
  */
-@NgComponent(
+@Component(
     selector: 'rating',
     templateUrl: 'packages/angular_dart_demo/rating/rating_component.html',
     cssUrl: 'packages/angular_dart_demo/rating/rating_component.css',

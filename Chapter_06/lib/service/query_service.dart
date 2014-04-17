@@ -5,6 +5,7 @@ import 'dart:async';
 import 'recipe.dart';
 import 'package:angular/angular.dart';
 
+@Injectable()
 class QueryService {
   String _recipesUrl = 'recipes.json';
   String _categoriesUrl = 'categories.json';

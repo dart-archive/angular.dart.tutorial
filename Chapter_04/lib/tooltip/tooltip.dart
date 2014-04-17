@@ -1,10 +1,9 @@
 library tooltip;
 
 import 'dart:html' as dom;
-import 'dart:math';
 import 'package:angular/angular.dart';
 
-@NgDirective(
+@Decorator(
     selector: '[tooltip]')
 class Tooltip {
   final dom.Element element;
