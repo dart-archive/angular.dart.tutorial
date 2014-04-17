@@ -1,10 +1,7 @@
 name: angular_dart_demo
 version: 0.0.1
 dependencies:
-  angular: #0.10.0
-    git:
-      ref: rename
-      url: git://github.com/angular/angular.dart.git
+  angular: 0.10.0
   shadow_dom: any
 dev_dependencies:
   unittest: any

@@ -6,12 +6,9 @@ packages:
     source: hosted
     version: "0.13.5"
   angular:
-    description:
-      ref: rename
-      resolved-ref: b295731240703ea2626f4f0b7ec2e88a362f113b
-      url: "git://github.com/angular/angular.dart.git"
-    source: git
-    version: "0.9.10"
+    description: angular
+    source: hosted
+    version: "0.10.0"
   args:
     description: args
     source: hosted
@@ -33,11 +30,8 @@ packages:
     source: hosted
     version: "0.9.1"
   di:
-    description:
-      ref: null
-      resolved-ref: c38aefd8d0e024bfc738b9371f493729fef1fefa
-      url: "git://github.com/angular/di.dart.git"
-    source: git
+    description: di
+    source: hosted
     version: "0.0.37"
   html5lib:
     description: html5lib
