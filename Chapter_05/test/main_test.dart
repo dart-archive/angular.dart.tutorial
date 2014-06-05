@@ -76,8 +76,8 @@ main() {
 
   group('categoryFilter', () {
     test('should return subset', inject((CategoryFilter filter) {
-      var r1 = new Recipe(null, 'C1', null, null, null, null, null);
-      var r2 = new Recipe(null, 'C2', null, null, null, null, null);
+      var r1 = new Recipe(null, null, 'C1', null, null, null, null);
+      var r2 = new Recipe(null, null, 'C2', null, null, null, null);
       var list = [r1, r2];
       var map = {"C1": false, "C2": true};
       expect(filter(list, map), equals([r2]));

@@ -10,7 +10,7 @@ module.exports = function(config) {
       {pattern: 'packages/browser/dart.js', watched: false, included: true, served: true},
     ],
 
-    autoWatch: false,
+    autoWatch: true,
 
     plugins: [
       'karma-dart',
