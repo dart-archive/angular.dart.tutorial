@@ -10,10 +10,10 @@ import 'package:angular_dart_demo/tooltip/tooltip.dart';
 
 class MyAppModule extends Module {
   MyAppModule() {
-    type(RecipeBookController);
-    type(RatingComponent);
-    type(Tooltip);
-    type(CategoryFilter);
+    bind(RecipeBookController);
+    bind(RatingComponent);
+    bind(Tooltip);
+    bind(CategoryFilter);
   }
 }
 
