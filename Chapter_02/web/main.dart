@@ -72,7 +72,7 @@ class Recipe {
 
 class MyAppModule extends Module {
   MyAppModule() {
-    type(RecipeBookController);
+    bind(RecipeBookController);
   }
 }
 
