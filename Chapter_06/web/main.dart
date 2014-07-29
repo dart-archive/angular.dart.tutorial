@@ -15,6 +15,8 @@ import 'package:angular_dart_demo/component/search_recipe_component.dart';
 
 class MyAppModule extends Module {
   MyAppModule() {
+    Binding.printInjectWarning = false;   // needed for https://github.com/angular/angular.dart/issues/1272
+
     bind(RecipeBookController);
     bind(RatingComponent);
     bind(Tooltip);
@@ -23,8 +25,7 @@ class MyAppModule extends Module {
     bind(ViewRecipeComponent);
     bind(QueryService);
     bind(RouteInitializerFn, toValue: recipeBookRouteInitializer);
-    bind(NgRoutingUsePushState, toFactory:
-        (_) => new NgRoutingUsePushState.value(false));
+    bind(NgRoutingUsePushState, toValue: new NgRoutingUsePushState.value(false));
   }
 }
 
