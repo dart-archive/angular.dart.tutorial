@@ -8,8 +8,8 @@ import 'package:angular_dart_demo/recipe_book.dart';
 
 class MyAppModule extends Module {
   MyAppModule() {
-    type(RecipeBookController);
-    type(RatingComponent);
+    bind(RecipeBookController);
+    bind(RatingComponent);
   }
 }
 
