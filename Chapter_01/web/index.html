@@ -2,13 +2,15 @@
 <html ng-app>
 <head>
     <title>Hello, World!</title>
+
+    <script src="packages/web_components/platform.js"></script>
+    <script src="packages/web_components/dart_support.js"></script>
 </head>
 <body>
-  
-  <h3>Hello {{name}}!</h3>
+
+<h3>Hello {{name}}!</h3>
   Name: <input type="text" ng-model="name">
-  
-  <script src="packages/web_components/platform.js"></script>
+
   <script type="application/dart" src="main.dart"></script>
   <script type="text/javascript" src="packages/browser/dart.js"></script>
 </body>
