@@ -1,17 +1,22 @@
-library recipe_book_controller;
+library recipe_book_component;
 
 import 'package:angular/angular.dart';
+import 'package:tutorial/tooltip/tooltip.dart' show TooltipModel;
 
-import 'tooltip/tooltip.dart';
-
-@Controller(
-    selector: '[recipe-book]',
-    publishAs: 'ctrl')
-class RecipeBookController {
+/* The selector field defines the CSS selector that will trigger the component. It can be any valid
+ * CSS selector which does not cross element boundaries.
+ *
+ * The component's public fields are available for data binding from the view.
+ * Similarly, the component's public methods can be invoked from the view.
+ */
+@Component(
+    selector: 'recipe-book',
+    templateUrl: 'recipe_book.html')
+class RecipeBookComponent {
   Recipe selectedRecipe;
-  List recipes;
+  List<Recipe> recipes;
 
-  RecipeBookController() {
+  RecipeBookComponent() {
     recipes = _loadData();
   }
 
@@ -60,13 +65,12 @@ class RecipeBookController {
 }
 
 class Recipe {
-  String name;
-  String category;
-  List<String> ingredients;
-  String directions;
+  final String name;
+  final String category;
+  final List<String> ingredients;
+  final String directions;
+  final String imgUrl;
   int rating;
-  String imgUrl;
 
-  Recipe(this.name, this.category, this.ingredients, this.directions,
-      this.rating, this.imgUrl);
+  Recipe(this.name, this.category, this.ingredients, this.directions, this.rating, this.imgUrl);
 }

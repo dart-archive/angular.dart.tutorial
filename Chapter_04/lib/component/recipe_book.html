@@ -1,0 +1,25 @@
+<h3>Recipe List</h3>
+<ul>
+  <li class="pointer"
+      ng-repeat="recipe in recipes"
+      ng-click="selectRecipe(recipe)">
+    <span tooltip="tooltipForRecipe(recipe)">
+         <rating max-rating="5" rating="recipe.rating"></rating>
+         <span class="extra-space"
+               ng-click="selectRecipe(recipe)">{{recipe.name}}</span>
+    </span>
+  </li>
+</ul>
+
+<h3>Recipe Details</h3>
+<div><strong>Name: </strong>{{selectedRecipe.name}}</div>
+<div><strong>Category: </strong>{{selectedRecipe.category}}</div>
+<div><strong>Rating: </strong><rating max-rating="5" rating="selectedRecipe.rating"></rating></div>
+<div>
+  <ul>
+    <li ng-repeat="ingredient in selectedRecipe.ingredients">
+      {{ingredient}}
+    </li>
+  </ul>
+</div>
+<div><strong>Directions: </strong>{{selectedRecipe.directions}}</div>

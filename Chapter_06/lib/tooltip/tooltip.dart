@@ -1,11 +1,9 @@
 library tooltip;
 
 import 'dart:html' as dom;
-import 'dart:math';
 import 'package:angular/angular.dart';
 
-@Decorator(
-    selector: '[tooltip]')
+@Decorator(selector: '[tooltip]')
 class Tooltip {
   final dom.Element element;
 
@@ -54,9 +52,8 @@ class Tooltip {
         ..top = "${elTopRight.y}px"
         ..left = "${elTopRight.x + 10}px";
 
-    // Add the tooltip to the document body. We add it here because
-    // we need to position it absolutely, without reference to its
-    // parent element.
+    // Add the tooltip to the document body. We add it here because we need to position it
+    // absolutely, without reference to its parent element.
     dom.document.body.append(tooltipElem);
   }
 
@@ -66,9 +63,9 @@ class Tooltip {
 }
 
 class TooltipModel {
-  String imgUrl;
-  String text;
-  int imgWidth;
+  final String imgUrl;
+  final String text;
+  final int imgWidth;
 
   TooltipModel(this.imgUrl, this.text, this.imgWidth);
 }

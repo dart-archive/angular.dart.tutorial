@@ -1,15 +1,20 @@
-library recipe_book_controller;
+library recipe_book_component;
 
 import 'package:angular/angular.dart';
+import 'package:tutorial/tooltip/tooltip.dart' show TooltipModel;
+import 'package:tutorial/service/recipe.dart';
+import 'package:tutorial/service/query.dart';
 
-import 'tooltip/tooltip.dart';
-import 'service/recipe.dart';
-import 'service/query_service.dart';
-
-@Controller(
-    selector: '[recipe-book]',
-    publishAs: 'ctrl')
-class RecipeBookController {
+/* The selector field defines the CSS selector that will trigger the component. It can be any valid
+ * CSS selector which does not cross element boundaries.
+ *
+ * The component's public fields are available for data binding from the view.
+ * Similarly, the component's public methods can be invoked from the view.
+ */
+@Component(
+    selector: 'recipe-book',
+    templateUrl: 'recipe_book.html')
+class RecipeBookComponent {
 
   static const String LOADING_MESSAGE = "Loading recipe book...";
   static const String ERROR_MESSAGE = "Sorry! The cook stepped out of the"
@@ -23,21 +28,19 @@ class RecipeBookController {
   bool recipesLoaded = false;
   bool categoriesLoaded = false;
 
-  // Data objects that are loaded from the server side via json
-  List<String> _categories = [];
-  List<String> get categories => _categories;
-
   Map<String, Recipe> _recipeMap = {};
   Map<String, Recipe> get recipeMap => _recipeMap;
+
   List<Recipe> _allRecipes = [];
 
   List<Recipe> get allRecipes => _allRecipes;
 
   // Filter box
   final categoryFilterMap = <String, bool>{};
+  Iterable<String> get categories => categoryFilterMap.keys;
   String nameFilter = "";
 
-  RecipeBookController(this._http, this.queryService) {
+  RecipeBookComponent(this._http, this.queryService) {
     _loadData();
   }
 
@@ -74,8 +77,7 @@ class RecipeBookController {
 
     queryService.getAllCategories()
       .then((List<String> allCategories) {
-        _categories = allCategories;
-        for (String category in _categories) {
+        for (String category in allCategories) {
           categoryFilterMap[category] = false;
         }
         categoriesLoaded = true;

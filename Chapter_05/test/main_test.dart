@@ -4,51 +4,51 @@ import 'package:unittest/unittest.dart';
 import 'package:di/di.dart';
 import 'package:angular/angular.dart';
 import 'package:angular/mock/module.dart';
-import 'package:angular_dart_demo/recipe_book.dart';
-import 'package:angular_dart_demo/recipe.dart';
-import 'package:angular_dart_demo/formatter/category_filter.dart';
-import 'package:angular_dart_demo/rating/rating_component.dart';
+import 'package:tutorial/component/recipe_book.dart';
+import 'package:tutorial/component/rating.dart';
+import 'package:tutorial/recipe.dart';
+import 'package:tutorial/formatter/category_filter.dart';
 
 import '../web/main.dart';
 
 main() {
   setUp(() {
-   setUpInjector();
-   module((Module m) => m.install(new MyAppModule()));
+    setUpInjector();
+    module((Module m) => m.install(new MyAppModule()));
   });
+
   tearDown(tearDownInjector);
 
-  group('recipe-book', () {
-    test('should load recipes', async(inject((Injector injector,
-                                              MockHttpBackend backend) {
+  group('recipe book component', () {
+    test('should load recipes', async(inject((Injector injector, MockHttpBackend backend) {
+
       backend.expectGET('recipes.json').respond('[{"name": "test1"}]');
       backend.expectGET('categories.json').respond('["c1"]');
 
-      var recipesController = injector.get(RecipeBookController);
-      expect(recipesController.recipes, isEmpty);
+      var recipeBook = injector.get(RecipeBookComponent);
+      expect(recipeBook.recipes, isEmpty);
 
       microLeap();
       backend.flush();
       microLeap();
 
-      expect(recipesController.recipes, isNot(isEmpty));
+      expect(recipeBook.recipes, isNot(isEmpty));
     })));
 
-    test('should select recipe', async(inject((Injector injector,
-                                               MockHttpBackend backend) {
+    test('should select recipe', async(inject((Injector injector, MockHttpBackend backend) {
       backend.expectGET('recipes.json').respond('[{"name": "test1"}]');
       backend.expectGET('categories.json').respond('["c1"]');
 
-      var recipesController = injector.get(RecipeBookController);
-      expect(recipesController.recipes, isEmpty);
+      var recipeBook = injector.get(RecipeBookComponent);
+      expect(recipeBook.recipes, isEmpty);
 
       microLeap();
       backend.flush();
       microLeap();
 
-      var recipe = recipesController.recipes[0];
-      recipesController.selectRecipe(recipe);
-      expect(recipesController.selectedRecipe, same(recipe));
+      var recipe = recipeBook.recipes[0];
+      recipeBook.selectRecipe(recipe);
+      expect(recipeBook.selectedRecipe, same(recipe));
     })));
   });
 

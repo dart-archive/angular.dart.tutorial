@@ -3,13 +3,13 @@ library recipe_book;
 import 'package:angular/angular.dart';
 import 'package:angular/application_factory.dart';
 
-import 'package:angular_dart_demo/recipe_book.dart';
-import 'package:angular_dart_demo/rating/rating_component.dart';
-import 'package:angular_dart_demo/tooltip/tooltip.dart';
+import 'package:tutorial/component/recipe_book.dart';
+import 'package:tutorial/component/rating.dart';
+import 'package:tutorial/tooltip/tooltip.dart';
 
 class MyAppModule extends Module {
   MyAppModule() {
-    bind(RecipeBookController);
+    bind(RecipeBookComponent);
     bind(RatingComponent);
     bind(Tooltip);
   }
