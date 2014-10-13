@@ -4,10 +4,10 @@ import 'package:unittest/unittest.dart';
 import 'package:di/di.dart';
 import 'package:angular/angular.dart';
 import 'package:angular/mock/module.dart';
-import 'package:angular_dart_demo/recipe_book.dart';
-import 'package:angular_dart_demo/formatter/category_filter.dart';
-import 'package:angular_dart_demo/rating/rating_component.dart';
-import 'package:angular_dart_demo/service/recipe.dart';
+import 'package:tutorial/component/recipe_book.dart';
+import 'package:tutorial/component/rating.dart';
+import 'package:tutorial/formatter/category_filter.dart';
+import 'package:tutorial/service/recipe.dart';
 
 import '../web/main.dart';
 
@@ -24,14 +24,14 @@ main() {
       backend.expectGET('recipes.json').respond('[{"name": "test1"}]');
       backend.expectGET('categories.json').respond('["c1"]');
 
-      var recipesController = injector.get(RecipeBookController);
-      expect(recipesController.allRecipes, isEmpty);
+      var recipeBook = injector.get(RecipeBookComponent);
+      expect(recipeBook.allRecipes, isEmpty);
 
       microLeap();
       backend.flush();
       microLeap();
 
-      expect(recipesController.allRecipes, isNot(isEmpty));
+      expect(recipeBook.allRecipes, isNot(isEmpty));
     })));
 
     test('should select recipe', async(inject((Injector injector,
@@ -39,16 +39,16 @@ main() {
       backend.expectGET('recipes.json').respond('[{"name": "test1"}]');
       backend.expectGET('categories.json').respond('["c1"]');
 
-      var recipesController = injector.get(RecipeBookController);
-      expect(recipesController.allRecipes, isEmpty);
+      var recipeBook = injector.get(RecipeBookComponent);
+      expect(recipeBook.allRecipes, isEmpty);
 
       microLeap();
       backend.flush();
       microLeap();
 
-      var recipe = recipesController.allRecipes[0];
-      recipesController.selectRecipe(recipe);
-      expect(recipesController.selectedRecipe, same(recipe));
+      var recipe = recipeBook.allRecipes[0];
+      recipeBook.selectRecipe(recipe);
+      expect(recipeBook.selectedRecipe, same(recipe));
     })));
   });
 

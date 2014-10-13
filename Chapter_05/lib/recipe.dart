@@ -6,11 +6,11 @@ class Recipe {
   String category;
   List<String> ingredients;
   String directions;
-  int rating;
   String imgUrl;
+  int rating;
 
-  Recipe(this.id, this.name, this.category, this.ingredients, this.directions,
-      this.rating, this.imgUrl);
+  Recipe(this.id, this.name, this.category, this.ingredients, this.directions, this.rating,
+         this.imgUrl);
 
   Map<String, dynamic> toJson() => <String, dynamic>{
     "id": id,
@@ -22,7 +22,6 @@ class Recipe {
     "imgUrl": imgUrl
   };
 
-  Recipe.fromJson(Map<String, dynamic> json) : this(json['id'],
-      json['name'], json['category'], json['ingredients'], json['directions'],
-      json['rating'], json['imgUrl']);
+  Recipe.fromJson(Map<String, dynamic> json): this(json['id'], json['name'], json['category'],
+      json['ingredients'], json['directions'], json['rating'], json['imgUrl']);
 }

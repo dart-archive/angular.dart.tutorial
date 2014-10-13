@@ -1,0 +1,17 @@
+<div id="filters">
+  <div>
+    <label for="name-filter">Filter recipes by name</label>
+    <input id="name-filter" type="text"
+           ng-model="nameFilterString"
+           value=" ">
+  </div>
+  <div>
+    Filter recipes by category:
+    <span ng-repeat="category in categories">
+      <label>
+        <input type="checkbox" ng-model="categoryFilterMap[category]">{{category}}
+      </label>
+    </span>
+  </div>
+  <input type="button" value="Clear Filters" ng-click="clearFilters()">
+</div>

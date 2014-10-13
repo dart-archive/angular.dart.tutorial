@@ -4,11 +4,11 @@ import 'package:angular/angular.dart';
 
 @Component(
     selector: 'search-recipe',
-    templateUrl: 'packages/angular_dart_demo/component/search_recipe_component.html',
-    publishAs: 'cmp')
+    templateUrl: 'search_recipe.html')
 class SearchRecipeComponent {
   Map<String, bool> _categoryFilterMap;
   List<String> _categories;
+  List<String> get categories => _categories;
 
   @NgTwoWay('name-filter-string')
   String nameFilterString = "";
@@ -19,8 +19,6 @@ class SearchRecipeComponent {
     _categoryFilterMap = values;
     _categories = categoryFilterMap.keys.toList();
   }
-
-  List<String> get categories => _categories;
 
   void clearFilters() {
     _categoryFilterMap.keys.forEach((f) => _categoryFilterMap[f] = false);

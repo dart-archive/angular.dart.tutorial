@@ -4,27 +4,28 @@ import 'package:unittest/unittest.dart';
 import 'package:di/di.dart';
 import 'package:angular/angular.dart';
 import 'package:angular/mock/module.dart';
-import 'package:angular_dart_demo/recipe_book.dart';
-import 'package:angular_dart_demo/rating/rating_component.dart';
+import 'package:tutorial/component/recipe_book.dart';
+import 'package:tutorial/component/rating.dart';
 
 import '../web/main.dart';
 
 main() {
   setUp(() {
-   setUpInjector();
-   module((Module m) => m.install(new MyAppModule()));
+    setUpInjector();
+    module((Module m) => m.install(new MyAppModule()));
   });
+
   tearDown(tearDownInjector);
 
-  group('recipe-book', () {
-    test('should load recipes', inject((RecipeBookController recipesController) {
-      expect(recipesController.recipes, isNot(isEmpty));
+  group('recipe book component', () {
+    test('should load recipes', inject((RecipeBookComponent recipeBook) {
+      expect(recipeBook.recipes, isNot(isEmpty));
     }));
 
-    test('should select recipe', inject((RecipeBookController recipesController) {
-      var recipe = recipesController.recipes[0];
-      recipesController.selectRecipe(recipe);
-      expect(recipesController.selectedRecipe, same(recipe));
+    test('should select recipe', inject((RecipeBookComponent recipeBook) {
+      var recipe = recipeBook.recipes[0];
+      recipeBook.selectRecipe(recipe);
+      expect(recipeBook.selectedRecipe, same(recipe));
     }));
   });
 

@@ -4,20 +4,18 @@ import 'package:angular/angular.dart';
 import 'package:angular/application_factory.dart';
 import 'package:logging/logging.dart';
 
-import 'package:angular_dart_demo/recipe_book.dart';
-import 'package:angular_dart_demo/formatter/category_filter.dart';
-import 'package:angular_dart_demo/rating/rating_component.dart';
-import 'package:angular_dart_demo/tooltip/tooltip.dart';
-import 'package:angular_dart_demo/service/query_service.dart';
-import 'package:angular_dart_demo/routing/recipe_book_router.dart';
-import 'package:angular_dart_demo/component/view_recipe_component.dart';
-import 'package:angular_dart_demo/component/search_recipe_component.dart';
+import 'package:tutorial/component/recipe_book.dart';
+import 'package:tutorial/component/rating.dart';
+import 'package:tutorial/component/search_recipe.dart';
+import 'package:tutorial/component/view_recipe.dart';
+import 'package:tutorial/formatter/category_filter.dart';
+import 'package:tutorial/routing/recipe_book_router.dart';
+import 'package:tutorial/service/query.dart';
+import 'package:tutorial/tooltip/tooltip.dart';
 
 class MyAppModule extends Module {
   MyAppModule() {
-    Binding.printInjectWarning = false;   // needed for https://github.com/angular/angular.dart/issues/1272
-
-    bind(RecipeBookController);
+    bind(RecipeBookComponent);
     bind(RatingComponent);
     bind(Tooltip);
     bind(CategoryFilter);
@@ -32,6 +30,7 @@ class MyAppModule extends Module {
 void main() {
   Logger.root..level = Level.FINEST
              ..onRecord.listen((LogRecord r) { print(r.message); });
+
   applicationFactory()
       .addModule(new MyAppModule())
       .run();
