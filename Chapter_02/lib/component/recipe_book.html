@@ -1,0 +1,21 @@
+<h3>Recipe List</h3>
+<ul>
+  <li class="pointer"
+      ng-repeat="recipe in recipes"
+      ng-click="selectRecipe(recipe)">
+    {{recipe.name}}
+  </li>
+</ul>
+
+<h3>Recipe Details</h3>
+<div><strong>Name: </strong>{{selectedRecipe.name}}</div>
+<div><strong>Category: </strong>{{selectedRecipe.category}}</div>
+<div><strong>Rating: </strong>{{selectedRecipe.rating}}</div>
+<div>
+  <ul>
+    <li ng-repeat="ingredient in selectedRecipe.ingredients">
+      {{ingredient}}
+    </li>
+  </ul>
+</div>
+<div><strong>Directions: </strong>{{selectedRecipe.directions}}</div>

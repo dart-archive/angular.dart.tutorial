@@ -1,0 +1,32 @@
+<div ng-switch="recipesLoaded && categoriesLoaded">
+  <div ng-switch-when="false">
+    {{message}}
+  </div>
+  <div ng-switch-when="true">
+    <h3>Recipe List</h3>
+
+    <nav id="controls">
+      <search-recipe name-filter-string="nameFilter"
+                     category-filter-map="categoryFilterMap">
+      </search-recipe>
+
+      <a href="/#/add"><input type="button" value="Add Recipe"></a><br/>
+    </nav>
+
+    <nav id="search-results">
+      <div id="recipe-list">
+        <ul>
+          <li ng-repeat="recipe in allRecipes | orderBy:'name' | filter:{name:nameFilter} | categoryfilter:categoryFilterMap">
+            <span tooltip="tooltipForRecipe(recipe)">
+              <rating max-rating="5" rating="recipe.rating"></rating>
+              <a class="extra-space" href="#/recipe/{{recipe.id}}/view">{{recipe.name}}</a>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <section id="details">
+      <ng-view></ng-view>
+    </section>
+  </div>
+</div>

@@ -4,3 +4,4 @@ packages
 .idea
 node_modules
 build
+.pub

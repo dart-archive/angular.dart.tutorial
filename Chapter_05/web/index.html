@@ -7,66 +7,9 @@
     <script src="packages/web_components/platform.js"></script>
     <script src="packages/web_components/dart_support.js"></script>
 </head>
-<body recipe-book ng-cloak>
-  <div ng-switch="ctrl.recipesLoaded && ctrl.categoriesLoaded">
-    <div ng-switch-when="false">
-      {{ctrl.message}}
-    </div>
-    <div ng-switch-when="true">
-      <h3>Recipe List</h3>
+  <recipe-book></recipe-book>
 
-      <div id="filters">
-        <div>
-          <label for="name-filter">Filter recipes by name</label>
-          <input id="name-filter" type="text"
-                 ng-model="ctrl.nameFilterString">
-        </div>
-        <div>
-          Filter recipes by category:
-          <span ng-repeat="category in ctrl.categories">
-            <label>
-              <input type="checkbox"
-               ng-model="ctrl.categoryFilterMap[category]">{{category}}
-            </label>
-          </span>
-        </div>
-        <input type="button" value="Clear Filters" ng-click="ctrl.clearFilters()">
-      </div>
-
-      <div id="recipe-list">
-        <ul>
-          <li class="pointer"
-              ng-repeat="recipe in ctrl.recipes | orderBy:'name' | filter:{name:ctrl.nameFilterString} | categoryfilter:ctrl.categoryFilterMap">
-            <span tooltip="ctrl.tooltipForRecipe(recipe)">
-              <rating max-rating="5" rating="recipe.rating"></rating>
-              <span class="extra-space"
-                    ng-click="ctrl.selectRecipe(recipe)">{{recipe.name}}</span>
-            </span>
-          </li>
-        </ul>
-      </div>
-
-      <div id="recipe-details" ng-if="ctrl.selectedRecipe != null">
-        <h3>Recipe Details</h3>
-          <div><strong>Name: </strong>{{ctrl.selectedRecipe.name}}</div>
-          <div><strong>Category: </strong>{{ctrl.selectedRecipe.category}}</div>
-          <div><strong>Rating: </strong>
-              <rating max-rating="5" rating="ctrl.selectedRecipe.rating"></rating>
-          </div>
-          <div>
-            <ul>
-              <li ng-repeat="ingredient in ctrl.selectedRecipe.ingredients">
-                {{ingredient}}
-              </li>
-            </ul>
-          </div>
-          <div><strong>Directions: </strong>{{ctrl.selectedRecipe.directions}}</div>
-      </div>
-    </div>
-
-  </div>
-
-  <script type="application/dart" src="main.dart"></script>
+<script type="application/dart" src="main.dart"></script>
   <script type="text/javascript" src="packages/browser/dart.js"></script>
 </body>
 </html>
