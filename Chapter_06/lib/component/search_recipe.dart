@@ -6,8 +6,8 @@ import 'package:angular/angular.dart';
     selector: 'search-recipe',
     templateUrl: 'search_recipe.html')
 class SearchRecipeComponent {
-  Map<String, bool> _categoryFilterMap;
-  List<String> _categories;
+  Map<String, bool> _categoryFilterMap = {};
+  List<String> _categories = [];
   List<String> get categories => _categories;
 
   @NgTwoWay('name-filter-string')
@@ -17,7 +17,7 @@ class SearchRecipeComponent {
   Map<String, bool> get categoryFilterMap => _categoryFilterMap;
   void set categoryFilterMap(values) {
     _categoryFilterMap = values;
-    _categories = categoryFilterMap.keys.toList();
+    _categories.addAll(categoryFilterMap.keys);
   }
 
   void clearFilters() {
