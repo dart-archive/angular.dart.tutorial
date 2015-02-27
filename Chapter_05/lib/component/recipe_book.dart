@@ -29,8 +29,8 @@ class RecipeBookComponent {
   List<Recipe> recipes = [];
 
   // Filter box
-  final categoryFilterMap = <String, bool>{};
-  Iterable<String> get categories => categoryFilterMap.keys;
+  final Map<String, bool> categoryFilterMap = {};
+  final List<String> categories = [];
   String nameFilterString = "";
 
   Recipe selectedRecipe;
@@ -82,6 +82,7 @@ class RecipeBookComponent {
         for (String category in response.data) {
           categoryFilterMap[category] = false;
         }
+        categories.addAll(categoryFilterMap.keys);
         categoriesLoaded = true;
       })
       .catchError((e) {
