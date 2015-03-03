@@ -82,6 +82,7 @@ class RecipeBookComponent {
         for (String category in response.data) {
           categoryFilterMap[category] = false;
         }
+        categories.clear();
         categories.addAll(categoryFilterMap.keys);
         categoriesLoaded = true;
       })
