@@ -4,45 +4,55 @@ packages:
   analyzer:
     description: analyzer
     source: hosted
-    version: "0.15.7"
+    version: "0.22.4"
   angular:
-    description:
-      path: "/home/victor/dart/angular.dart"
-      relative: false
-    source: path
-    version: "1.0.0"
+    description: angular
+    source: hosted
+    version: "1.1.0"
   args:
     description: args
     source: hosted
-    version: "0.10.0+2"
+    version: "0.12.2+6"
   barback:
     description: barback
     source: hosted
-    version: "0.13.0"
+    version: "0.15.2+4"
   browser:
     description: browser
     source: hosted
     version: "0.10.0+2"
+  cli_util:
+    description: cli_util
+    source: hosted
+    version: "0.0.1+1"
   code_transformers:
     description: code_transformers
     source: hosted
-    version: "0.1.5"
+    version: "0.2.5"
   collection:
     description: collection
     source: hosted
     version: "0.9.1"
+  csslib:
+    description: csslib
+    source: hosted
+    version: "0.11.0+4"
   di:
     description: di
     source: hosted
-    version: "3.3.1"
+    version: "3.3.3"
   html5lib:
     description: html5lib
     source: hosted
-    version: "0.10.0"
+    version: "0.12.0"
   http_server:
     description: http_server
     source: hosted
     version: "0.9.3"
+  initialize:
+    description: initialize
+    source: hosted
+    version: "0.2.0"
   intl:
     description: intl
     source: hosted
@@ -70,27 +80,31 @@ packages:
   observe:
     description: observe
     source: hosted
-    version: "0.10.1+2"
+    version: "0.12.2+1"
   path:
     description: path
     source: hosted
-    version: "1.2.2"
+    version: "1.3.3"
   perf_api:
     description: perf_api
     source: hosted
     version: "0.0.9"
+  pool:
+    description: pool
+    source: hosted
+    version: "1.0.1"
   route_hierarchical:
     description: route_hierarchical
     source: hosted
-    version: "0.5.0"
+    version: "0.6.1+1"
   smoke:
     description: smoke
     source: hosted
-    version: "0.1.0+1"
+    version: "0.3.1"
   source_maps:
     description: source_maps
     source: hosted
-    version: "0.9.0"
+    version: "0.10.0+1"
   source_span:
     description: source_span
     source: hosted
@@ -107,7 +121,19 @@ packages:
     description: utf
     source: hosted
     version: "0.9.0"
+  watcher:
+    description: watcher
+    source: hosted
+    version: "0.9.4"
   web_components:
     description: web_components
     source: hosted
-    version: "0.8.0"
+    version: "0.10.1"
+  when:
+    description: when
+    source: hosted
+    version: "0.2.0"
+  which:
+    description: which
+    source: hosted
+    version: "0.1.3"
