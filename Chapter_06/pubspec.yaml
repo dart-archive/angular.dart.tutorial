@@ -2,7 +2,7 @@ name: tutorial
 version: 1.0.0
 dependencies:
   angular: "1.1.0"
-  web_components: ">=0.10.0 <0.11.0"
+  web_components: "0.10.1"
   browser: any
   http_server: ">=0.9.3 <0.10.0"
 dev_dependencies:
