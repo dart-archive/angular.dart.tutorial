@@ -8,6 +8,8 @@
     "karma-junit-reporter": "*"
   },
   "devDependencies": {
-    "karma-chrome-launcher": "^0.1.3"
+    "karma-chrome-launcher": "~0.1.8",
+    "karma": "~0.11.14",
+    "karma-dart": "~0.2.8"
   }
 }

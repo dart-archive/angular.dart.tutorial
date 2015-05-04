@@ -1,6 +1,8 @@
 library recipe_book_component;
 
 import 'package:angular/angular.dart';
+import 'dart:async';
+
 import 'package:tutorial/tooltip/tooltip.dart' show TooltipModel;
 import 'package:tutorial/recipe.dart';
 
@@ -61,35 +63,35 @@ class RecipeBookComponent {
     nameFilterString = "";
   }
 
-  void _loadData() {
+  Future _loadData() async {
     recipesLoaded = false;
     categoriesLoaded = false;
-    _http.get('recipes.json')
-      .then((HttpResponse response) {
-        print(response);
-        recipes = response.data.map((d) => new Recipe.fromJson(d)).toList();
-        recipesLoaded = true;
-      })
-      .catchError((e) {
+
+    try {
+      var response = await _http.get('recipes.json');
+      print(response);
+      recipes = response.data.map((d) => new Recipe.fromJson(d)).toList();
+      recipesLoaded = true;
+    } on Error catch (e) {
         print(e);
         recipesLoaded = false;
         message = ERROR_MESSAGE;
-      });
+    };
 
-    _http.get('categories.json')
-      .then((HttpResponse response) {
-        print(response);
-        for (String category in response.data) {
-          categoryFilterMap[category] = false;
-        }
-        categories.clear();
-        categories.addAll(categoryFilterMap.keys);
-        categoriesLoaded = true;
-      })
-      .catchError((e) {
+    try {
+      var response = await _http.get('categories.json');
+      print(response);
+
+      for (String category in response.data) {
+        categoryFilterMap[category] = false;
+      }
+      categories.clear();
+      categories.addAll(categoryFilterMap.keys);
+      categoriesLoaded = true;
+      } on Error catch (e) {
         print(e);
         categoriesLoaded = false;
         message = ERROR_MESSAGE;
-      });
+      }
   }
 }

@@ -4,11 +4,11 @@ packages:
   analyzer:
     description: analyzer
     source: hosted
-    version: "0.22.4"
+    version: "0.24.6"
   angular:
     description: angular
     source: hosted
-    version: "1.1.0"
+    version: "1.1.2"
   args:
     description: args
     source: hosted
@@ -28,11 +28,11 @@ packages:
   code_transformers:
     description: code_transformers
     source: hosted
-    version: "0.2.5"
+    version: "0.2.9"
   collection:
     description: collection
     source: hosted
-    version: "0.9.4"
+    version: "1.1.0"
   csslib:
     description: csslib
     source: hosted
@@ -40,7 +40,7 @@ packages:
   di:
     description: di
     source: hosted
-    version: "3.3.3"
+    version: "3.3.4"
   html5lib:
     description: html5lib
     source: hosted
@@ -52,7 +52,7 @@ packages:
   intl:
     description: intl
     source: hosted
-    version: "0.11.9"
+    version: "0.8.10+4"
   logging:
     description: logging
     source: hosted
@@ -61,6 +61,10 @@ packages:
     description: matcher
     source: hosted
     version: "0.11.1"
+  meta:
+    description: meta
+    source: hosted
+    version: "0.8.8"
   mock:
     description: mock
     source: hosted
@@ -68,7 +72,7 @@ packages:
   observe:
     description: observe
     source: hosted
-    version: "0.12.2+1"
+    version: "0.13.1"
   path:
     description: path
     source: hosted
@@ -77,10 +81,6 @@ packages:
     description: perf_api
     source: hosted
     version: "0.0.9"
-  petitparser:
-    description: petitparser
-    source: hosted
-    version: "1.2.2"
   pool:
     description: pool
     source: hosted
@@ -92,7 +92,7 @@ packages:
   smoke:
     description: smoke
     source: hosted
-    version: "0.3.1"
+    version: "0.3.3"
   source_maps:
     description: source_maps
     source: hosted

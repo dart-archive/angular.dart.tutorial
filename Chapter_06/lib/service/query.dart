@@ -21,38 +21,53 @@ class QueryService {
     _loaded = Future.wait([_loadRecipes(), _loadCategories()]);
   }
 
-  Future _loadRecipes() {
-    return _http.get(_recipesUrl)
-      .then((HttpResponse response) {
-        _recipesCache = new Map<String, Recipe>();
-        for (Map recipe in response.data) {
-          Recipe r = new Recipe.fromJson(recipe);
-          _recipesCache[r.id] = r;
-        }
-      });
+  Future _loadRecipes() async {
+    try {
+      var response = await _http.get(_recipesUrl);
+      _recipesCache = new Map<String, Recipe>();
+
+      for (Map recipe in response.data) {
+        Recipe r = new Recipe.fromJson(recipe);
+        _recipesCache[r.id] = r;
+      }
+    } on Error catch(e){
+      throw(e);
+    }
   }
 
-  Future _loadCategories() {
-    return _http.get(_categoriesUrl).then((HttpResponse response) {
+  Future _loadCategories() async {
+    try {
+      var response = await _http.get(_categoriesUrl);
       _categoriesCache = response.data;
-    });
+    } on Error catch(e){
+      throw(e);
+    }
   }
 
-  Future<Recipe> getRecipeById(String id) {
-    return _recipesCache == null
-        ? _loaded.then((_) => _recipesCache[id])
-        : new Future.value(_recipesCache[id]);
+  Future<Recipe> getRecipeById(String id) async {
+    try {
+      if (_recipesCache == null) await _loaded;
+      return _recipesCache[id];
+    } on Error catch(e){
+      throw(e);
+    }
   }
 
-  Future<Map<String, Recipe>> getAllRecipes() {
-    return _recipesCache == null
-        ? _loaded.then((_) => _recipesCache)
-        : new Future.value(_recipesCache);
+  Future<Map<String, Recipe>> getAllRecipes() async {
+    try {
+      if (_recipesCache == null) await _loaded;
+      return _recipesCache;
+    } on Error catch(e){
+      throw(e);
+    }
   }
 
-  Future<List<String>> getAllCategories() {
-    return _categoriesCache == null
-        ? _loaded.then((_) => _categoriesCache)
-        : new Future.value(_categoriesCache);
+  Future<List<String>> getAllCategories() async {
+    try {
+      if (_categoriesCache == null) await _loaded;
+      return _categoriesCache;
+    } on Error catch(e){
+      throw(e);
+    }
   }
 }
