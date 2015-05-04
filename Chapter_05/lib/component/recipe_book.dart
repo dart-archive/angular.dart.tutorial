@@ -76,7 +76,7 @@ class RecipeBookComponent {
         print(e);
         recipesLoaded = false;
         message = ERROR_MESSAGE;
-    };
+    }
 
     try {
       var response = await _http.get('categories.json');
