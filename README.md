@@ -1,5 +1,6 @@
-This repo contains the examples from the [AngularDart 1 Tutorial][tut]. You may want to check out the newer [AngularDart][angulardart] (a.k.a. Angular 2 for Dart) and its [tutorial][tut2] instead.
+This repo contains the examples from the archived [AngularDart 1 Tutorial][tut].
 
-[angulardart]: https://webdev.dartlang.org/angular
+For the latest AngularDart examples, check out the repos under
+[github.com/angular-examples](https://github.com/angular-examples). 
+
 [tut]: https://web.archive.org/web/20160304145052/https://angulardart.org/tutorial/
-[tut2]: https://webdev.dartlang.org/angular/tutorial
