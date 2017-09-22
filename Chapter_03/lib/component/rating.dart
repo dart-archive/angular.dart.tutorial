@@ -59,6 +59,6 @@ class RatingComponent {
       rating == null || star > rating ? _STAR_OFF_CHAR : _STAR_ON_CHAR;
 
   void handleClick(int star) {
-    rating = (star == 1 && rating == 1) ? 0 : star;
+    rating = (star == 1 && rating > 0) ? 0 : star;
   }
 }
