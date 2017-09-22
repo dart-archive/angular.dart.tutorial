@@ -1,6 +1,8 @@
 library recipe_book_component;
 
 import 'package:angular/angular.dart';
+import 'dart:async';
+
 import 'package:tutorial/tooltip/tooltip.dart' show TooltipModel;
 import 'package:tutorial/service/recipe.dart';
 import 'package:tutorial/service/query.dart';
@@ -62,31 +64,30 @@ class RecipeBookComponent {
     return _tooltip[recipe]; // recipe.tooltip
   }
 
-  void _loadData() {
-    queryService.getAllRecipes()
-      .then((Map<String, Recipe> allRecipes) {
-        _recipeMap = allRecipes;
-        _allRecipes = _recipeMap.values.toList();
-        recipesLoaded = true;
-      })
-      .catchError((e) {
+  Future _loadData() async {
+    try {
+      var allRecipes = await queryService.getAllRecipes();
+      _recipeMap = allRecipes;
+      _allRecipes = _recipeMap.values.toList();
+      recipesLoaded = true;
+      } on Error catch (e) {
         print(e);
         recipesLoaded = false;
         message = ERROR_MESSAGE;
-      });
+      }
 
-    queryService.getAllCategories()
-      .then((List<String> allCategories) {
+      try {
+        var allCategories = await queryService.getAllCategories();
+
         for (String category in allCategories) {
           categoryFilterMap[category] = false;
         }
         categories.addAll(categoryFilterMap.keys);
         categoriesLoaded = true;
-      })
-      .catchError((e) {
+      } on Error catch (e) {
         print(e);
         categoriesLoaded = false;
         message = ERROR_MESSAGE;
-      });
+      }
   }
 }
